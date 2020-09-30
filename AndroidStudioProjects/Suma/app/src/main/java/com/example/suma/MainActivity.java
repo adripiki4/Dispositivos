@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
                 /*final TextView muestra = findViewById(R.id.muestralo);
                 muestra.setText(res);*/
 
+                /*Comentando prueba*/
+
 
                 String larespuesta = "El resulatdo es "+ res;
                 miBundle.putString("Suma", larespuesta);
