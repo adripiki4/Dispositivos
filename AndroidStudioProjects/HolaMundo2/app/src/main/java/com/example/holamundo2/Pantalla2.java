@@ -16,6 +16,7 @@ public class Pantalla2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla2);
 
+
         final TextView otroSaludo = (TextView) findViewById(R.id.miMensaje);
 
         Bundle miBundleRecoger = getIntent().getExtras();
