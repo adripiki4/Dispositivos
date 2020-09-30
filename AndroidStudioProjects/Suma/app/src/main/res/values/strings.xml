@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Suma</string>
+    <string name="saludo">Introduzca dos numeros</string>
+    <string name="pulsar">Suma</string>
+    <string name="sumares">Resultado</string>
+    <string name="pulsarvolver">Volver</string>
+</resources>
