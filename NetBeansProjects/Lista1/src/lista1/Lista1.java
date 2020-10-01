@@ -20,6 +20,7 @@ public class Lista1 {
         f.setVisible(true);
         Frame f2 = new Frame();
         Frame f3 = new Frame();
+        Frame f4 = new Frame();
     }
     
 }
