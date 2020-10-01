@@ -19,7 +19,7 @@ public class Lista1 {
         Frame f = new Frame();
         f.setVisible(true);
         Frame f2 = new Frame();
-        
+        Frame f3 = new Frame();
     }
     
 }
