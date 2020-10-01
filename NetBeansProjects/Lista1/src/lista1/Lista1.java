@@ -18,6 +18,8 @@ public class Lista1 {
         // TODO code application logic here
         Frame f = new Frame();
         f.setVisible(true);
+        Frame f2 = new Frame();
+        
     }
     
 }
