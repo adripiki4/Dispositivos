@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ejercicio4;
 
 import java.util.Scanner;
@@ -22,8 +17,9 @@ public class MetodoPrincipal {
         System.out.println("Introduzca un numero");
         numero = sc.nextInt();
         
-        for (int i = 0; i < numero; i++) {
-            String arg = args[i];
+        for (int i = 1; i <= numero; i++) {
+            System.out.print(i+"\t"+i*2+"\t"+i*3);
+            System.out.println();
             
         }
     }

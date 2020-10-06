@@ -22,6 +22,7 @@ public class Ejercicio5Main {
         int aleatorio;
         boolean rellena= false;
         boolean valor = true;
+        int aux = 0;
         
         Random random = new Random();
         
@@ -42,16 +43,26 @@ public class Ejercicio5Main {
             
         }
         
-        for (int x: vector) {
-            System.out.println(x);
-        }
         
-        for (int i = 0; i <15 ; i++) {
-            for (int j = 0; j < 15; j++) {
-                
+            for (int i = 0; i <5 ; i++) {
+                for (int j = 0; j < 3; j++) {
+                matriz[i][j]=vector[aux];
+                aux++;
                 
             }
         }
+        
+        System.out.println("--------BINGO ADRIAN-------");
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(matriz[i][j]+"\t\t");
+                
+            }
+            System.out.println();
+            
+        }
+        
+        
         
          
     }
