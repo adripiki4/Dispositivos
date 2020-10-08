@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view;
+import controller.controller;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
@@ -16,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import model.show;
 /**
  *
  * @author adriba
@@ -26,9 +28,11 @@ public class Frame extends JFrame {
     private JPanel panel3 = new JPanel();
     private JButton b1,b2,b3,b4,b5,b6,b7;
     private JLabel e1,e2,e3,e4,e5,e6;
-    private JTextField t1,t2,t3,t4,t5,t6;
+    private JTextField t1,t2,t3,t4,t5;
+    private controller c = null;
     
-    public Frame(){
+    public Frame(controller control){
+        this.c = control;
         setSize(500,300);
         setTitle("My series");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -41,7 +45,7 @@ public class Frame extends JFrame {
         b1= new JButton("|<");
         b2 = new JButton("<");
         b3 = new JButton(">");
-        b4 = new JButton("<|");
+        b4 = new JButton(">|");
         b5 = new JButton("+");
         b6 = new JButton("-");
         b7 = new JButton("*");
@@ -77,15 +81,79 @@ public class Frame extends JFrame {
         t3.setEditable(false);
         t4.setEditable(false);
         t5.setEditable(false);
-        t6.setEditable(false);
+        buttonsListener bl = new buttonsListener();
+        b1.addActionListener(bl);
+        b2.addActionListener(bl);
+        b3.addActionListener(bl);
+        b4.addActionListener(bl);
+        b5.addActionListener(bl);
         
     }
     
-    
-    
-}
-class buttonsListener implements ActionListener{
+    class buttonsListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
+            show s = new show();
+            if(e.getSource()==b1){
+                s=c.first();
+            }
+            if(e.getSource()==b2){
+                s=c.previous();
+            }
+            if(e.getSource()==b3){
+                s=c.next();
+            }
+            if(e.getSource()==b4){
+                s = c.last();
+            }
+            if(e.getSource()==b5){
+                if(b5.getText().equals("+")){
+                    //vaciar textfield
+                    t1.setText("");t2.setText("");t3.setText("");
+                    t4.setText("");t5.setText("");
+                    b1.setEnabled(false);b2.setEnabled(false);
+                    b3.setEnabled(false);b4.setEnabled(false);
+                    b6.setEnabled(false);b7.setEnabled(false);
+                    
+                    //Cambiar texto de b5
+                    b5.setText("+++");
+                    t1.setEditable(true);
+                    t2.setEditable(true);
+                    t3.setEditable(true);
+                    t4.setEditable(true);
+                    t5.setEditable(true);
+                
+                }else{
+                    //Habilitar botones
+                    b1.setEnabled(true);b2.setEnabled(true);
+                    b3.setEnabled(true);b4.setEnabled(true);
+                    b6.setEnabled(true);b7.setEnabled(true);
+                    //Cambiar texto de b5
+                    b5.setText("+");
+                    //tomar los datos tecleados en los textfield
+                    s = fillShow();
+                    //Llamar al metodo nuevo del controller
+                    c.nuevo(s);
+                }
+            }
+            updating(s);
+        }
+
+        private void updating(show s) {
+            t1.setText(s.getTitle());
+            t2.setText(s.getScriptwriter());
+            t3.setText(String.valueOf(s.getSeasons()));
+            t4.setText(s.getGenre());
+            t5.setText(String.valueOf(s.getViews()));
+            
+        }
+        
+        private show fillShow(){
+            show s = new show(t1.getText(),t2.getText(),Integer.parseInt(t3.getText()),
+            t4.getText(), Integer.parseInt(t5.getText()));
+            return s;
         }
         
     }
+    
+}
+

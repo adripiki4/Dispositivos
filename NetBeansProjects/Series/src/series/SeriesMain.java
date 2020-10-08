@@ -5,6 +5,7 @@
  */
 package series;
 
+import controller.controller;
 import model.access;
 import model.listshow;
 import model.show;
@@ -49,7 +50,8 @@ public class SeriesMain {
 //        System.out.println(sh.getTitle());
 //        
 //        
-        Frame f = new Frame();
+        controller c = new controller();
+        Frame f = new Frame(c);
         f.setVisible(true);
         
         
