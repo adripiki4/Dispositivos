@@ -11,8 +11,12 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.*;
+import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,7 +32,9 @@ public class Frame extends JFrame {
     private JPanel panel3 = new JPanel();
     private JButton b1,b2,b3,b4,b5,b6,b7;
     private JLabel e1,e2,e3,e4,e5,e6;
-    private JTextField t1,t2,t3,t4,t5;
+    private JTextField t1,t2,t3,t4,t5,t6;
+    private JComboBox combo;
+    private String[] plataformas = {"Netflix","HBO","Amazon Prime","Disney +"};
     private controller c = null;
     
     public Frame(controller control){
@@ -76,6 +82,10 @@ public class Frame extends JFrame {
         t5 = new JTextField(5);
         panel2.add(e5);
         panel2.add(t5);
+        combo = new JComboBox(plataformas);
+        e6 =new JLabel("Platforms");
+        t6 = new JTextField(50);
+//        panel2.add(combo);
         t1.setEditable(false);
         t2.setEditable(false);
         t3.setEditable(false);
@@ -121,8 +131,11 @@ public class Frame extends JFrame {
                     t3.setEditable(true);
                     t4.setEditable(true);
                     t5.setEditable(true);
+                    panel2.add(combo);
+                    
                 
                 }else{
+//                    combo.addItemListener(new ListenerCombo());
                     //Habilitar botones
                     b1.setEnabled(true);b2.setEnabled(true);
                     b3.setEnabled(true);b4.setEnabled(true);
@@ -130,7 +143,11 @@ public class Frame extends JFrame {
                     //Cambiar texto de b5
                     b5.setText("+");
                     //tomar los datos tecleados en los textfield
-                    s = fillShow();
+                   s = fillShow();
+                   
+//                    s.setPlatforms(t6.getText());
+//                    panel2.add(t6);
+
                     //Llamar al metodo nuevo del controller
                     c.nuevo(s);
                 }
@@ -144,6 +161,7 @@ public class Frame extends JFrame {
             t3.setText(String.valueOf(s.getSeasons()));
             t4.setText(s.getGenre());
             t5.setText(String.valueOf(s.getViews()));
+//            t6.setText(s.getPlatforms());
             
         }
         
@@ -153,7 +171,19 @@ public class Frame extends JFrame {
             return s;
         }
         
+//        public class ListenerCombo implements ItemListener{
+//        
+//        public void itemStateChanged(ItemEvent e) {
+//            int indice = combo.getSelectedIndex();
+//            String escribe = plataformas[indice];
+//            t6.setText(escribe);
+//            
+//        }
+//        
+//    }
+        
     }
+    
     
 }
 
