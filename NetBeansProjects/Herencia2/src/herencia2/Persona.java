@@ -39,10 +39,10 @@ public class Persona {
         
     }
     
-    public Persona(String nombre, int edad, String dni, char sexo, double peso, double altura){
+    public Persona(String nombre, int edad, char sexo, double peso, double altura){
         this.nombre = nombre;
         this.edad = edad;
-        this.dni = dni;
+        this.dni = generaDni();
         this.sexo = compruebaSexo(sexo);
         this.peso = peso;
         this.altura = altura;
@@ -59,7 +59,7 @@ public class Persona {
         }else if (resultado>25){
             respuesta = 1;
         }
-        return resultado;
+        return respuesta;
     }
     
     public boolean esMayorDeEdad(){
