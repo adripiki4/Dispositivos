@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SumaResta</string>
+    <string name="saludo">Bienvenido</string>
+    <string name="pulsar">CALCULA</string>
+</resources>
