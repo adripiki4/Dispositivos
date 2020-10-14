@@ -85,18 +85,24 @@ public class Frame extends JFrame {
         combo = new JComboBox(plataformas);
         e6 =new JLabel("Platforms");
         t6 = new JTextField(50);
-//        panel2.add(combo);
+        panel2.add(e6);
+        panel2.add(t6);
+        panel2.add(combo);
+        combo.setVisible(false);
         t1.setEditable(false);
         t2.setEditable(false);
         t3.setEditable(false);
         t4.setEditable(false);
         t5.setEditable(false);
+        t6.setEditable(false);
         buttonsListener bl = new buttonsListener();
         b1.addActionListener(bl);
         b2.addActionListener(bl);
         b3.addActionListener(bl);
         b4.addActionListener(bl);
         b5.addActionListener(bl);
+        b6.addActionListener(bl);
+        b7.addActionListener(bl);
         
     }
     
@@ -131,15 +137,19 @@ public class Frame extends JFrame {
                     t3.setEditable(true);
                     t4.setEditable(true);
                     t5.setEditable(true);
-                    panel2.add(combo);
+                    
+                    combo.setVisible(true);
+                    combo.addItemListener(new ListenerCombo());
                     
                 
                 }else{
-//                    combo.addItemListener(new ListenerCombo());
+                    
                     //Habilitar botones
+                    combo.setVisible(false);
                     b1.setEnabled(true);b2.setEnabled(true);
                     b3.setEnabled(true);b4.setEnabled(true);
                     b6.setEnabled(true);b7.setEnabled(true);
+                    t6.setText(combo.getSelectedItem()+"");
                     //Cambiar texto de b5
                     b5.setText("+");
                     //tomar los datos tecleados en los textfield
@@ -152,6 +162,49 @@ public class Frame extends JFrame {
                     c.nuevo(s);
                 }
             }
+            
+            if(e.getSource()==b6){
+                c.delete();
+            }
+            
+            if(e.getSource()== b7){
+                if(b7.getText().equals("*")){
+                    //vaciar textfield
+                    s = c.getShow();
+                    b1.setEnabled(false);b2.setEnabled(false);
+                    b3.setEnabled(false);b4.setEnabled(false);
+                    b6.setEnabled(false);b5.setEnabled(false);
+                    
+                    //Cambiar texto de b5
+                    b7.setText("***");
+                    t1.setEditable(true);
+                    t2.setEditable(true);
+                    t3.setEditable(true);
+                    t4.setEditable(true);
+                    t5.setEditable(true);
+                    
+                    combo.setVisible(true);
+                    combo.addItemListener(new ListenerCombo());
+                    
+                
+                }else{
+                    
+                    //Habilitar botones
+                    combo.setVisible(false);
+                    b1.setEnabled(true);b2.setEnabled(true);
+                    b3.setEnabled(true);b4.setEnabled(true);
+                    b6.setEnabled(true);b7.setEnabled(true);b5.setEnabled(true);
+                    t6.setText(combo.getSelectedItem()+"");
+                    //Cambiar texto de b7
+                    b7.setText("*");
+                    //tomar los datos tecleados en los textfield
+                   s = fillShow();
+                   //Actualiza los datos
+                   c.actualiza(s);
+                   
+                }
+            }
+            
             updating(s);
         }
 
@@ -161,26 +214,26 @@ public class Frame extends JFrame {
             t3.setText(String.valueOf(s.getSeasons()));
             t4.setText(s.getGenre());
             t5.setText(String.valueOf(s.getViews()));
-//            t6.setText(s.getPlatforms());
+            t6.setText(s.getPlatforms());
             
         }
         
         private show fillShow(){
             show s = new show(t1.getText(),t2.getText(),Integer.parseInt(t3.getText()),
-            t4.getText(), Integer.parseInt(t5.getText()));
+            t4.getText(), Integer.parseInt(t5.getText()),t6.getText());
             return s;
         }
         
-//        public class ListenerCombo implements ItemListener{
-//        
-//        public void itemStateChanged(ItemEvent e) {
-//            int indice = combo.getSelectedIndex();
-//            String escribe = plataformas[indice];
-//            t6.setText(escribe);
-//            
-//        }
-//        
-//    }
+        public class ListenerCombo implements ItemListener{
+        
+        public void itemStateChanged(ItemEvent e) {
+            int indice = combo.getSelectedIndex();
+            String escribe = plataformas[indice];
+            t6.setText(escribe);
+            
+        }
+        
+    }
         
     }
     

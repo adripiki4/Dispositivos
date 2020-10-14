@@ -32,7 +32,8 @@ public class access {
             ls=(listshow) ois.readObject();
             ois.close();
         } catch (IOException io) {
-            System.out.println("Failed to open");
+            //System.out.println("Failed to open");
+            io.printStackTrace();
         }finally{
             return ls;
         }

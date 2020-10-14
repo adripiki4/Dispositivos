@@ -50,6 +50,10 @@ public class SeriesMain {
 //        System.out.println(sh.getTitle());
 //        
 //        
+//        show s = new show();
+//        listshow list = new listshow();
+//        list.setshow(s);
+//        access.saveLS(list);
         controller c = new controller();
         Frame f = new Frame(c);
         f.setVisible(true);

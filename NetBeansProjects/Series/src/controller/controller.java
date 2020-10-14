@@ -55,4 +55,23 @@ public class controller {
         acc.saveLS(ls);
         
     }
+    public void delete(){
+        ls.delete(position);
+        position--;
+        acc.saveLS(ls);
+    }
+    
+    public show getShow(){
+        return ls.getShow(position);
+    }
+    
+    public void actualiza(show s){
+        ls.getShow(position).setTitle(s.getTitle());
+        ls.getShow(position).setScriptwriter(s.getScriptwriter());
+        ls.getShow(position).setSeasons(s.getSeasons());
+        ls.getShow(position).setGenre(s.getGenre());
+        ls.getShow(position).setViews(s.getViews());
+        ls.getShow(position).setPlatforms(s.getPlatforms());
+        acc.saveLS(ls);
+    }
 }

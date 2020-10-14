@@ -12,7 +12,9 @@ import java.util.ArrayList;
  *
  * @author adriba
  */
+
 public class listshow  implements Serializable{
+    private long serialVersionUID = 1L;
     private ArrayList<show> seriesList;
     
     public listshow(){
@@ -28,6 +30,9 @@ public class listshow  implements Serializable{
     }
     public int longitud(){
         return seriesList.size();
+    }
+    public void delete(int position){
+        seriesList.remove(position);
     }
     
 }
