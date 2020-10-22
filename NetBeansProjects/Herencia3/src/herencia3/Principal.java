@@ -16,6 +16,13 @@ public class Principal {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Password p = new Password();
+        System.out.println(p);
+        System.out.println(p.esFuerte());
+        
+        Password p2 = new Password(24);
+        System.out.println(p2);
+        System.out.println(p2.esFuerte());
     }
     
 }
