@@ -45,47 +45,64 @@ public class listener implements ActionListener {
             // in searches disabled movement buttons
             forward.setEnabled(false);
             backwards.setEnabled(false);
-        
-        try {
-            DB_Connection DB_Connection = new DB_Connection();
-            Connection with = DB_connection.OpenConexion();
-            CustomerDAO customerDAO = new CustomerDAO();
-            c.setId(idBuscar.getText());
-            c = clientDAO.findById(with, c);
-            conexion_DB.CerrarConexion(with);
-        } catch (Exception ex) {
-            ex.printStackTrace();
+
+            try {
+                Connection_DB connection_DB = new Connection_DB();
+                Connection with = connection_DB.OpenConnection();
+                ClientDAO clientDAO = new ClientDAO();
+                c.setId(searchID.getText());
+                c = clientDAO.findById(with, c);
+                connection_DB.CloseConnection(with);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
+
+        // LOAD ALL CLIENTS
+        if (e.getSource() == this.all) {
+            // on all motion buttons enabled
+            forward.setEnabled(true);
+            backwards.setEnabled(true);
+            position = 0;
+            // All clients:
+            try {
+                Connection_DB connection_DB = new Connection_DB();
+                Connection with = connection_DB.OpenConnection();
+                ClientDAO customerDAO = new ClientDAO();
+                clients = customerDAO.findAll(with);
+                connection_DB.CloseConnection(with);
+
+                // charge the first customer
+                position = 0;
+                c = clients.get(position);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        //AHEAD
+        if (e.getSource() == this.forward) {
+            position++;
+            if (position == clients.size()) {
+                position--;
+            }
+            c = clients.get(position);
+
+        }
+
+        //BEHIND
+        if (e.getSource() == this.backwards) {
+            if (position > 0) {
+                position--;
+            }
+            c = clients.get(position);
+        }
+        
+        update(c);
+
     }
     
-    // LOAD ALL CLIENTS
- if (e.getSource () == this.all) {
- // on all motion buttons enabled
- forward.setEnabled (true);
- backwards.setEnabled (true);
- position = 0;
- // All clients:
- try {
- DB_Connection DB_Connection = new DB_Connection (); 
- Connection with = DB_connection.OpenConexion ();
- CustomerDAO customerDAO = new CustomerDAO ();
- customers = customerDAO.findAll (with); 
- conexion_DB.CloseConexion (with);
- // charge the first customer
- position = 0;
- c = customers.get (position);
- } catch (Exception ex) {
- ex.printStackTrace (); 
- }
- }
- //AHEAD
- if (e.getSource () == this.ahead) {
- position ++;
- if (position == customers.size ()) {
- position--;
- }
-    
-    
-}
+    private void update(client c){
+        this.id.setText(c.getId());
+        this.notes.setText(c.getNotes());
     }
 }
