@@ -5,6 +5,8 @@
  */
 package jlistexercise;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author adriba
@@ -14,7 +16,7 @@ public class JListExercise {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         // TODO code application logic here
         Frame f = new Frame();
         f.setVisible(true);

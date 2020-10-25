@@ -41,7 +41,7 @@ public class Frame extends JFrame {
         panel4 = new JPanel();
         panel1.setLayout(new BorderLayout());
 
-        panel3.setLayout(new GridLayout(3, 1, 10, 10));
+        panel3.setLayout(new GridLayout(3, 1, 5, 5));
         boton1 = new JButton(">>>>");
         boton2 = new JButton("<<<<");
         boton3 = new JButton("Imprimir");
@@ -63,7 +63,7 @@ public class Frame extends JFrame {
         try {
             //puede ser que sea requerido lo siguiente
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexion = DriverManager.getConnection(url, "root", "piqui4");
+            Connection conexion = java.sql.DriverManager.getConnection(url, "root", "piqui4");
             Statement instruccion = (Statement) conexion.createStatement();
             String sql = "Select id from clients";
             ResultSet resultado = instruccion.executeQuery(sql);
