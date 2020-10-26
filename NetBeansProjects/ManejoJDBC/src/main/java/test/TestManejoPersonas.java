@@ -27,7 +27,7 @@ public class TestManejoPersonas {
         
 
         //insertando neuvo objeto de tipo persona
-        Persona personaNueva = new Persona("Maonolo", "Fernandez", 32);
+        Persona personaNueva = new Persona("Fidel", "Hernadez", 47);
         personaDao.insertar(personaNueva);
         for (Persona persona : personas) {
             System.out.println("persona = " + persona);

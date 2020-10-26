@@ -58,7 +58,13 @@ public class Frame extends JFrame {
         add(panel1);
 
         //Acciendo a la base de datos
-        String url = "jdbc:mysql://localhost:3307/di.?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+        //Encender el servidor ~/lampstack-7.4.11-0$ ./ctlscript.sh start
+
+        //Diferente puerto en casa o en la escuela
+        //3306 ESCUELA
+        String url = "jdbc:mysql://localhost:3306/di.?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+        //3307 CASA
+        //String url = "jdbc:mysql://localhost:3307/di.?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
 
         try {
             //puede ser que sea requerido lo siguiente

@@ -29,7 +29,7 @@ public class TestMysqlJDBC {
                 System.out.println("Id Persona: " + resultado.getInt("Id_persona"));
                 System.out.println("Nombre: " + resultado.getString("Nombre"));
                 System.out.println("Apellidos " + resultado.getString("Apellidos"));
-                System.out.println("Id Persona: " + resultado.getInt("Edad"));
+                System.out.println("Edad: " + resultado.getInt("Edad"));
 
             }
              resultado.close();
