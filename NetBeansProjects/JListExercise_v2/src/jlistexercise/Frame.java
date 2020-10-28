@@ -7,11 +7,19 @@ package jlistexercise;
 
 import DAO.All;
 import DAO.client;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.DefaultListModel;
@@ -33,7 +41,7 @@ public class Frame extends JFrame {
     private DefaultListModel listModel2 = new DefaultListModel();
     private JPanel panel1, panel2, panel3, panel4;
     private JButton boton1, boton2, boton3;
-    private ArrayList<client>listclients = new ArrayList<>();
+    private ArrayList<client> listclients = new ArrayList<>();
 
     public Frame() throws SQLException {
         setTitle("Selection and print");
@@ -63,7 +71,6 @@ public class Frame extends JFrame {
 
         //Acciendo a la base de datos
         //Encender el servidor ~/lampstack-7.4.11-0$ ./ctlscript.sh start
-
         //Diferente puerto en casa o en la escuela
         //3306 ESCUELA
         String url = "jdbc:mysql://localhost:3306/di.?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
@@ -92,17 +99,14 @@ public class Frame extends JFrame {
 //        } catch (ClassNotFoundException ex) {
 //            ex.printStackTrace(System.out);
 //        }
-
-
         All all = new All();
         listclients = (ArrayList<client>) all.findAll();
-        for(client cli: listclients){
-            String id = cli.getId();
-            listModel.addElement(id);
+        for (client cli : listclients) {
+            listModel.addElement(cli);
         }
         list = new JList(listModel);
         panel2.add(list);
-        
+
         list2 = new JList(listModel2);
         panel4.add(list2);
 
@@ -114,10 +118,12 @@ public class Frame extends JFrame {
                 int index = list.getSelectedIndex();
                 if (index >= 0) {
                     //devuelve el valor selecionado
-                    s = (String) listModel.get(index);
-                    listModel.remove(index);
+                    //s = (String) listModel.get(index);
+                    client aux = (client) list.getSelectedValue();
                     //anadira a la listamodel2
-                    listModel2.addElement(s);
+                    listModel2.addElement(aux);
+                    //elimina
+                    listModel.remove(index);
                 }
             }
 
@@ -129,14 +135,45 @@ public class Frame extends JFrame {
                 //toma el indice del elemnto seleccionado de la list
                 int index = list2.getSelectedIndex();
                 if (index >= 0) {
-                    String devuelve = (String) listModel2.get(index);
+                    //String devuelve = (String) listModel2.get(index);
+                    client aux = (client) list2.getSelectedValue();
+                    //anadira a la listamodel
+                    listModel.addElement(aux);
                     //eliminara de la lista
                     listModel2.remove(index);
-                    //anadira a la listamodel
-                    listModel.addElement(devuelve);
+                    
                 }
             }
 
+        });
+
+        boton3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                try {
+                    //crea el texto y lo inserta en la variable 'text'
+                    String text = "Lista de clientes:\n\n";
+                    for(Object o : listModel2.toArray()){
+                       
+                        client c = (client) o;
+                        text = text + c.Muestra();
+                    }
+
+                    //esta parte es fija, no se cambia
+                    Document doc = new Document(PageSize.A4, 50, 50, 100, 72);
+                    PdfWriter.getInstance(doc, new FileOutputStream("Lista Clientes.pdf"));
+                    doc.open();
+                    Paragraph p = new Paragraph(text);
+                    p.setAlignment(Element.ALIGN_JUSTIFIED);
+
+                    doc.add(p);
+                    doc.close();
+                } catch (DocumentException | FileNotFoundException f) {
+                    f.printStackTrace();
+                }
+
+            }
         });
     }
 
