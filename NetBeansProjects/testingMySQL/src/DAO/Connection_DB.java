@@ -16,7 +16,7 @@ public class Connection_DB {
     public Connection OpenConnection() throws Exception {
         Connection con = null; // install a connection
         try {
-            String urlOdbc = "jdbc:mysql://localhost:3306/di.?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            String urlOdbc = "jdbc:mysql://localhost:3307/di.?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
 // create connection. NOTE in my case MySql user -> root, empty password
             con = (java.sql.DriverManager.getConnection(urlOdbc, "root", "piqui4"));

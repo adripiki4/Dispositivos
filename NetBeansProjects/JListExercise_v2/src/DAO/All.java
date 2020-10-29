@@ -20,7 +20,7 @@ public class All {
         ResultSet rs = null;
                     
         try {
-            String urlOdbc = "jdbc:mysql://localhost:3306/di.?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            String urlOdbc = "jdbc:mysql://localhost:3307/di.?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             con = (java.sql.DriverManager.getConnection(urlOdbc, "root", "piqui4"));
             st = con.createStatement();
             rs = st.executeQuery("Select * from clients");
