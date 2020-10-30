@@ -25,8 +25,18 @@ public class Main {
         List<Usuario>listusa = usuarioDAO.seleccionar();
         
         //Insertando usuario
-        Usuario nuevo = new Usuario("PEPE", "pepe23");
-        usuarioDAO.insertar(nuevo);
+//        Usuario nuevo = new Usuario("Carlos","hahahaha");
+//        usuarioDAO.insertar(nuevo);
+
+//      Actualizar
+//        Usuario actualiza = new Usuario(2, "Andres", "jujuju");
+//        usuarioDAO.actualizar(actualiza);
+
+//      Delete
+    Usuario borrar = new Usuario(2);
+    usuarioDAO.borrar(borrar);
+        
+        listusa=usuarioDAO.seleccionar();
         
         for(Usuario usa: listusa){
             System.out.println(usa);

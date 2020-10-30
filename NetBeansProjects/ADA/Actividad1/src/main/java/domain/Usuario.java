@@ -17,6 +17,7 @@ public class Usuario {
     public Usuario(){
     }
 
+    //Poner el Id_usuario AI en la bd
     public Usuario(int Id_usuario) {
         this.Id_usuario = Id_usuario;
     }

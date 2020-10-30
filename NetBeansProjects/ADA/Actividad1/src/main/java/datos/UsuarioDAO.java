@@ -54,6 +54,7 @@ public class UsuarioDAO {
         return listausuarios;
     }
 
+    //Insertamos un nuevo usuario
     public int insertar(Usuario usuario) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -62,6 +63,7 @@ public class UsuarioDAO {
         try{
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
+            //stmt.setInt(1, usuario.getId_usuario());
             stmt.setString(1, usuario.getUsuario());
             stmt.setString(2, usuario.getPassword());
             registros = stmt.executeUpdate();
