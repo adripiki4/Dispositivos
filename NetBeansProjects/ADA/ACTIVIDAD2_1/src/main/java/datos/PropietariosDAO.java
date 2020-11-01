@@ -5,6 +5,7 @@
  */
 package datos;
 
+import static datos.Conexion.close;
 import static datos.Conexion.getConnection;
 import domain.propietarios;
 import java.sql.SQLException;
@@ -53,4 +54,85 @@ public class PropietariosDAO {
         return listpropietario;
 
     }
+    
+     public int insertar(propietarios propietarios) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int registros = 0;
+        try {
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(SQL_INSERT);
+            stmt.setString(1, propietarios.getDni());
+            stmt.setString(2, propietarios.getNombre());
+            stmt.setInt(3,propietarios.getEdad());
+            registros = stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            try {
+                close(stmt);
+
+            } catch (SQLException ex) {
+            }
+            try {
+                close(conn);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return registros;
+    }
+     
+      public int eliminar(propietarios propietarios) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int registros = 0;
+        try {
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(SQL_DELETE);
+            stmt.setString(1, propietarios.getDni());
+            registros = stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            try {
+                close(stmt);
+
+            } catch (SQLException ex) {
+            }
+            try {
+                close(conn);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return registros;
+    }
+      
+       public int actualizarpropietarios (propietarios propietarios){
+         Connection conn = null;
+         PreparedStatement stmt = null;
+         int registros = 0;
+         try{
+             conn = getConnection();
+             stmt = conn.prepareStatement(SQL_UPDATE);
+             stmt.setString(1, propietarios.getNombre());
+             stmt.setInt(2, propietarios.getEdad());
+             stmt.setString(3,propietarios.getDni());
+             registros = stmt.executeUpdate();
+         }catch(SQLException ex){ 
+             ex.printStackTrace(System.out);
+         }finally{
+             try{
+                 close(stmt);
+             }catch(SQLException ex){
+             }
+             try{
+                 close(conn);
+             }catch(SQLException ex){
+                 ex.printStackTrace(System.out);
+             }
+         }
+         return  registros;
+     }
 }

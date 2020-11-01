@@ -6,6 +6,7 @@
 package datos;
 
 import static datos.Conexion.close;
+import static datos.Conexion.getConnection;
 import domain.Coches;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +24,7 @@ public class CochesDAO {
     private static final String SQL_SELECT = "SELECT Matricula, Marca, Precio,DNI FROM coches";
     private static final String SQL_INSERT = "INSERT INTO coches(Matricula, Marca, Precio, DNI) VALUES (?,?,?,?)";
     private static final String SQL_DELETE = "DELETE FROM coches WHERE Matricula=?";
-    private static final String SQL_UPDATE = "UPDATE usuario SET Precio=?, DNI=? where Matricula=?";
+    private static final String SQL_UPDATE = "UPDATE coches SET Marca=?, Precio=? where  Matricula=?";
 
     //Metodo que devuelve en una lista todos los coches de la bd
     public List<Coches> seleccionar() throws SQLException {
@@ -92,5 +93,61 @@ public class CochesDAO {
         }
         return registros;
     }
+    
+    //Elimina  coches de la bd
+     public int eliminar(Coches coche) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int registros = 0;
+        try {
+            conn = getConnection();
+            stmt = conn.prepareStatement(SQL_DELETE);
+            stmt.setString(1, coche.getMatricula());
+            registros = stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            try {
+                close(stmt);
+            } catch (SQLException ex) {
+            }
+            try {
+                close(conn);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return registros;
+    }
+     
+     //Actualiza coches de la bd
+      public int actualizar(Coches coche) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int registros = 0;
+        try {
+            conn = getConnection();
+            stmt = conn.prepareStatement(SQL_UPDATE);
+
+            stmt.setString(1, coche.getMarca());
+            stmt.setInt(2, coche.getPrecio());
+            stmt.setString(3, coche.getMatricula());
+            registros = stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            try {
+                close(stmt);
+            } catch (SQLException ex) {
+            }
+            try {
+                close(conn);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return registros;
+    }
+    
 
 }

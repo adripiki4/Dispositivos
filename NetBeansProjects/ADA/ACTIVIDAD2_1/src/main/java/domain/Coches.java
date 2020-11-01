@@ -26,6 +26,14 @@ public class Coches {
         this.dni = dni;
     }
 
+    //Constructor para insertar nuevo coche con su usuario
+    public Coches(String matricula, String marca, int precio) {
+        this.matricula = matricula;
+        this.marca = marca;
+        this.precio = precio;
+    }
+    
+
     public String getMatricula() {
         return matricula;
     }
