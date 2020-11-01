@@ -20,24 +20,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-//        CochesDAO cdao = new CochesDAO();
-//        PropietariosDAO pdao = new PropietariosDAO();
-//        
-//        Coches nuevo = new Coches("2323JKL", "Ford", 5000, "25256111F");
-//        cdao.actualizar(nuevo);
-//        
-//        List<Coches>listcoches = cdao.seleccionar();
-//        
-//        for(Coches c : listcoches){
-//            System.out.println(c);
-//        }
-
-//        propietarios pnuevo = new propietarios("25256111F", "Pepe", 58);
-//        pdao.actualizarpropietarios(pnuevo);
-//        List<propietarios> listpro = pdao.seleccionar();
-//        for (propietarios pr : listpro){
-//            System.out.println(pr);
-//        }
         String nombrepro;
         String dnipro;
         int edad;
