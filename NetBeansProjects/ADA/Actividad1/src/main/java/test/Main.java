@@ -28,13 +28,13 @@ public class Main {
 //        Usuario nuevo = new Usuario("Carlos","hahahaha");
 //        usuarioDAO.insertar(nuevo);
 
-//      Actualizar
+     // Actualizar
 //        Usuario actualiza = new Usuario(2, "Andres", "jujuju");
 //        usuarioDAO.actualizar(actualiza);
-
-//      Delete
-    Usuario borrar = new Usuario(2);
-    usuarioDAO.borrar(borrar);
+//
+////      Delete
+        Usuario borrar = new Usuario(2);
+        usuarioDAO.borrar(borrar);
         
         listusa=usuarioDAO.seleccionar();
         
