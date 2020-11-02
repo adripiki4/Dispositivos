@@ -15,11 +15,11 @@ public class TextLabel {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        Frame f = new Frame();
-//        f.setVisible(true);
-        
-        Frame2 f1 = new Frame2();
-        f1.setVisible(true);
+        Frame f = new Frame();
+        f.setVisible(true);
+//        
+//        Frame2 f1 = new Frame2();
+//        f1.setVisible(true);
     }
     
 }

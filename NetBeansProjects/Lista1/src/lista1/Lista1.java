@@ -18,9 +18,9 @@ public class Lista1 {
         // TODO code application logic here
         Frame f = new Frame();
         f.setVisible(true);
-        Frame f2 = new Frame();
-        Frame f3 = new Frame();
-        Frame f4 = new Frame();
+//        Frame f2 = new Frame();
+//        Frame f3 = new Frame();
+//        Frame f4 = new Frame();
     }
     
 }
