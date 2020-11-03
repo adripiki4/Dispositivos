@@ -23,7 +23,7 @@ public class Frame extends JFrame {
     private JComboBox combo;
     private JLabel label;
     private JPanel panel;
-    private String[] images = {"Rabbit", "Cat","Dog","Bird", "Pig"};
+    private String[] images = {"linux", "windows", "mac"};
     private Icon img;
     
     
@@ -37,7 +37,7 @@ public class Frame extends JFrame {
         combo = new JComboBox(images);
         panel.add(combo,BorderLayout.NORTH);
         
-        img = new ImageIcon(getClass().getResource("images/Rabbit.gif"));
+        img = new ImageIcon(getClass().getResource("images/linux.jpg"));
         label = new JLabel();
         label.setText("Rabbit");
         label.setIcon(img);
