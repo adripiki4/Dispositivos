@@ -19,7 +19,7 @@ public class Conexion {
 
     //Localhost clase 3306
     //Localhost casa 3007
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3307/concesionario?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/concesionario?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private static final String JDBC_USER = "root";
     private static final String JDBC_PASSWORD = "piqui4";
 

@@ -32,9 +32,9 @@ public class Main {
 //        Usuario actualiza = new Usuario(2, "Andres", "jujuju");
 //        usuarioDAO.actualizar(actualiza);
 //
-////      Delete
-        Usuario borrar = new Usuario(2);
-        usuarioDAO.borrar(borrar);
+//////      Delete
+//        Usuario borrar = new Usuario(2);
+//        usuarioDAO.borrar(borrar);
         
         listusa=usuarioDAO.seleccionar();
         
