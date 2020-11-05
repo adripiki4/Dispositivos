@@ -47,6 +47,7 @@ public class Frame extends JFrame {
         btnadv.addActionListener(new advListener());
         btnerror.addActionListener(new errorListener());
         btnconfir.addActionListener(new confirListener());
+        btntxt.addActionListener(new txtListener());
 
         add(panel);
 
@@ -90,6 +91,15 @@ public class Frame extends JFrame {
 
         }
 
+    }
+    
+    public class txtListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            JOptionPane.showInputDialog("Escribe un numero para multiplicarlo por 2");
+        }
+        
     }
 
 }
