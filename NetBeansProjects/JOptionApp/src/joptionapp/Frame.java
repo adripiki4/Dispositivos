@@ -98,6 +98,7 @@ public class Frame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent arg0) {
             JOptionPane.showInputDialog("Escribe un numero para multiplicarlo por 2");
+            
         }
         
     }
