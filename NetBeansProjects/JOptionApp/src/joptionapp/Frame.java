@@ -48,6 +48,8 @@ public class Frame extends JFrame {
         btnerror.addActionListener(new errorListener());
         btnconfir.addActionListener(new confirListener());
         btntxt.addActionListener(new txtListener());
+        btncombo.addActionListener(new comboListener());
+        btnmas.addActionListener(new masListener());
 
         add(panel);
 
@@ -92,15 +94,61 @@ public class Frame extends JFrame {
         }
 
     }
-    
-    public class txtListener implements ActionListener{
+
+    public class txtListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            JOptionPane.showInputDialog("Escribe un numero para multiplicarlo por 2");
-            
+            int numero = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un" + " numero para multiplicarlo por 2"));
+            if (numero >= 0) {
+                int resultado = numero * 2;
+                JOptionPane.showMessageDialog(null, "El resultado es: 2*" + numero + "=" + resultado);
+            }
         }
-        
+
     }
 
+    public class comboListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Object selec = JOptionPane.showInputDialog(
+                    null,
+                    "Select option",
+                    "Options Selector",
+                    JOptionPane.QUESTION_MESSAGE,
+                    null, // null for default icon
+                    new Object[]{"amarrillo", "azul", "verde"},
+                    "option 1");
+
+            JOptionPane.showMessageDialog(null, "color seleccionado " + selec);
+        }
+
+    }
+
+    public class masListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int selection = JOptionPane.showOptionDialog(
+                    null, // parent component
+                    "Seleccionas una opcion",
+                    "Usas mucho el JOPtionPane?",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null, // null for default icon or an icon.
+                    new Object[]{"Si", "NO", "cancelar"},
+                    // null for YES, NO and CANCEL
+                    "option 1");
+            if (selection == 0) {
+
+            }
+            if (selection == 1) {
+
+                JOptionPane.showMessageDialog(null, "Pues es muy util ");
+            }
+        }
+
+    }
+    
 }
