@@ -105,12 +105,12 @@ public class songDAO {
         return actuliza;
     }
 
-    public boolean eliminar(Song song) {
+    public boolean eliminar(int Id_song) {
         Connection conn = null;
         Statement stm = null;
         boolean elimina = false;
         
-        String SQL_DELETE = "DELETE FROM song WHERE Id_song="+song.getId_song();
+        String SQL_DELETE = "DELETE FROM song WHERE Id_song="+Id_song;
         
         try{
             conn = Conexion.conectar();
@@ -123,6 +123,36 @@ public class songDAO {
         }
         
         return elimina;
+    }
+    
+    public Song buscarID(int busca){
+        Song song = new Song();
+        Connection conn = null;
+        Statement stm = null;
+        ResultSet rs = null;
+        String sqlfind = "SELECT * FROM song where Id_song="+busca;
+        
+        try{
+            conn = Conexion.conectar();
+            stm = conn.createStatement();
+            rs = stm.executeQuery(sqlfind);
+            while(rs.next()){
+                song.setId_song(rs.getInt("Id_song"));
+                song.setName(rs.getString("Name"));
+                song.setArtist(rs.getString("Artist"));
+                song.setAlbum(rs.getString("Album"));
+                song.setGenre(rs.getString("Genre"));
+            }
+            rs.close();
+            stm.close();
+            conn.close();
+            
+        }catch (SQLException e){
+            System.out.println("Error Clase SongDAO, metodo buscarID");
+            e.printStackTrace();
+        }
+        
+        return song;
     }
 
 }

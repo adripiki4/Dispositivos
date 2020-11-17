@@ -40,7 +40,14 @@ public class Controller {
     }
 
     //LLamar al DAO para eliminar una cancion
-    public void eliminar(Song song) {
-        songdao.eliminar(song);
+    public void eliminar(int id_song) {
+        songdao.eliminar(id_song);
+    }
+    
+    //LLamar al DAO para buscar un Id_song
+    public Song buscarID(int busca){
+        Song song = new Song();
+        song = songdao.buscarID(busca);
+        return song;
     }
 }

@@ -15,12 +15,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -46,6 +48,7 @@ public class Frame extends JFrame {
         setSize(800, 800);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         controller = new Controller();
+        Locale.setDefault(Locale.ENGLISH);
 
         //Definimos panel central
         panelcentral = new JPanel();
@@ -55,7 +58,7 @@ public class Frame extends JFrame {
         panel1 = new JPanel();
         panel1.setLayout(new FlowLayout());
         //Rellenamos el panel
-        btnselect = new JButton("View all songs");
+        btnselect = new JButton("View all or Refresh");
         btninsert = new JButton("Add new song");
         btnupdate = new JButton("Update song");
         btndelete = new JButton("Delete song");
@@ -114,6 +117,8 @@ public class Frame extends JFrame {
         buttonsListener action = new buttonsListener();
         btnselect.addActionListener(action);
         btninsert.addActionListener(action);
+        btnupdate.addActionListener(action);
+        btndelete.addActionListener(action);
 
         add(panelcentral);
 
@@ -146,7 +151,6 @@ public class Frame extends JFrame {
                     txtartist.setText("");
                     txtalbum.setText("");
 
-                    txtid.setEditable(true);
                     txtname.setEditable(true);
                     txtartist.setEditable(true);
                     txtalbum.setEditable(true);
@@ -166,12 +170,73 @@ public class Frame extends JFrame {
                     btndelete.setEnabled(true);
                     btninsert.setText("Add new song");
                     txtgenre.setText(combo.getSelectedItem() + "");
-                    song = crear();
-                    controller.insertar(song);
-                    
+                    crear();
+
+                    txtid.setText("");
+                    txtname.setText("");
+                    txtartist.setText("");
+                    txtalbum.setText("");
+                    txtgenre.setText("");
+
+                    txtid.setEditable(false);
+                    txtname.setEditable(false);
+                    txtartist.setEditable(false);
+                    txtalbum.setEditable(false);
+                    txtgenre.setEditable(false);
 
                 }
 
+            }
+
+            if (e.getSource() == btnupdate) {
+
+                if (btnupdate.getText().equals("Update song")) {
+                    song = buscarsong();
+                    txtid.setText(String.valueOf(song.getId_song()));
+                    txtname.setText(song.getName());
+                    txtartist.setText(song.getArtist());
+                    txtalbum.setText(song.getAlbum());
+                    txtgenre.setText(song.getGenre());
+
+                    txtid.setEditable(false);
+                    txtname.setEditable(true);
+                    txtartist.setEditable(true);
+                    txtalbum.setEditable(true);
+
+                    btnselect.setEnabled(false);
+                    btninsert.setEnabled(false);
+                    btndelete.setEnabled(false);
+                    btnupdate.setText("Update this");
+
+                    combo.setVisible(true);
+                    combo.addItemListener(new ListenerCombo());
+
+                } else {
+                    combo.setVisible(false);
+                    btnselect.setEnabled(true);
+                    btninsert.setEnabled(true);
+                    btndelete.setEnabled(true);
+                    btnupdate.setText("Update song");
+                    txtgenre.setText(combo.getSelectedItem() + "");
+                    actuliza();
+
+                    txtid.setText("");
+                    txtname.setText("");
+                    txtartist.setText("");
+                    txtalbum.setText("");
+                    txtgenre.setText("");
+
+                    txtid.setEditable(false);
+                    txtname.setEditable(false);
+                    txtartist.setEditable(false);
+                    txtalbum.setEditable(false);
+                    txtgenre.setEditable(false);
+
+                }
+            }
+
+            if (e.getSource() == btndelete) {
+                elimina();
             }
         }
 
@@ -185,11 +250,52 @@ public class Frame extends JFrame {
             }
 
         }
-        
-        public Song crear(){
-           // int pasaid = Integer.parseInt(txtid.getText());
+
+        public void crear() {
+            //int pasaid = Integer.parseInt(txtid.getText());
+
             Song song = new Song(txtname.getText(), txtartist.getText(), txtalbum.getText(), txtgenre.getText());
+            if (song.getName().equals("") == false && song.getArtist().equals("") == false) {
+                controller.insertar(song);
+                JOptionPane.showMessageDialog(null, "Add Successfull");
+            }
+
+        }
+
+        public void actuliza() {
+            int pasaid = Integer.parseInt(txtid.getText());
+            Song song = new Song(pasaid, txtname.getText(), txtartist.getText(), txtalbum.getText(), txtgenre.getText());
+            controller.actulizar(song);
+            JOptionPane.showMessageDialog(null, "Update Successfull");
+        }
+
+        public Song buscarsong() {
+            Song song = new Song();
+            String sel = JOptionPane.showInputDialog(
+                    null,
+                    "Introduce Id_song",
+                    JOptionPane.QUESTION_MESSAGE);
+
+            int busca = Integer.parseInt(sel);
+            song = controller.buscarID(busca);
+
+            System.out.println("The user has typed" + sel);
+
             return song;
+        }
+
+        public void elimina() {
+            String sel = JOptionPane.showInputDialog(
+                    null,
+                    "Introduce Id_song to delete",
+                    JOptionPane.ERROR_MESSAGE);
+
+            if (sel != null) {
+                int busca = Integer.parseInt(sel);
+                controller.eliminar(busca);
+                JOptionPane.showMessageDialog(null, "Delete Successfull");
+            }
+
         }
 
     }
