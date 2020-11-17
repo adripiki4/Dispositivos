@@ -24,6 +24,15 @@ public class Song {
         this.Genre = Genre;
     }
 
+    public Song(String Name, String Artist, String Album, String Genre) {
+        this.Id_song = Id_song;
+        this.Name = Name;
+        this.Artist = Artist;
+        this.Album = Album;
+        this.Genre = Genre;
+    }
+    
+
     public Song() {
     }
 

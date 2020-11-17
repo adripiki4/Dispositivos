@@ -5,7 +5,7 @@
  */
 package com.connection;
 
-import com.sun.jdi.connect.spi.Connection;
+import java.sql.Connection;
 import java.sql.*;
 
 /**
@@ -18,7 +18,7 @@ public class Conexion {
         Connection con = null;
         String password = "piqui4";
         String usuario = "root";
-        String url = "jdbc:mysql://localhost:3306/myplaylist?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+        String url = "jdbc:mysql://localhost:3307/myplaylist?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
 
         try {
             con = (Connection) DriverManager.getConnection(url, usuario, password);

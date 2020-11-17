@@ -5,7 +5,7 @@
  */
 package jtablesql;
 
-import com.sun.jdi.connect.spi.Connection;
+import java.sql.Connection;
 import java.awt.FlowLayout;
 import java.sql.SQLException;
 import java.sql.*;
@@ -42,7 +42,7 @@ public class Frame extends JFrame {
         Statement st = null;
         ResultSet rs = null;
 
-        String urlOdbc = "jdbc:mysql://localhost:3306/di.?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String urlOdbc = "jdbc:mysql://localhost:3307/di.?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         con = (java.sql.DriverManager.getConnection(urlOdbc, "root", "piqui4"));
         st = con.createStatement();
         rs = st.executeQuery("Select * from clients");
