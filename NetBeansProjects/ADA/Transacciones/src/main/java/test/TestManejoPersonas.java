@@ -23,7 +23,7 @@ public class TestManejoPersonas {
     public static void main(String[] args) throws SQLException {
         Connection conexion = null;
 
-        try {
+//        try {
             conexion = Conexion.getConnection();
             if (conexion.getAutoCommit()) {
                 conexion.setAutoCommit(false);
@@ -31,29 +31,34 @@ public class TestManejoPersonas {
             PersonaDAO personaDao = new PersonaDAO(conexion);
             Persona cambioPersona = new Persona();
             Persona nueva = new Persona();
-            cambioPersona.setNombre("Pepica Doleeres");
-            cambioPersona.setApellidos("Fungi");
-            cambioPersona.setEdad(58);
-            cambioPersona.setId_persona(4);
-            personaDao.update(cambioPersona);
-            nueva.setNombre("Manu");
-            nueva.setApellidos("Amnesia");
-            nueva.setEdad(10);
-            nueva.setId_persona(6);
+            nueva.setNombre("Antobio");
+            nueva.setApellidos("jejejejeje");
+            nueva.setEdad(18);
+            nueva.setId_persona(8);
             personaDao.insertar(nueva);
             
+//            cambioPersona.setNombre("Pepica Doleereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
+//            cambioPersona.setApellidos("Fungi");
+//            cambioPersona.setEdad(58);
+//            cambioPersona.setId_persona(4);
+//            personaDao.update(cambioPersona);
+
+            conexion.rollback();
+            
+            
+            
            
-            conexion.commit();
-            System.out.println("Todo ha salido bien");
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-            System.out.println("Algo ha fallado, Entramos al rollback");
-            try {
-                conexion.rollback();
-            } catch (SQLException ex1) {
-                ex1.printStackTrace(System.out);
-            }
-        }
+            //conexion.commit();
+//            System.out.println("Todo ha salido bien");
+//        } catch (SQLException ex) {
+//            ex.printStackTrace(System.out);
+//            System.out.println("Algo ha fallado, Entramos al rollback");
+//            try {
+//                conexion.rollback();
+//            } catch (SQLException ex1) {
+//                ex1.printStackTrace(System.out);
+//            }
+//        }
 
     }
 
