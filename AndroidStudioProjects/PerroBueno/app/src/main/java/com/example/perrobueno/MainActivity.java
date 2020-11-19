@@ -1,4 +1,4 @@
-package com.example.perroapp;
+package com.example.perrobueno;
 
 import androidx.appcompat.app.AppCompatActivity;
 

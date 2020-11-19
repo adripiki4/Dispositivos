@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">PerroApp</string>
     <string name="title_Pantalla2">Titulo Visor</string>
-    <string name="btn">Mostrar la imagen</string>
+    <string name="show_pet_button">Mostrar la imagen</string>
 </resources>

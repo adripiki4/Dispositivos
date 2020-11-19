@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PerroBueno</string>
+    <string name="show_pet_button">Mostrar la imagen</string>
+    <string name="autores">Autores</string>
+</resources>

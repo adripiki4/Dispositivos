@@ -7,7 +7,7 @@
     tools:context=".Pantalla2">
 
     <TextView
-        android:layout_width="100dp"
+        android:layout_width="400dp"
         android:layout_height="100dp"
         android:id="@+id/txtimage"/>
 
@@ -16,7 +16,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/perro"
-        tools:ignore="MissingConstraints"
         android:layout_centerVertical="true"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"/>
 </RelativeLayout>

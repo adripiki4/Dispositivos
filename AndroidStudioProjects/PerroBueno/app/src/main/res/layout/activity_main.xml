@@ -14,5 +14,13 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/show_pet_button"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="362dp"
+        android:layout_marginBottom="323dp"
+        android:text="@string/autores" />
 
 </RelativeLayout>
