@@ -19,12 +19,9 @@ import javax.swing.table.DefaultTableModel;
  * @author adrip
  */
 public class songDAO {
+    
 
-//    private static final String SQL_SELECT = "SELECT Id_song, Name, Artist, Album, Genre FROM song";
-//    private static final String SQL_INSERT = "INSERT INTO song(Id_song, Name, Artist, Album, Genre) VALUES (?,?,?,?,?)";
-//    private static final String SQL_DELETE = "DELETE FROM song WHERE Id_song=?";
-//    private static final String SQL_UPDATE = "UPDATE song SET Name=?, Artist=?, Album=?, Genre=? where  Id_song=?";
-
+    //Metodo que conecta con la base de datos y devuelve una tabla con los valores
     public DefaultTableModel obtener() throws SQLException {
         DefaultTableModel model = new DefaultTableModel();
         String SQL_SELECT = "SELECT Id_song, Name, Artist, Album, Genre FROM song";
@@ -64,6 +61,7 @@ public class songDAO {
         return model;
     }
 
+    //Metodo de insertar un nuevo registro en la tabla
     public boolean registrar(Song song) {
         Connection conn = null;
         Statement stm = null;
@@ -85,6 +83,7 @@ public class songDAO {
         return registros;
     }
 
+    //Metodo que actualiza un registro que le entra por parametro
     public boolean actualizar(Song song) {
         Connection conn = null;
         Statement stm = null;
@@ -105,6 +104,7 @@ public class songDAO {
         return actuliza;
     }
 
+    //Metodo que borra un registro, al pasarle solo su identificador
     public boolean eliminar(int Id_song) {
         Connection conn = null;
         Statement stm = null;
@@ -125,6 +125,7 @@ public class songDAO {
         return elimina;
     }
     
+    //Metodo que a traves de un identificador , devuelve un registro
     public Song buscarID(int busca){
         Song song = new Song();
         Connection conn = null;

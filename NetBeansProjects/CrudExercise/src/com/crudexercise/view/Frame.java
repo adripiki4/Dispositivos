@@ -80,6 +80,7 @@ public class Frame extends JFrame {
         lbgenre = new JLabel("Genre");
         combo = new JComboBox(generos);
 
+        //No ponemos el combo visible 
         combo.setVisible(false);
 
         txtid = new JTextField(20);
@@ -88,6 +89,7 @@ public class Frame extends JFrame {
         txtalbum = new JTextField(20);
         txtgenre = new JTextField(20);
 
+        //Se deshabilita la introduccion de datos, hasta que sea necesario
         txtid.setEditable(false);
         txtname.setEditable(false);
         txtartist.setEditable(false);
@@ -110,7 +112,7 @@ public class Frame extends JFrame {
         panel3 = new JPanel();
         panel3.setLayout(new FlowLayout());
         tabla = new JTable();
-        //tabla.setModel(controller.obtener());
+        
         tabla.setVisible(false);
         panel3.add(new JScrollPane(tabla));
         panelcentral.add(panel3, BorderLayout.SOUTH);
@@ -136,7 +138,9 @@ public class Frame extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+      
             if (e.getSource() == btnselect) {
+                //Al pulsar el boton se cargan los datos de la tabla y se pone visible
                 try {
                     tabla.setModel(controller.obtener());
                 } catch (SQLException ex) {
@@ -146,6 +150,7 @@ public class Frame extends JFrame {
 
             }
             if (e.getSource() == btninsert) {
+                //Al pulsar el boton se habilita la edicion de los TextField menos el ID, ya que su valor es AutoIncrementable
                 if (btninsert.getText().equals("Add new song")) {
                     txtid.setText("");
                     txtname.setText("");
@@ -156,21 +161,25 @@ public class Frame extends JFrame {
                     txtartist.setEditable(true);
                     txtalbum.setEditable(true);
 
+                    //Se desabilitan los demas botones para no permitir otras acciones
                     btnselect.setEnabled(false);
                     btnupdate.setEnabled(false);
                     btndelete.setEnabled(false);
                     btninsert.setText("Add this");
 
+                    //El combo se hace visible
                     combo.setVisible(true);
                     combo.addItemListener(new ListenerCombo());
 
                 } else {
+                    //Se vuelve al estado principal
                     combo.setVisible(false);
                     btnselect.setEnabled(true);
                     btnupdate.setEnabled(true);
                     btndelete.setEnabled(true);
                     btninsert.setText("Add new song");
                     txtgenre.setText(combo.getSelectedItem() + "");
+                    //Se introduce el nuevo registro
                     try {
                         crear();
                     } catch (SQLException ex) {
@@ -194,19 +203,24 @@ public class Frame extends JFrame {
             }
 
             if (e.getSource() == btnupdate) {
+                //Por defecto exit = false para que llame al metodo de buscar un registro
                 if (exit == false) {
                     song = buscarsong();
                 }
 
+                //Si ha encontrado un registro, habilita las funciones de update y exit = true para que no vuelva a buscar registro
+                //hasta que acabe de actulizar el actual.
                 if (song != null) {
                     if (btnupdate.getText().equals("Update song")) {
                         exit = true;
+                        //Introduce los valores del registro encontrado en los TextField para editarlos
                         txtid.setText(String.valueOf(song.getId_song()));
                         txtname.setText(song.getName());
                         txtartist.setText(song.getArtist());
                         txtalbum.setText(song.getAlbum());
                         txtgenre.setText(song.getGenre());
 
+                        //Permite la edicion de los TextField para modificarlos, menos el Id
                         txtid.setEditable(false);
                         txtname.setEditable(true);
                         txtartist.setEditable(true);
@@ -217,16 +231,20 @@ public class Frame extends JFrame {
                         btndelete.setEnabled(false);
                         btnupdate.setText("Update this");
 
+                        //El combo se hace visible
                         combo.setVisible(true);
                         combo.addItemListener(new ListenerCombo());
 
                     } else {
+                        //vuelve al estado principal
                         combo.setVisible(false);
                         btnselect.setEnabled(true);
                         btninsert.setEnabled(true);
                         btndelete.setEnabled(true);
                         btnupdate.setText("Update song");
                         txtgenre.setText(combo.getSelectedItem() + "");
+                        
+                        //LLama al metodo de actulizar
                         try {
                             actuliza();
                         } catch (SQLException ex) {
@@ -244,6 +262,7 @@ public class Frame extends JFrame {
                         txtartist.setEditable(false);
                         txtalbum.setEditable(false);
                         txtgenre.setEditable(false);
+                        //Exit vuelve a ser false al finalizar las funciones
                         exit = false;
 
                     }
@@ -252,6 +271,7 @@ public class Frame extends JFrame {
             }
 
             if (e.getSource() == btndelete) {
+                //al pulsar el boton de delete llama el metodo que elimina un registro
                 try {
                     elimina();
                 } catch (SQLException ex) {
@@ -265,6 +285,7 @@ public class Frame extends JFrame {
             public void itemStateChanged(ItemEvent e) {
                 int indice = combo.getSelectedIndex();
                 String escribe = generos[indice];
+                //Esribe en el TextField de genero, la seleccion marcada
                 txtgenre.setText(escribe);
 
             }
@@ -272,9 +293,11 @@ public class Frame extends JFrame {
         }
 
         public void crear() throws SQLException {
-            //int pasaid = Integer.parseInt(txtid.getText());
 
+            //Coge los datos introducidos un crea un nuevo registro
             Song song = new Song(txtname.getText(), txtartist.getText(), txtalbum.getText(), txtgenre.getText());
+            
+            //Como nombre y artista tiene que tener algun valor, si no se introduce nada, no creara el registro
             if (song.getName().equals("") == false && song.getArtist().equals("") == false) {
                 controller.insertar(song);
                 JOptionPane.showMessageDialog(null, "Add Successfull");
@@ -284,6 +307,7 @@ public class Frame extends JFrame {
         }
 
         public void actuliza() throws SQLException {
+            //Coge los datos introducidos y actualiza el registro
             int pasaid = Integer.parseInt(txtid.getText());
             Song song = new Song(pasaid, txtname.getText(), txtartist.getText(), txtalbum.getText(), txtgenre.getText());
             controller.actulizar(song);
@@ -292,20 +316,24 @@ public class Frame extends JFrame {
         }
 
         public Song buscarsong() {
+            //A traves de un id introdizo busca un registro y lo devuelve
             Song song = new Song();
-            String sel = JOptionPane.showInputDialog(
+            String sel = (String) JOptionPane.showInputDialog(
                     null,
-                    "Introduce Id_song",
-                    JOptionPane.QUESTION_MESSAGE);
+                    "Introduce Id_song","SEARCH ID",
+                    JOptionPane.QUESTION_MESSAGE,null,null,null);
 
+            //Si se marca cancelar, no buscara ningun registro
             if (sel != null) {
                 int busca = Integer.parseInt(sel);
                 song = controller.buscarID(busca);
+                //Si se encuntra un registro
                 if (song.getId_song() != 0) {
                     System.out.println("Se ha encontrado");
                 } else {
+                    //Si no se encuentra ningun registro, muestra un mensaje de error y el registro se iguala a null
                     song = null;
-                     JOptionPane.showMessageDialog(null, "This Id_song doesn't exits", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "This Id_song doesn't exits", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
 
             } else {
@@ -316,16 +344,27 @@ public class Frame extends JFrame {
         }
 
         public void elimina() throws SQLException {
-            String sel = JOptionPane.showInputDialog(
+            //Se introduce un id con Joption y elimina el registro
+            String sel = (String) JOptionPane.showInputDialog(
                     null,
-                    "Introduce Id_song to delete",
-                    JOptionPane.ERROR_MESSAGE);
+                    "Introduce Id_song to delete","DELETE",
+                    JOptionPane.ERROR_MESSAGE,null,null,null);
 
+            //Si se selecciona cancelar no elimina
             if (sel != null) {
                 int busca = Integer.parseInt(sel);
-                controller.eliminar(busca);
-                JOptionPane.showMessageDialog(null, "Delete Successfull");
-                tabla.setModel(controller.obtener());
+                song = controller.buscarID(busca);
+                
+                //Si el registro se encuentra, lo elimina
+                if (song.getId_song() != 0) {
+                    controller.eliminar(busca);
+                    JOptionPane.showMessageDialog(null, "Delete Successfull");
+                    tabla.setModel(controller.obtener());
+                }else{
+                    //si el registro no se encuentra muestra un mensaje de error
+                    JOptionPane.showMessageDialog(null, "This Id_song doesn't exits", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+
             }
 
         }
