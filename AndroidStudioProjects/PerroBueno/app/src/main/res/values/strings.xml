@@ -2,4 +2,9 @@
     <string name="app_name">PerroBueno</string>
     <string name="show_pet_button">Mostrar la imagen</string>
     <string name="autores">Autores</string>
+    <string name="radio_button1">Hermoso</string>
+    <string name="radio_button2">Lindo</string>
+    <string name="radio_button3">Normal</string>
+    <string name="radio_button4">Horroroso</string>
+    <string name="send_button">Enviar</string>
 </resources>

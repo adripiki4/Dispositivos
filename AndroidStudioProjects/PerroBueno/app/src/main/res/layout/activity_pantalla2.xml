@@ -8,14 +8,60 @@
 
     <TextView
         android:layout_width="400dp"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:id="@+id/txtimage"/>
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/perro"
-        android:layout_centerVertical="true"
-        android:layout_centerInParent="true"/>
+        android:layout_above="@+id/opiniones_group"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="-155dp"
+        app:srcCompat="@drawable/perro" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/opiniones_group"
+        android:orientation="vertical"
+        android:layout_marginTop="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true">
+
+        <RadioButton
+            android:id="@+id/radio_hermoso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button1" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button2"
+            android:id="@+id/radio_lindo" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button3"
+            android:id="@+id/radio_normal" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button4"
+            android:id="@+id/radio_horroroso" />
+    </RadioGroup>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/send_button"
+        android:id="@+id/send_button"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>
