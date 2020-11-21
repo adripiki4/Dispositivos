@@ -16,6 +16,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.SQLException;
 import java.util.Locale;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -112,7 +113,7 @@ public class Frame extends JFrame {
         panel3 = new JPanel();
         panel3.setLayout(new FlowLayout());
         tabla = new JTable();
-        
+
         tabla.setVisible(false);
         panel3.add(new JScrollPane(tabla));
         panelcentral.add(panel3, BorderLayout.SOUTH);
@@ -138,7 +139,7 @@ public class Frame extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-      
+
             if (e.getSource() == btnselect) {
                 //Al pulsar el boton se cargan los datos de la tabla y se pone visible
                 try {
@@ -243,7 +244,7 @@ public class Frame extends JFrame {
                         btndelete.setEnabled(true);
                         btnupdate.setText("Update song");
                         txtgenre.setText(combo.getSelectedItem() + "");
-                        
+
                         //LLama al metodo de actulizar
                         try {
                             actuliza();
@@ -293,20 +294,23 @@ public class Frame extends JFrame {
         }
 
         public void crear() throws SQLException {
-
+            Locale.setDefault(Locale.ENGLISH);
             //Coge los datos introducidos un crea un nuevo registro
             Song song = new Song(txtname.getText(), txtartist.getText(), txtalbum.getText(), txtgenre.getText());
-            
+
             //Como nombre y artista tiene que tener algun valor, si no se introduce nada, no creara el registro
             if (song.getName().equals("") == false && song.getArtist().equals("") == false) {
                 controller.insertar(song);
                 JOptionPane.showMessageDialog(null, "Add Successfull");
                 tabla.setModel(controller.obtener());
+            } else {
+                JOptionPane.showMessageDialog(null, "Name and Artist required!", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
 
         }
 
         public void actuliza() throws SQLException {
+            Locale.setDefault(Locale.ENGLISH);
             //Coge los datos introducidos y actualiza el registro
             int pasaid = Integer.parseInt(txtid.getText());
             Song song = new Song(pasaid, txtname.getText(), txtartist.getText(), txtalbum.getText(), txtgenre.getText());
@@ -316,12 +320,13 @@ public class Frame extends JFrame {
         }
 
         public Song buscarsong() {
+            Locale.setDefault(Locale.ENGLISH);
             //A traves de un id introdizo busca un registro y lo devuelve
             Song song = new Song();
             String sel = (String) JOptionPane.showInputDialog(
                     null,
-                    "Introduce Id_song","SEARCH ID",
-                    JOptionPane.QUESTION_MESSAGE,null,null,null);
+                    "Introduce Id_song", "SEARCH ID",
+                    JOptionPane.QUESTION_MESSAGE, null, null, null);
 
             //Si se marca cancelar, no buscara ningun registro
             if (sel != null) {
@@ -344,23 +349,24 @@ public class Frame extends JFrame {
         }
 
         public void elimina() throws SQLException {
+            Locale.setDefault(Locale.ENGLISH);
             //Se introduce un id con Joption y elimina el registro
             String sel = (String) JOptionPane.showInputDialog(
                     null,
-                    "Introduce Id_song to delete","DELETE",
-                    JOptionPane.ERROR_MESSAGE,null,null,null);
+                    "Introduce Id_song to delete", "DELETE",
+                    JOptionPane.ERROR_MESSAGE, null, null, null);
 
             //Si se selecciona cancelar no elimina
             if (sel != null) {
                 int busca = Integer.parseInt(sel);
                 song = controller.buscarID(busca);
-                
+
                 //Si el registro se encuentra, lo elimina
                 if (song.getId_song() != 0) {
                     controller.eliminar(busca);
                     JOptionPane.showMessageDialog(null, "Delete Successfull");
                     tabla.setModel(controller.obtener());
-                }else{
+                } else {
                     //si el registro no se encuentra muestra un mensaje de error
                     JOptionPane.showMessageDialog(null, "This Id_song doesn't exits", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
