@@ -23,8 +23,9 @@ public class EwalletDAO {
 
     private static final String SQL_SELECT = "SELECT * FROM ewallet";
     private static final String SQL_INSERT = "INSERT INTO ewallet(Nombre, Apellidos, Dni ,FechaNacimiento,Email, SaldoPuntos, SaldoEuros) VALUES (?,?,?,?,?,?,?)";
-    private static final String SQL_UPDATE = "UPDATE ewallet SET Nombre=?, Apellidos=?, Dni=?, FechaNacimiento=?, Email=?, SaldoPuntos=?, SaldoEuros=? where Id-wallet=?";
-    private static final String SQL_DELETE = "DELETE FROM ewallet WHERE Id-wallet=?";
+    private static final String SQL_UPDATE = "UPDATE ewallet SET Nombre=?, Apellidos=?, Dni=?, FechaNacimiento=?, Email=?, SaldoPuntos=?, SaldoEuros=? WHERE Id_wallet=?";
+    private static final String SQL_DELETE = "DELETE FROM ewallet WHERE Id_wallet=?";
+    private static final String SQL_BUSCA = "SELECT * FROM ewallet WHERE Id_wallet=?";
 
     private Connection conexionTransaccional;
 
@@ -49,7 +50,7 @@ public class EwalletDAO {
             stmt = conn.prepareStatement(SQL_SELECT);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int idPersona = rs.getInt("Id-wallet");
+                int idPersona = rs.getInt("Id_wallet");
                 String nombre = rs.getString("Nombre");
                 String apellidos = rs.getString("Apellidos");
                 String dni = rs.getString("Dni");
@@ -136,5 +137,41 @@ public class EwalletDAO {
             }
         }
         return registros;
+    }
+
+    public Ewallet BuscarWallet(int busca) throws SQLException {
+        Ewallet encuentra = null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        // int id = 0;
+        try {
+            conn = this.conexionTransaccional != null ? this.conexionTransaccional : Conexion.getConnection();
+            stmt = conn.prepareStatement("SELECT * FROM ewallet WHERE Id_wallet= " + busca);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("Id_wallet");
+                String nombre = rs.getString("Nombre");
+                String apellidos = rs.getString("Apellidos");
+                String dni = rs.getString("Dni");
+                Date fechanacimento = rs.getDate("FechaNacimiento");
+                String email = rs.getString("Email");
+                int saldopuntos = rs.getInt("SaldoPuntos");
+                int saldoeuros = rs.getInt("SaldoEuros");
+
+                encuentra = new Ewallet(id, nombre, apellidos, dni, fechanacimento, email, saldopuntos, saldoeuros);
+
+            }
+        } finally {
+            Conexion.close(stmt);
+
+            Conexion.close(rs);
+
+            if (this.conexionTransaccional == null) {
+                close(conn);
+            }
+        }
+
+        return encuentra;
     }
 }

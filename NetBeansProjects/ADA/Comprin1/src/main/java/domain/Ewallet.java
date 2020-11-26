@@ -56,6 +56,15 @@ public class Ewallet {
         this.Email = Email;
     }
 
+    public Ewallet(String Nombre, String Apellidos, String Dni, Date FechaNacimiento, String Email) {
+        this.Nombre = Nombre;
+        this.Apellidos = Apellidos;
+        this.Dni = Dni;
+        this.FechaNacimiento = FechaNacimiento;
+        this.Email = Email;
+    }
+    
+
     public int getId_wallet() {
         return Id_wallet;
     }
