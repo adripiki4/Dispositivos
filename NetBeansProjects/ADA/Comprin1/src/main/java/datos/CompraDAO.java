@@ -48,7 +48,7 @@ public class CompraDAO {
             while (rs.next()) {
                 int idcompra = rs.getInt("Id_Compra");
                 Date fechacompra = rs.getDate("FechaCompra");
-                int idwallet = rs.getInt("Id-wallet");
+                int idwallet = rs.getInt("Id_wallet");
                 int idproducto = rs.getInt("Id_producto");
                 aux = new Compra(idcompra, fechacompra, idwallet, idproducto);
                 listaCompras.add(aux);

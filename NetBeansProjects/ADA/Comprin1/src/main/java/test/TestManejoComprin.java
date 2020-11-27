@@ -193,6 +193,7 @@ public class TestManejoComprin {
             } else {
                 System.out.println("Se ha encontrado una E-wallet.");
                 System.out.println(busca);
+                System.out.println(busca.getSaldoEuros());
                 System.out.println("Introduzca la cantidad que desea recargar: ");
                 recarga = sc.nextInt();
                 saldo = busca.getSaldoEuros();
@@ -288,7 +289,7 @@ public class TestManejoComprin {
         int id_wallet;
         int precio;
         int puntos;
-        int saldo;
+        int saldo=0;
 
         Connection conexion = null;
 
@@ -327,21 +328,27 @@ public class TestManejoComprin {
                 if (ewallet.getId_wallet() == 0) {
                     System.out.println("No se ha encontrado ese Id_wallet");
                     conexion.rollback();
-                } else if (ewallet.getId_wallet() != 0) {
+                    
+                } else  {
                     java.util.Date fecha = new java.util.Date();
                     long lo = fecha.getTime();
                     Date fechapasa = new Date(lo);
+                    
                     Compra compra = new Compra(fechapasa, id_wallet, id_producto);
+                    System.out.println("buscando1");
                     compradao.Insertar(compra);
+                    System.out.println("buscando2");
                     saldo = ewallet.getSaldoEuros();
+                    System.out.print(saldo);
 
                     if (precio > saldo) {
                         System.out.println("No se puede comprar");
                         conexion.rollback();
-                    } else if (precio < saldo) {
+                    } else if (precio <= saldo) {
                         saldo = saldo - precio;
                         ewallet.setSaldoEuros(saldo);
                         ewalletdao.Actualizar(ewallet);
+                         System.out.println("buscando3");
                     }
 
                 }
