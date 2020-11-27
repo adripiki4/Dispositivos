@@ -128,4 +128,36 @@ public class ProductoDAO {
         }
         return registros;
     }
+
+    public Producto BuscarProducto(int busca) throws SQLException {
+        Producto encuentra = null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        // int id = 0;
+        try {
+            conn = this.conexionTransaccional != null ? this.conexionTransaccional : Conexion.getConnection();
+            stmt = conn.prepareStatement("SELECT * FROM producto WHERE Id_producto= " + busca);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("Id_producto");
+                String nombre = rs.getString("NombreProducto");
+                int precio = rs.getInt("PrecioProducto");
+                int puntos = rs.getInt("PuntosProducto");
+
+                encuentra = new Producto(id, nombre, precio, puntos);
+
+            }
+        } finally {
+            Conexion.close(stmt);
+
+            Conexion.close(rs);
+
+            if (this.conexionTransaccional == null) {
+                close(conn);
+            }
+        }
+
+        return encuentra;
+    }
 }

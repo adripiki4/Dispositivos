@@ -5,11 +5,16 @@
  */
 package test;
 
+import datos.CompraDAO;
 import datos.Conexion;
 import datos.EwalletDAO;
+import datos.ProductoDAO;
+import domain.Compra;
 import domain.Ewallet;
+import domain.Producto;
 import java.text.ParseException;
 import java.sql.*;
+import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
@@ -40,6 +45,12 @@ public class TestManejoComprin {
                 case 2:
                     ListarEwallets();
                     RecargarWallet();
+                    break;
+                case 3:
+                    CrearProductos();
+                    break;
+                case 4:
+                    ComprarProducto();
                     break;
             }
 
@@ -99,23 +110,23 @@ public class TestManejoComprin {
             System.out.println("Tiene una de edad de " + per.getYears());
             if (per.getYears() < 18) {
                 System.out.println("Es menor de edad, no puede ser cliente.");
-                return;
+                conexion.rollback();
+
             } else {
                 System.out.println("Es mayor de edad");
+
+                //Formato de fecha
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                java.util.Date fecha = sdf.parse(fechaNacimiento);
+                //Formato de fecha para SQL
+                java.sql.Date fechabuena = new java.sql.Date(fecha.getTime());
+
+                //Creamos la nueva e-Wallet
+                nueva = new Ewallet(nombre, apellidos, dni, fechabuena, email);
+                ewalletdao.Insertar(nueva);
+                System.out.println("Se ha insertado correctamente");
             }
-
-            //Formato de fecha
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            java.util.Date fecha = sdf.parse(fechaNacimiento);
-            //Formato de fecha para SQL
-            java.sql.Date fechabuena = new java.sql.Date(fecha.getTime());
-
-            //Creamos la nueva e-Wallet
-            nueva = new Ewallet(nombre, apellidos, dni, fechabuena, email);
-            ewalletdao.Insertar(nueva);
-
             conexion.commit();
-            System.out.println("Todo ha salido bien");
 
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
@@ -143,7 +154,6 @@ public class TestManejoComprin {
             }
 
             conexion.commit();
-            System.out.println("Todo ha salido bien");
 
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
@@ -190,8 +200,18 @@ public class TestManejoComprin {
                 busca.setSaldoEuros(saldo);
                 ewalletdao.Actualizar(busca);
 
+                //Para recargar entre el dia 1 y 5 de cada mes
+                java.util.Date fecha = new java.util.Date();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd");
+                String dia = sdf.format(fecha);
+                int diaint = Integer.parseInt(dia);
+
+//                if (diaint >= 5) {
+//                    System.out.println("Solo se puede recargar del 1 al 5 de cada mes, hoy estamos a " + dia);
+//                    conexion.rollback();
+//                }
                 conexion.commit();
-                System.out.println("Todo ha salido bien");
+                System.out.println("Se ha realizado la recarga");
 
             }
 
@@ -223,6 +243,120 @@ public class TestManejoComprin {
             }
         }
 
+    }
+
+    public static void CrearProductos() {
+        Scanner sc = new Scanner(System.in);
+        String nombre;
+        int precio;
+        int puntos;
+        Connection conexion = null;
+
+        try {
+            conexion = Conexion.getConnection();
+
+            if (conexion.getAutoCommit()) {
+                conexion.setAutoCommit(false);
+            }
+            ProductoDAO prodao = new ProductoDAO(conexion);
+            System.out.println("Introduzca el nombre del  nuevo producto:");
+            nombre = sc.nextLine();
+            System.out.println("Introduzca el precio del nuevo producto:");
+            precio = sc.nextInt();
+            System.out.println("introduzca los puntos del nuevo producto:");
+            puntos = sc.nextInt();
+            Producto nuevo = new Producto(nombre, precio, puntos);
+            prodao.Insertar(nuevo);
+
+            conexion.commit();
+            System.out.println("Se ha creado nuevo producto");
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+            System.out.println("Algo ha fallado, Entramos al rollback");
+            try {
+                conexion.rollback();
+            } catch (SQLException ex1) {
+                ex1.printStackTrace(System.out);
+            }
+        }
+    }
+
+    public static void ComprarProducto() {
+        Scanner sc = new Scanner(System.in);
+        int id_producto;
+        int id_wallet;
+        int precio;
+        int puntos;
+        int saldo;
+
+        Connection conexion = null;
+
+        try {
+            conexion = Conexion.getConnection();
+            Ewallet ewallet = new Ewallet();
+            Producto producto = new Producto();
+            EwalletDAO ewalletdao = new EwalletDAO();
+            ProductoDAO prodao = new ProductoDAO();
+
+            if (conexion.getAutoCommit()) {
+                conexion.setAutoCommit(false);
+            }
+
+            CompraDAO compradao = new CompraDAO(conexion);
+
+            System.out.println("Introduzca el Id del producto que desea comprar: ");
+            id_producto = sc.nextInt();
+            //Buscamos el produco a traves de su id
+            producto = prodao.BuscarProducto(id_producto);
+            //Si no se encuentra no realiza la compra
+            if (producto.getId_producto() == 0) {
+                System.out.println("Ese producto no existe");
+                conexion.rollback();
+            } else {
+                precio = producto.getPrecioProducto();
+                puntos = producto.getPuntosProducto();
+                System.out.println("El producto tiene un precio de " + precio + " y le sumara " + puntos + " puntos.");
+                //Una vez localizado el producto identificamos al cliente.
+                System.out.println("Introduzca su Id_wallet para identificarse y realizar el pago");
+                id_wallet = sc.nextInt();
+                ewallet = ewalletdao.BuscarWallet(id_wallet);
+                System.out.println("buscando");
+                System.out.println(ewallet);
+                //si no se encuentra el cliente no realiza la compra.
+                if (ewallet.getId_wallet() == 0) {
+                    System.out.println("No se ha encontrado ese Id_wallet");
+                    conexion.rollback();
+                } else if (ewallet.getId_wallet() != 0) {
+                    java.util.Date fecha = new java.util.Date();
+                    long lo = fecha.getTime();
+                    Date fechapasa = new Date(lo);
+                    Compra compra = new Compra(fechapasa, id_wallet, id_producto);
+                    compradao.Insertar(compra);
+                    saldo = ewallet.getSaldoEuros();
+
+                    if (precio > saldo) {
+                        System.out.println("No se puede comprar");
+                        conexion.rollback();
+                    } else if (precio < saldo) {
+                        saldo = saldo - precio;
+                        ewallet.setSaldoEuros(saldo);
+                        ewalletdao.Actualizar(ewallet);
+                    }
+
+                }
+            }
+            conexion.commit();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+            System.out.println("Algo ha fallado, Entramos al rollback");
+            try {
+                conexion.rollback();
+            } catch (SQLException ex1) {
+                ex1.printStackTrace(System.out);
+            }
+        }
     }
 
 }

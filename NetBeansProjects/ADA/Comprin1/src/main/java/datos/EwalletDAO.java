@@ -140,7 +140,7 @@ public class EwalletDAO {
     }
 
     public Ewallet BuscarWallet(int busca) throws SQLException {
-        Ewallet encuentra = null;
+        Ewallet encuentra = new Ewallet();
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;

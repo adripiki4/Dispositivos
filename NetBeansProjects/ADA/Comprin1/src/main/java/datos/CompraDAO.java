@@ -19,8 +19,8 @@ import java.sql.Date;
 public class CompraDAO {
 
     private static final String SQL_SELECT = "SELECT * FROM compra";
-    private static final String SQL_INSERT = "INSERT INTO compra (FechaCompra, Id-wallet, Id_producto) VALUES (?,?,?)";
-    private static final String SQL_UPDATE = "UPDATE compra SET FechaCompra=?, Id-wallet=?, Id_producto=? where Id_Compra=?";
+    private static final String SQL_INSERT = "INSERT INTO compra (FechaCompra, Id_wallet, Id_producto) VALUES (?,?,?)";
+    private static final String SQL_UPDATE = "UPDATE compra SET FechaCompra=?, Id_wallet=?, Id_producto=? WHERE Id_Compra=?";
     private static final String SQL_DELETE = "DELETE FROM compra WHERE Id_Compra=?";
 
     private Connection conexionTransaccional;

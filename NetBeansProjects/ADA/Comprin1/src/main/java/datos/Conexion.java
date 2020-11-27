@@ -15,7 +15,7 @@ import java.sql.Statement;
  * @author adriba
  */
 public class Conexion {
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3307/compra?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/compra?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private static final String JDBC_USER= "root";
     private static final String JDBC_PASSWORD="piqui4";
     
