@@ -289,7 +289,8 @@ public class TestManejoComprin {
         int id_wallet;
         int precio;
         int puntos;
-        int saldo=0;
+        int saldo;
+        boolean comprar = false;
 
         Connection conexion = null;
 
@@ -297,6 +298,7 @@ public class TestManejoComprin {
             conexion = Conexion.getConnection();
             Ewallet ewallet = new Ewallet();
             Producto producto = new Producto();
+            Compra compra = null;
             EwalletDAO ewalletdao = new EwalletDAO();
             ProductoDAO prodao = new ProductoDAO();
 
@@ -319,40 +321,77 @@ public class TestManejoComprin {
                 puntos = producto.getPuntosProducto();
                 System.out.println("El producto tiene un precio de " + precio + " y le sumara " + puntos + " puntos.");
                 //Una vez localizado el producto identificamos al cliente.
-                System.out.println("Introduzca su Id_wallet para identificarse y realizar el pago");
+//                System.out.println("Introduzca su Id_wallet para identificarse y realizar el pago");
+//                id_wallet = sc.nextInt();
+//                ewallet = ewalletdao.BuscarWallet(id_wallet);
+//                System.out.println("buscando");
+//                System.out.println(ewallet);
+//                //si no se encuentra el cliente no realiza la compra.
+//                if (ewallet.getId_wallet() == 0) {
+//                    System.out.println("No se ha encontrado ese Id_wallet");
+//                    conexion.rollback();
+//                    
+//
+//                } else {
+//                    java.util.Date fecha = new java.util.Date();
+//                    long lo = fecha.getTime();
+//                    Date fechapasa = new Date(lo);
+//
+//                    Compra compra = new Compra(fechapasa, id_wallet, id_producto);
+//                    System.out.println("buscando1");
+//                    compradao.Insertar(compra);
+//                    System.out.println("buscando2");
+//                    saldo = ewallet.getSaldoEuros();
+//                    System.out.println(saldo);
+//
+//                    if (precio > saldo) {
+//                        System.out.println("No se puede comprar");
+//                        conexion.rollback();
+//                    } else if (precio <= saldo) {
+//                        saldo = saldo - precio;
+//                        ewallet.setSaldoEuros(saldo);
+//                        ewalletdao.Actualizar(ewallet);
+//                        System.out.println("buscando3");
+//                    }
+
+                System.out.println("Introduzca un Id_wallet para realizar el pago : ");
                 id_wallet = sc.nextInt();
                 ewallet = ewalletdao.BuscarWallet(id_wallet);
-                System.out.println("buscando");
-                System.out.println(ewallet);
-                //si no se encuentra el cliente no realiza la compra.
+                //Comprobamos si ha encontrado una Ewallet valida.
                 if (ewallet.getId_wallet() == 0) {
-                    System.out.println("No se ha encontrado ese Id_wallet");
-                    conexion.rollback();
-                    
-                } else  {
+                    System.out.println("No se ha encontrado ninguna E-wallet.");
+                } else {
+                    System.out.println("Se ha encontrado una E-wallet.");
+                    System.out.println(ewallet.getSaldoEuros() + " de saldo.");
+                    //Registrando la compra
                     java.util.Date fecha = new java.util.Date();
                     long lo = fecha.getTime();
                     Date fechapasa = new Date(lo);
-                    
-                    Compra compra = new Compra(fechapasa, id_wallet, id_producto);
-                    System.out.println("buscando1");
-//                    compradao.Insertar(compra);
-                    System.out.println("buscando2");
-                    saldo = ewallet.getSaldoEuros();
-                    System.out.println(saldo);
 
-                    if (precio > saldo) {
-                        System.out.println("No se puede comprar");
+                    compra = new Compra(fechapasa, id_wallet, id_producto);
+                    //compradao.Insertar(compra);
+                    comprar = true;
+
+                }
+
+                while (comprar == true) {
+                    if (precio > ewallet.getSaldoEuros()) {
+                        System.out.println("No dispone de saldo suficiente para este producto.");
                         conexion.rollback();
-                    } else if (precio <= saldo) {
+                        comprar = false;
+                    } else {
+                        saldo = ewallet.getSaldoEuros();
                         saldo = saldo - precio;
                         ewallet.setSaldoEuros(saldo);
                         ewalletdao.Actualizar(ewallet);
-                        compradao.Insertar(compra);
-                         System.out.println("Compra realizada");
-                    }
+                        //compradao.Insertar(compra);
+                        System.out.println("Se realizado la compra");
+                        System.out.println("Compra registrada");
 
+                        comprar = false;
+                    }
                 }
+
             }
             conexion.commit();
 
