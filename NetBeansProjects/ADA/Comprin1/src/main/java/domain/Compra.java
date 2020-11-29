@@ -73,7 +73,7 @@ public class Compra {
 
     @Override
     public String toString() {
-        return "Compra{" + "Id_compra=" + Id_compra + ", FechaCompra=" + FechaCompra + ", Id_wallet=" + Id_wallet + ", Id_producto=" + Id_producto + '}';
+        return "Compra: " + "|| Id_compra = " + Id_compra + "|| FechaCompra = " + FechaCompra + "|| Id_wallet = " + Id_wallet + "|| Id_producto = " + Id_producto + " ||";
     }
     
     

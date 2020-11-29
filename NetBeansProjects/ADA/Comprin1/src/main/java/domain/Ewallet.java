@@ -131,7 +131,7 @@ public class Ewallet {
 
     @Override
     public String toString() {
-        return "Ewallet{" + "Id_wallet=" + Id_wallet + ", Nombre=" + Nombre + ", Apellidos=" + Apellidos + ", Dni=" + Dni + ", FechaNacimiento=" + FechaNacimiento + ", Email=" + Email + ", SaldoPuntos=" + SaldoPuntos + ", SaldoEuros=" + SaldoEuros + '}';
+        return "Ewallet: " + "|| Id_wallet = " + Id_wallet + "|| Nombre = " + Nombre + "|| Apellidos = " + Apellidos + "|| Dni = " + Dni + "|| FechaNacimiento = " + FechaNacimiento + " || Email = " + Email + "|| " + SaldoPuntos + "pts || " + SaldoEuros + "€ ||";
     }
     
     

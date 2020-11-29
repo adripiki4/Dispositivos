@@ -18,8 +18,8 @@ import java.sql.Date;
 public class DevolucionDAO {
 
     private static final String SQL_SELECT = "SELECT * FROM devolucion";
-    private static final String SQL_INSERT = "INSERT INTO devolucion(FechaDevolucion,Id-wallet,Id_producto) VALUES (?,?,?)";
-    private static final String SQL_UPDATE = "UPDATE devolucion SET FechaDevolucion=?, Id-wallet=?, Id_producto=? where Id_devolucion=?";
+    private static final String SQL_INSERT = "INSERT INTO devolucion(FechaDevolucion,Id_wallet,Id_producto) VALUES (?,?,?)";
+    private static final String SQL_UPDATE = "UPDATE devolucion SET FechaDevolucion=?, Id_wallet=?, Id_producto=? where Id_devolucion=?";
     private static final String SQL_DELETE = "DELETE FROM devolucion WHERE Id_devolucion=?";
 
     private Connection conexionTransaccional;
@@ -47,7 +47,7 @@ public class DevolucionDAO {
             while (rs.next()) {
                 int iddevolucion = rs.getInt("Id_devolucion");
                 Date fechadevolucion = rs.getDate("FechaDevolucion");
-                int idwallet = rs.getInt("Id-wallet");
+                int idwallet = rs.getInt("Id_wallet");
                 int idproducto = rs.getInt("Id_producto");
                 devolu = new Devolucion(iddevolucion, fechadevolucion, idwallet, idproducto);
                 listaDevolucion.add(devolu);

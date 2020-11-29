@@ -144,7 +144,7 @@ public class EwalletDAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        // int id = 0;
+        
         try {
             conn = this.conexionTransaccional != null ? this.conexionTransaccional : Conexion.getConnection();
             stmt = conn.prepareStatement("SELECT * FROM ewallet WHERE Id_wallet= " + busca);

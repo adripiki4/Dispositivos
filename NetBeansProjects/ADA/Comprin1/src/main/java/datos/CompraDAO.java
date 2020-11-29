@@ -125,4 +125,35 @@ public class CompraDAO {
         return registros;
     }
 
+    public Compra BuscarCompra(int busca) throws SQLException {
+        Compra encuentra = new Compra();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+       
+        try {
+            conn = this.conexionTransaccional != null ? this.conexionTransaccional : Conexion.getConnection();
+            stmt = conn.prepareStatement("SELECT * FROM compra WHERE Id_Compra= " + busca);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id_compra = rs.getInt("Id_Compra");
+                Date fecha = rs.getDate("FechaCompra");
+                int id_wallet = rs.getInt("Id_wallet");
+                int id_pro = rs.getInt("Id_producto");
+
+                encuentra = new Compra(id_compra, fecha, id_wallet, id_pro);
+            }
+        } finally {
+            Conexion.close(stmt);
+
+            Conexion.close(rs);
+
+            if (this.conexionTransaccional == null) {
+                close(conn);
+            }
+        }
+
+        return encuentra;
+    }
+
 }

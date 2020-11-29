@@ -130,17 +130,17 @@ public class ProductoDAO {
     }
 
     public Producto BuscarProducto(int busca) throws SQLException {
-        Producto encuentra = null;
+        Producto encuentra = new Producto();
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        // int id = 0;
+        int id = 0;
         try {
             conn = this.conexionTransaccional != null ? this.conexionTransaccional : Conexion.getConnection();
             stmt = conn.prepareStatement("SELECT * FROM producto WHERE Id_producto= " + busca);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("Id_producto");
+                id = rs.getInt("Id_producto");
                 String nombre = rs.getString("NombreProducto");
                 int precio = rs.getInt("PrecioProducto");
                 int puntos = rs.getInt("PuntosProducto");
