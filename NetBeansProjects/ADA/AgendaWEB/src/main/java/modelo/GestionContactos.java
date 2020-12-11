@@ -31,5 +31,6 @@ public class GestionContactos {
         tx.begin();
         em.persist(c);
         tx.commit();
+        em.clear();
     }
 }
