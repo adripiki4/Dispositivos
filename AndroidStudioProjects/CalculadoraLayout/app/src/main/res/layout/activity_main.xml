@@ -16,8 +16,8 @@
         android:layout_marginBottom="14dp"
         android:height="100dp"
         android:textAlignment="textEnd"
-        android:textColor="#F5F5F5"
-        android:textSize="35dp"
+        android:textColor="#050303"
+        android:textSize="30dp"
         android:layout_centerHorizontal="true" />
 
 
@@ -168,11 +168,11 @@
             android:text="+" />
 
         <Button
-            android:id="@+id/signo_c"
+            android:id="@+id/signo_borra"
             style="@style/AppTheme.BotonCalculadora.C"
             android:layout_columnSpan="4"
             android:layout_gravity="fill_horizontal"
-            android:text="c" />
+            android:text="C" />
 
 
     </GridLayout>
