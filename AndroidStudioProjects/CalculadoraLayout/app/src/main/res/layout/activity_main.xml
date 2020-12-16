@@ -16,22 +16,23 @@
         android:layout_marginBottom="14dp"
         android:height="100dp"
         android:textAlignment="textEnd"
-        android:gravity="end"
-        android:textSize="35dp"/>
+        android:textColor="#F5F5F5"
+        android:textSize="35dp"
+        android:layout_centerHorizontal="true" />
 
 
 
     <GridLayout
         android:id="@+id/gridlayout"
-        android:layout_below="@+id/txtprincipal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alignmentMode="alignBounds"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:layout_gravity="center"
-        android:padding="0dp"
-        android:layout_alignParentLeft="true"
         android:columnCount="4"
-        android:rowCount="4">
+        android:orientation="horizontal"
+        android:padding="0dp"
+        android:rowCount="5">
         <Button
             android:id="@+id/numero_7"
             style="@style/AppTheme.BotonCalculadora.Azul"
@@ -93,7 +94,7 @@
             android:text="×" />
 
         <Button
-            android:id="@+id/textView10"
+            android:id="@+id/signo_divide"
             style="@style/AppTheme.BotonCalculadora.Rojo"
             android:layout_column="3"
             android:layout_gravity="fill_horizontal"
@@ -144,7 +145,7 @@
             android:text="." />
 
         <Button
-            android:id="@+id/cero"
+            android:id="@+id/numero_cero"
             style="@style/AppTheme.BotonCalculadora.Azul"
             android:layout_column="1"
             android:layout_row="3"
@@ -165,6 +166,13 @@
             android:layout_gravity="fill_horizontal"
             android:layout_row="3"
             android:text="+" />
+
+        <Button
+            android:id="@+id/signo_c"
+            style="@style/AppTheme.BotonCalculadora.C"
+            android:layout_columnSpan="4"
+            android:layout_gravity="fill_horizontal"
+            android:text="c" />
 
 
     </GridLayout>
