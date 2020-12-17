@@ -12,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
     private int segundo = 0;
     private double resultado;
     private String operador,reserva,mostrar;
+    private boolean punto = false;
+    private boolean entra = true;
 
 
     @Override
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         final Button btnsuma = findViewById(R.id.signo_mas);
         final Button btnmenos = findViewById(R.id.signo_menos);
         final Button btnborra = findViewById(R.id.signo_borra);
+        final Button btndelete = findViewById(R.id.signo_borrauno);
 
 
         //Funcionalidad de los botones
@@ -141,9 +144,18 @@ public class MainActivity extends AppCompatActivity {
         //Punto
         btnpunto.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                //Comprueba que haya algun numero para no insetar un punto al principio
                 mostrar = Resultado.getText().toString();
-                mostrar = mostrar + ".";
-                Resultado.setText(mostrar);
+                if (mostrar.length()<=0){
+                    entra=false;
+                }
+                if(punto==false&&entra==true){
+                    mostrar = Resultado.getText().toString();
+                    mostrar = mostrar + ".";
+                    Resultado.setText(mostrar);
+                    punto=true;
+                }
+                entra=true;
             }
         });
 
@@ -190,6 +202,22 @@ public class MainActivity extends AppCompatActivity {
                 Resultado.setText(mostrar);
                 reserva = "";
                 operador = "";
+                punto = false;
+            }
+        });
+
+        //Borrar uno
+        btndelete.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                mostrar = Resultado.getText().toString();
+                //Comprueba si borra un punto para que deje volver a insertarlo
+                char ultimo = mostrar.charAt(mostrar.length()-1);
+                String compara = String.valueOf(ultimo);
+                if (compara.equals(".")) {
+                    punto=false;
+                }
+                mostrar = mostrar.substring(0,mostrar.length()-1);
+                Resultado.setText(mostrar);
             }
         });
 
@@ -198,6 +226,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 mostrar = Resultado.getText().toString();
                 mostrar = mostrar + "1";
+                punto = false;
                 if(operador.equals("-")){
                     resultado = Double.parseDouble(reserva) - Double.parseDouble(Resultado.getText().toString());
                     Resultado.setText(String.valueOf(resultado));
