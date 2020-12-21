@@ -1,0 +1,16 @@
+//Access div element to 'data'
+let mDiv=document.getElementById("data");
+
+//add a paragraph to data
+mDiv.innerHTML="<p> Content of the div </p>";
+
+//create button
+let button = document.createElement("button");
+// add the button text attribute
+button.textContent="Button";
+//add button to the body of the html
+document.body.appendChild(button);
+
+button.addEventListener('click', ()=>{
+    alert('Button Click  !!!');
+})
