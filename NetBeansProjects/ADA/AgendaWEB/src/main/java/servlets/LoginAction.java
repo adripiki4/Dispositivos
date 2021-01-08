@@ -26,10 +26,10 @@ public class LoginAction extends HttpServlet {
 		String pwd=request.getParameter("pwd");
 		GestionUsuarios gusuarios=new GestionUsuarios();
 		if(gusuarios.autenticar(user, pwd)){
-			//guardamos el nombre de usuario en un atributo de sesión
+			//guardamos el nombre de usuario en un atributo de sesiï¿½n
 			HttpSession s=request.getSession();
 			s.setAttribute("user", user);
-			request.getRequestDispatcher("menu.html").forward(request, response);
+			request.getRequestDispatcher("index.html").forward(request, response);
 		}else{
 			request.getRequestDispatcher("login.html").forward(request, response);
 		}
