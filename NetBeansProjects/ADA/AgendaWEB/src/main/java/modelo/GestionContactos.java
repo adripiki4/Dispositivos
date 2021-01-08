@@ -21,7 +21,7 @@ public class GestionContactos {
 
     //metodo para obtener el objeto EntityManager
     private EntityManager getEntityManager() {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("ContactoPU");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("WebPU");
         return factory.createEntityManager();
     }
 
