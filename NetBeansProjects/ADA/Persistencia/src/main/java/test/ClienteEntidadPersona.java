@@ -26,7 +26,7 @@ public class ClienteEntidadPersona {
 
         // HACER UNA BUSQUEDA
         Persona persona2 = new Persona();
-        persona2 = em.find(Persona.class, 14);
+        persona2 = em.find(Persona.class, 1);
         System.out.println("La persona encontrada es " + persona2);
 
         //ACTUALIZAR UN REGISTRO

@@ -11,7 +11,7 @@ import mx.com.gm.sga.domain.Usuario;
 public class GestionUsuarios {
 	//método que permite obtener el objeto EntityManager
 		private EntityManager getEntityManager(){
-			EntityManagerFactory factory=Persistence.createEntityManagerFactory("WEBPU");
+			EntityManagerFactory factory=Persistence.createEntityManagerFactory("webPU");
 			return factory.createEntityManager();
 		}
 				
