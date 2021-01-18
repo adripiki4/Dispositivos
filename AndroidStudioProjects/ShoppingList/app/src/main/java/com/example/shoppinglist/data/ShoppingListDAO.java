@@ -1,11 +1,11 @@
-package com.example.shoppinglist;
+package com.example.shoppinglist.data;
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.shoppinglist.ShoppingList;
+import com.example.shoppinglist.data.ShoppingList;
 
 import java.util.List;
 

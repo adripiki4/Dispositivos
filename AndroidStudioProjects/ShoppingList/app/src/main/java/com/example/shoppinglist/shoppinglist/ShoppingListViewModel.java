@@ -1,10 +1,13 @@
-package com.example.shoppinglist;
+package com.example.shoppinglist.shoppinglist;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+
+import com.example.shoppinglist.data.ShoppingList;
+import com.example.shoppinglist.data.ShoppingListRepository;
 
 import java.util.List;
 
