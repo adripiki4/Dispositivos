@@ -23,24 +23,24 @@ public class Controller extends HttpServlet {
         String op = request.getParameter("op");
         String url = "";
         switch (op) {
-            case "doAlta":
-                url = "AltaEwallet";
-                break;
-            case "doEliminar":
-                url = "RecargarEwallet";
-                break;
             case "doRecuperar":
-                url = "AltaProducto";
+                url = "RecuperarProductos";
                 break;
-            case "toNuevo":
-                url = "nuevo.html";
-                break;
-            case "toMenu":
-                url = "index.html";
-                break;
-            case "doLogin":
-                url = "LoginAction";
-                break;
+//            case "doEliminar":
+//                url = "RecargarEwallet";
+//                break;
+//            case "doRecuperar":
+//                url = "AltaProducto";
+//                break;
+//            case "toNuevo":
+//                url = "nuevo.html";
+//                break;
+//            case "toMenu":
+//                url = "index.html";
+//                break;
+//            case "doLogin":
+//                url = "LoginAction";
+//                break;
 
         }
         request.getRequestDispatcher(url).forward(request, response);
