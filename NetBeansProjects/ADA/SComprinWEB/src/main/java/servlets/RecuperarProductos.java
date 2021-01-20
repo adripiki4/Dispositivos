@@ -28,6 +28,9 @@ public class RecuperarProductos extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         GestionProducto gproducto = new GestionProducto();
         List<Producto> productos = gproducto.listarProductos();
+         for(Producto p : productos){
+            System.out.println(p);
+        }
         //guardamos los productos en un atributo de peticion
         request.setAttribute("productos", productos);
         //transaferencia de la peticion

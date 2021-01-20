@@ -44,6 +44,9 @@ public class GestionProducto {
         Query qr = em.createQuery(select);
         List<Producto> listaproductos = qr.getResultList();
         em.clear();
+//        for(Producto p : listaproductos){
+//            System.out.println(p);
+//        }
         return listaproductos;
     }
 
