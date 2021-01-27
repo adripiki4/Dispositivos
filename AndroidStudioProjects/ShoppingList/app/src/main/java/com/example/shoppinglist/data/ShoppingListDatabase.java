@@ -8,8 +8,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.shoppinglist.data.ShoppingListDAO;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -43,6 +44,24 @@ public abstract class ShoppingListDatabase extends RoomDatabase {
     }
 
     // Prepoblar base de datos con callback
+//    private static final RoomDatabase.Callback mRoomCallback = new Callback() {
+//        @Override
+//        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+//            super.onCreate(db);
+//
+//            dbExecutor.execute(() -> {
+//                ShoppingListDAO dao = INSTANCE.shoppingListDao();
+//
+//                ShoppingList list1 = new ShoppingList("1", "Lista de ejemplo");
+//                ShoppingList list2 = new ShoppingList("2", "Banquete de Navidad");
+//
+//                dao.insert(list1);
+//                dao.insert(list2);
+//            });
+//        }
+//    };
+
+    // Prepoblar base de datos con callback
     private static final RoomDatabase.Callback mRoomCallback = new Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
@@ -51,13 +70,16 @@ public abstract class ShoppingListDatabase extends RoomDatabase {
             dbExecutor.execute(() -> {
                 ShoppingListDAO dao = INSTANCE.shoppingListDao();
 
-                ShoppingList list1 = new ShoppingList("1", "Lista de ejemplo");
-                ShoppingList list2 = new ShoppingList("2", "Banquete de Navidad");
+                List<ShoppingList> lists = new ArrayList<>();
+                for (int i = 0; i < 5; i++) {
+                    String id = UUID.randomUUID().toString();
+                    lists.add(new ShoppingList(id, "Lista " + (i+1)));
+                }
 
-                dao.insert(list1);
-                dao.insert(list2);
+                dao.insertShoppingLists(lists);
             });
         }
+
     };
 
 }
