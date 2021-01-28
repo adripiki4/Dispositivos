@@ -19,7 +19,7 @@ public class Segundochat {
 				//recepció d’un paquet
 				socket.receive(packet);
 				String mensaje = new String(packet.getData(),0,packet.getLength());
-				System.out.printf("Mensaje recibido:%s " + mensaje);
+				System.out.printf("Mensaje recibido: " + mensaje);
 				
 				}catch (IOException ex) {
 						System.out.println(ex);
