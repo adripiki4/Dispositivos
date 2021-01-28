@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">ShoppingList</string>
+    <string name="app_name">Shopping List</string>
     <string name="create_button">Crear</string>
     <string name="shopping_list_hint">Nombre</string>
+    <string name="filter_1">Fitness</string>
+    <string name="filter_2">Eventos</string>
+    <string name="filter_3">Rápidas</string>
 </resources>
