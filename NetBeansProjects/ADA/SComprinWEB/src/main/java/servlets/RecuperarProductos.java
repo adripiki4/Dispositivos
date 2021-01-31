@@ -27,12 +27,12 @@ public class RecuperarProductos extends HttpServlet {
 	 */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         GestionProducto gproducto = new GestionProducto();
-        List<Producto> productos = gproducto.listarProductos();
-         for(Producto p : productos){
+        List<Producto> pro = gproducto.listarProductos();
+         for(Producto p : pro){
             System.out.println(p);
         }
         //guardamos los productos en un atributo de peticion
-        request.setAttribute("productos", productos);
+        request.setAttribute("productos", pro);
         //transaferencia de la peticion
         request.getRequestDispatcher("productos.jsp").forward(request, response);
     }

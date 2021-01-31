@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="modelo.GestionProducto,java.util.ArrayList,mx.com.gm.sga.domain.Producto"%>
 
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="p" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
@@ -10,12 +10,12 @@
     </head>
     <body>
         
-        <c:set var="productos" value="${requestScope.productos}"/>
+        <c:set var="productos" value="${requestScope.pro}"/>
         
         <br/><br/><br/>
         
         <c:choose>
-            <c:when test="${!empty productos}">
+            <c:when test="${!empty pro}">
                     
                 <table border="1">
                     <tr>
@@ -25,7 +25,7 @@
                         <th>Puntos Producto</th>
                         <th></th>
                     </tr>
-                    <c:forEach var="pro" items="${productos}">
+                    <c:forEach var="pro" items="${pro}">
                         <tr>
                             <td>${pro.Id_producto}</td>
                             <td>${pro.NombreProducto}</td>
