@@ -62,6 +62,9 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 
 
+import com.example.shoppinglist.Utils;
+import com.example.shoppinglist.data.Info;
+import com.example.shoppinglist.data.ShoppingListAndInfo;
 import com.example.shoppinglist.data.ShoppingListFavorite;
 import com.example.shoppinglist.data.ShoppingListInsert;
 import com.example.shoppinglist.data.ShoppingListRepository;
@@ -71,6 +74,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 
 public class ShoppingListViewModel extends AndroidViewModel {
 
@@ -82,7 +86,7 @@ public class ShoppingListViewModel extends AndroidViewModel {
             = new MutableLiveData<>(new ArrayList<>());
 
     // Listas de compras observadas
-    private final LiveData<List<ShoppingListForList>> mShoppingLists;
+    private final LiveData<List<ShoppingListAndInfo>> mShoppingLists;
 
     // Filtros
     private final List<String> mFilters = new ArrayList<>();
@@ -105,7 +109,9 @@ public class ShoppingListViewModel extends AndroidViewModel {
     }
 
     public void insert(ShoppingListInsert shoppingList) {
-        mRepository.insert(shoppingList);
+        String date = Utils.getCurrentDate();
+        Info info = new Info(UUID.randomUUID().toString(), shoppingList.id, date, date);
+        mRepository.insert(shoppingList, info);
     }
 
     public void addFilter(String category) {
@@ -118,25 +124,19 @@ public class ShoppingListViewModel extends AndroidViewModel {
         mCategories.setValue(mFilters);
     }
 
-    public LiveData<List<ShoppingListForList>> getShoppingLists() {
+    public LiveData<List<ShoppingListAndInfo>> getShoppingLists() {
         return mShoppingLists;
     }
 
-    public void markFavorite(ShoppingListForList shoppingList) {
-        ShoppingListFavorite favorite = new ShoppingListFavorite();
-        favorite.id = shoppingList.id;
-        favorite.favorite = !shoppingList.favorite;
-        favorite.lastUpdated = new SimpleDateFormat(
-                "yyyy-MM-dd HH:mm:ss",
-                Locale.getDefault())
-                .format(new Date());
-
-        mRepository.markFavorite(favorite);
+    public void markFavorite(String shoppingListId) {
+        mRepository.markFavorite(shoppingListId);
     }
-    public void deleteShoppingList(ShoppingListForList shoppingList) {
-        ShoppingListId id = new ShoppingListId(shoppingList.id);
+
+    public void deleteShoppingList(ShoppingListAndInfo shoppingListAndInfo) {
+        ShoppingListId id = new ShoppingListId(shoppingListAndInfo.shoppingList.id);
         mRepository.deleteShoppingList(id);
     }
+
     public void deleteAll() {
         mRepository.deleteAll();
     }

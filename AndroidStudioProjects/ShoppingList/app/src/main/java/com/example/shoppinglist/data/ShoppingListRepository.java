@@ -45,11 +45,11 @@ public class ShoppingListRepository {
         mShoppingListDao = db.shoppingListDao();
     }
 
-    public LiveData<List<ShoppingListForList>> getShoppingLists() {
+    public LiveData<List<ShoppingListAndInfo>> getShoppingLists() {
         return mShoppingListDao.getAll();
     }
 
-    public LiveData<List<ShoppingListForList>> getShoppingListsWithCategories(List<String> categories) {
+    public LiveData<List<ShoppingListAndInfo>> getShoppingListsWithCategories(List<String> categories) {
         return mShoppingListDao.getShoppingListsByCategories(categories);
     }
 
@@ -57,27 +57,29 @@ public class ShoppingListRepository {
         return mShoppingListDao.getShoppingList(id);
     }
 
-    public void insert(ShoppingListInsert shoppingList) {
+    public void insert(ShoppingListInsert shoppingList, Info info) {
         ShoppingListDatabase.dbExecutor.execute(
-                () -> mShoppingListDao.partialInsert(shoppingList)
+                () -> mShoppingListDao.insertWithInfo(shoppingList, info)
         );
     }
 
-    public void markFavorite(ShoppingListFavorite shoppingLists) {
+    public void markFavorite(String shoppingListId) {
         ShoppingListDatabase.dbExecutor.execute(
-                () -> mShoppingListDao.markFavorite(shoppingLists)
+                () -> mShoppingListDao.markFavorite(shoppingListId)
         );
     }
+
     public void deleteShoppingList(ShoppingListId id) {
         ShoppingListDatabase.dbExecutor.execute(
                 () -> mShoppingListDao.deleteShoppingList(id)
         );
     }
+
     public void deleteAll() {
         ShoppingListDatabase.dbExecutor.execute(
-                mShoppingListDao::deleteAllShoppingLists
+                mShoppingListDao::deleteAll
         );
     }
-
 }
+
 

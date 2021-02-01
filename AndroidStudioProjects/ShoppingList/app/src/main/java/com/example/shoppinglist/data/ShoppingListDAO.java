@@ -42,6 +42,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 
 import com.example.shoppinglist.shoppinglist.ShoppingListForList;
@@ -50,31 +51,60 @@ import com.example.shoppinglist.shoppinglist.ShoppingListId;
 import java.util.List;
 
 @Dao
-public interface ShoppingListDAO {
+public abstract class ShoppingListDAO {
+    @Transaction
     @Query("SELECT id, name, is_favorite FROM shopping_list")
-    LiveData<List<ShoppingListForList>> getAll();
+    abstract LiveData<List<ShoppingListAndInfo>> getAll();
 
     @Query("SELECT * FROM shopping_list WHERE id = :id LIMIT 1")
-    LiveData<ShoppingList> getShoppingList(String id);
+    abstract LiveData<ShoppingList> getShoppingList(String id);
 
+    @Transaction
     @Query("SELECT id, name, is_favorite FROM shopping_list WHERE category IN(:categories)")
-    LiveData<List<ShoppingListForList>> getShoppingListsByCategories(List<String> categories);
+    abstract LiveData<List<ShoppingListAndInfo>> getShoppingListsByCategories(List<String> categories);
+
+    @Transaction
+    public void insertWithInfo(ShoppingListInsert shoppingList, Info info) {
+        insertShoppingList(shoppingList);
+        insertInfo(info);
+    }
+
+    @Transaction
+    public void insertAllWithInfos(List<ShoppingListInsert> shoppingLists, List<Info> infos) {
+        insertAll(shoppingLists);
+        insertAllInfos(infos);
+    }
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(ShoppingList shoppingList);
+    abstract void insertShoppingList(ShoppingList shoppingList);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = ShoppingList.class)
-    void partialInsert(ShoppingListInsert shoppingList);
+    abstract void insertShoppingList(ShoppingListInsert shoppingList);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = ShoppingList.class)
-    void insertShoppingLists(List<ShoppingListInsert> lists);
+    abstract void insertAll(List<ShoppingListInsert> lists);
 
-    @Update(entity = ShoppingList.class)
-    void markFavorite(ShoppingListFavorite shoppingList);
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    abstract void insertInfo(Info info);
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    abstract void insertAllInfos(List<Info> infos);
+
+    @Transaction
+    public void markFavorite(String id) {
+        updateShoppingListFavorite(id);
+        updateInfoLastUpdated(id);
+    }
+
+    @Query("UPDATE shopping_list SET is_favorite= NOT is_favorite WHERE id = :id")
+    protected abstract void updateShoppingListFavorite(String id);
+
+    @Query("UPDATE info SET last_updated = CURRENT_TIMESTAMP WHERE shopping_list_id=:shoppingListId")
+    protected abstract void updateInfoLastUpdated(String shoppingListId);
 
     @Delete(entity = ShoppingList.class)
-    void deleteShoppingList(ShoppingListId id);
+    abstract void deleteShoppingList(ShoppingListId id);
 
     @Query("DELETE FROM shopping_list")
-    void deleteAllShoppingLists();
+    abstract void deleteAll();
 }

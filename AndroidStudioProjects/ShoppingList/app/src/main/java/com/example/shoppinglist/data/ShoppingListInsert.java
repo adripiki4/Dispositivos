@@ -2,7 +2,7 @@ package com.example.shoppinglist.data;
 import java.util.Random;
 
 public class ShoppingListInsert {
-    String id;
+    public String id;
     String name;
     String category = generateCategory();
 
