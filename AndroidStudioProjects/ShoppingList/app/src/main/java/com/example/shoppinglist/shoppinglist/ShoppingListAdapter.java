@@ -41,6 +41,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -90,19 +91,24 @@ public class ShoppingListAdapter
         void onClick(ShoppingListForList shoppingList);
 
         void onFavoriteIconClicked(ShoppingListForList shoppingList);
+
+        void onDeleteIconClicked(ShoppingListForList shoppingList);
     }
 
     public class ShoppingListViewHolder extends RecyclerView.ViewHolder {
         private final TextView mNameText;
         private final CheckBox mFavoriteButton;
+        private final ImageView mDeleteButton;
 
         public ShoppingListViewHolder(@NonNull View itemView) {
             super(itemView);
             mNameText = itemView.findViewById(R.id.name);
             mFavoriteButton = itemView.findViewById(R.id.favorite_button);
+            mDeleteButton = itemView.findViewById(R.id.delete_button);
 
             // Setear eventos
             mFavoriteButton.setOnClickListener(this::manageEvents);
+            mDeleteButton.setOnClickListener(this::manageEvents);
             itemView.setOnClickListener(this::manageEvents);
         }
 
@@ -113,6 +119,9 @@ public class ShoppingListAdapter
                 // Manejar evento de click en Favorito
                 if (view.getId() == R.id.favorite_button) {
                     mItemListener.onFavoriteIconClicked(clickedItem);
+                    return;
+                } else if (view.getId() == R.id.delete_button) {
+                    mItemListener.onDeleteIconClicked(clickedItem);
                     return;
                 }
 

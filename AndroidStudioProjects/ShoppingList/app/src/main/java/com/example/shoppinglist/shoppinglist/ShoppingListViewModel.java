@@ -133,4 +133,11 @@ public class ShoppingListViewModel extends AndroidViewModel {
 
         mRepository.markFavorite(favorite);
     }
+    public void deleteShoppingList(ShoppingListForList shoppingList) {
+        ShoppingListId id = new ShoppingListId(shoppingList.id);
+        mRepository.deleteShoppingList(id);
+    }
+    public void deleteAll() {
+        mRepository.deleteAll();
+    }
 }

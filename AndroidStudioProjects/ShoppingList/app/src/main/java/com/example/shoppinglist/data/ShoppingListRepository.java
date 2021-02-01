@@ -33,6 +33,7 @@ import androidx.lifecycle.LiveData;
 
 
 import com.example.shoppinglist.shoppinglist.ShoppingListForList;
+import com.example.shoppinglist.shoppinglist.ShoppingListId;
 
 import java.util.List;
 
@@ -67,5 +68,16 @@ public class ShoppingListRepository {
                 () -> mShoppingListDao.markFavorite(shoppingLists)
         );
     }
+    public void deleteShoppingList(ShoppingListId id) {
+        ShoppingListDatabase.dbExecutor.execute(
+                () -> mShoppingListDao.deleteShoppingList(id)
+        );
+    }
+    public void deleteAll() {
+        ShoppingListDatabase.dbExecutor.execute(
+                mShoppingListDao::deleteAllShoppingLists
+        );
+    }
+
 }
 

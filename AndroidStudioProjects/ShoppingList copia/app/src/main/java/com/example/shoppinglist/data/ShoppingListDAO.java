@@ -38,12 +38,14 @@ package com.example.shoppinglist.data;
 //}
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.shoppinglist.shoppinglist.ShoppingListForList;
+import com.example.shoppinglist.shoppinglist.ShoppingListId;
 
 import java.util.List;
 
@@ -69,4 +71,10 @@ public interface ShoppingListDAO {
 
     @Update(entity = ShoppingList.class)
     void markFavorite(ShoppingListFavorite shoppingList);
+
+    @Delete(entity = ShoppingList.class)
+    void deleteShoppingList(ShoppingListId id);
+
+    @Query("DELETE FROM shopping_list")
+    void deleteAllShoppingLists();
 }
