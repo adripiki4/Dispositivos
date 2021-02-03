@@ -13,7 +13,7 @@ const mongoose=require('mongoose');
 // this is necessary because mongo supports different types of promises
 mongoose.Promise=global.Promise;
 // connect with the contacts DB
-mongoose.connect('mongodb://localhost:27017/books', {
+mongoose.connect('mongodb://localhost:27017/libros', {
 useNewUrlParser:true,
 useUnifiedTopology:true
 });
@@ -42,7 +42,7 @@ let BookSchema = new mongoose.Schema({
 });
 
 //model
-let book = mongoose.model('books', BookSchema);
+let book = mongoose.model('libros', BookSchema);
 let p1
 books.forEach(element => {
     let Book = new book();
