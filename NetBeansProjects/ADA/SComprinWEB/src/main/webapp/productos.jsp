@@ -10,12 +10,12 @@
     </head>
     <body>
         
-        <c:set var="productos" value="${requestScope.pro}"/>
+        <c:set var="productos" value="${requestScope.productos}"/>
         
         <br/><br/><br/>
         
         <c:choose>
-            <c:when test="${!empty pro}">
+            <c:when test="${!empty productos}">
                     
                 <table border="1">
                     <tr>
@@ -25,7 +25,7 @@
                         <th>Puntos Producto</th>
                         <th></th>
                     </tr>
-                    <c:forEach var="pro" items="${pro}">
+                    <c:forEach var="pro" items="${productos}">
                         <tr>
                             <td>${pro.Id_producto}</td>
                             <td>${pro.NombreProducto}</td>

@@ -42,7 +42,7 @@ public class GestionProducto {
         EntityManager em = getEntityManager();
         String select = "SELECT p from Producto p";
         Query qr = em.createQuery(select);
-        List<Producto> listaproductos = qr.getResultList();
+        List<Producto> listaproductos = (List<Producto> )qr.getResultList();
         em.clear();
 //        for(Producto p : listaproductos){
 //            System.out.println(p);
