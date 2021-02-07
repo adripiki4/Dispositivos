@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AppMatriculacion</string>
+    <string name="asignaturas">ASIGNATURAS</string>
+    <string name="alumnos">ALUMNOS</string>
+</resources>
