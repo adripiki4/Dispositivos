@@ -12,28 +12,29 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.GestionProducto;
-import mx.com.gm.sga.domain.Producto;
+import modelo.GestionEwallet;
+import mx.com.gm.sga.domain.Ewallet;
+
 
 /**
  *
  * @author adrip
  */
-@WebServlet("/RecuperarProductos")
-public class RecuperarProductos extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+@WebServlet("/RecuperarWallets")
+public class RecuperarWallets extends HttpServlet {
+     private static final long serialVersionUID = 1L;
     /**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        GestionProducto gproducto = new GestionProducto();
-        List<Producto> productos = gproducto.listarProductos();
-         for(Producto p : productos){
-            System.out.println(p);
+        GestionEwallet gwallet = new GestionEwallet();
+        List<Ewallet> ewallets = gwallet.recuperarEwallets();
+         for(Ewallet e : ewallets){
+            System.out.println(e);
         }
         //guardamos los productos en un atributo de peticion
-        request.setAttribute("productos", productos);
+        request.setAttribute("ewallets", ewallets);
         //transaferencia de la peticion
-        request.getRequestDispatcher("producto.jsp").forward(request, response);
+        request.getRequestDispatcher("ewallets.jsp").forward(request, response);
     }
 }

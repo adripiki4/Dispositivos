@@ -34,6 +34,6 @@ public class RecuperarProductos extends HttpServlet {
         //guardamos los productos en un atributo de peticion
         request.setAttribute("productos", productos);
         //transaferencia de la peticion
-        request.getRequestDispatcher("producto.jsp").forward(request, response);
+        request.getRequestDispatcher("productos.jsp").forward(request, response);
     }
 }

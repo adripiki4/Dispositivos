@@ -12,28 +12,29 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.GestionProducto;
-import mx.com.gm.sga.domain.Producto;
+import modelo.GestionCompra;
+import mx.com.gm.sga.domain.Compra;
+
 
 /**
  *
  * @author adrip
  */
-@WebServlet("/RecuperarProductos")
-public class RecuperarProductos extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+@WebServlet("/RecuperarCompras")
+public class RecuperarCompras extends HttpServlet{
+     private static final long serialVersionUID = 1L;
     /**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        GestionProducto gproducto = new GestionProducto();
-        List<Producto> productos = gproducto.listarProductos();
-         for(Producto p : productos){
-            System.out.println(p);
+        GestionCompra gcompra = new GestionCompra();
+        List<Compra> compras = gcompra.listarCompras();
+         for(Compra c : compras){
+            System.out.println(c);
         }
         //guardamos los productos en un atributo de peticion
-        request.setAttribute("productos", productos);
+        request.setAttribute("compras", compras);
         //transaferencia de la peticion
-        request.getRequestDispatcher("producto.jsp").forward(request, response);
+        request.getRequestDispatcher("compras.jsp").forward(request, response);
     }
 }
