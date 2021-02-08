@@ -16,7 +16,6 @@ import com.example.appmatriculacion.R;
 public class ActivityAlumnos extends AppCompatActivity {
     private Button btndetalle;
     private AlumnosViewModel alumnosViewModel;
-    private TextView dbText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +23,7 @@ public class ActivityAlumnos extends AppCompatActivity {
         setContentView(R.layout.activity_alumnos);
 
         btndetalle = findViewById(R.id.asigalumno);
-        dbText = findViewById(R.id.db_text2);
+         TextView dbText = findViewById(R.id.db_text2);
 
 
         btndetalle.setOnClickListener(new View.OnClickListener() {
@@ -42,8 +41,7 @@ public class ActivityAlumnos extends AppCompatActivity {
         alumnosViewModel.getList_alumnos().observe(this,alumnos -> {
             StringBuilder sb = new StringBuilder();
             for(Alumnos alumno : alumnos){
-                sb.append(alumno.getName_alumno()).append("\n");
-                sb.append(alumno.getApellidos_alumno()).append("\n");
+                sb.append(alumno.getName_alumno()).append(alumno.getApellidos_alumno()).append("\n");
             }
             dbText.setText(sb.toString());
         });
