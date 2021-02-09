@@ -6,11 +6,14 @@
 
 package servlets;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import modelo.GestionEwallet;
 /**
  *
  * @author adriba
@@ -37,7 +40,6 @@ private static final long serialVersionUID = 1L;
           GestionEwallet gewallet = new GestionEwallet();
           gewallet.altaEwallet(nombre,apellidos,dni,fechanacimiento, email, saldoeuros, saldopuntos);
           request.getRequestDispatcher("index.html").forward(request, response);
-          
 //        String nombre = request.getParameter("nombre");
 //        String email = request.getParameter("email");
 //        int telefono = Integer.parseInt(request.getParameter("telefono"));
