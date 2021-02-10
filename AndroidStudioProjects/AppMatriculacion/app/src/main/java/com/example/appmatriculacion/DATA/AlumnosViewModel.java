@@ -23,7 +23,7 @@ public class AlumnosViewModel extends AndroidViewModel {
         return list_alumnos;
     }
 
-    public void inser_alumno(Alumnos alumno){
+    public void insert_alumno(Alumnos alumno){
         appRepository.insert_alumno(alumno);
     }
 }
