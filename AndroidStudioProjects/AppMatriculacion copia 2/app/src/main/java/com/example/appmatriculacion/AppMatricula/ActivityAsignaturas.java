@@ -4,13 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.appmatriculacion.DATA.Asignaturas;
 import com.example.appmatriculacion.DATA.AsignaturasViewModel;
-import com.example.appmatriculacion.Fragments.AsignaturaFragment;
 import com.example.appmatriculacion.R;
 
 public class ActivityAsignaturas extends AppCompatActivity {
@@ -24,7 +21,6 @@ public class ActivityAsignaturas extends AppCompatActivity {
 
         TextView dbText = findViewById(R.id.db_text);
 
-
         ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
 
         asignaturasViewModel = new ViewModelProvider(this, factory).get(AsignaturasViewModel.class);
@@ -36,15 +32,6 @@ public class ActivityAsignaturas extends AppCompatActivity {
             }
             dbText.setText(sb.toString());
         });
-
-        findViewById(R.id.add_asignatura).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AsignaturaFragment fragment = new AsignaturaFragment();
-                fragment.show(getSupportFragmentManager(),"Add Asignatura");
-            }
-        });
-
 
 
     }
