@@ -14,9 +14,10 @@ public class AppRepository {
     private final AlumnoDAO alumnoDAO;
 
     public AppRepository(Context context){
-        AppDatabase db = AppDatabase.getInstance(context);
-        asignaturasDAO = db.asignaturasDAO();
-        alumnoDAO = db.alumnoDAO();
+        //AppDatabase db = AppDatabase.getInstance(context);
+        AppDatabase db2 = AppDatabase.getInstance(context);
+        asignaturasDAO = db2.asignaturasDAO();
+        alumnoDAO = db2.alumnoDAO();
         list_alumnos = alumnoDAO.getAll();
         list_asignaturas = asignaturasDAO.getAll();
     }

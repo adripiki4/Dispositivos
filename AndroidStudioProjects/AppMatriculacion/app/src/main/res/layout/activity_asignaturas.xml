@@ -12,7 +12,7 @@
         android:text="Mostrando Asignaturas"
         tools:ignore="MissingConstraints"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
+        android:id="@+id/listasignatura"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
