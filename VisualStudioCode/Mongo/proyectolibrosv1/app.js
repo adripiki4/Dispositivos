@@ -72,7 +72,7 @@ function todos(){
 
 
 
-
+//Buscar por Titulo del libro
 document.getElementById("btnbuscar").addEventListener('click',()=>{
     let txtbuscar = document.getElementById("txtbuscar").value;
     Libro.find({title:{$regex:'.*'+txtbuscar+'.*'}}).then(resultado => {
@@ -94,6 +94,7 @@ document.getElementById("btnbuscar").addEventListener('click',()=>{
     document.getElementById("txtbuscar").value = "";
 })
 
+//Buscar por nombre de Autor
 document.getElementById("btnautor").addEventListener('click',()=>{
     let txtautor = document.getElementById("txtautor").value;
     Libro.find({author:{$regex:'.*'+txtautor+'.*'}}).then(resultado => {
@@ -116,6 +117,51 @@ document.getElementById("btnautor").addEventListener('click',()=>{
 })
 
 document.getElementById("btnhome").addEventListener('click',()=>{
+    todos();
+})
+
+//escuchador del boton nuevo libro
+document.getElementById("btnNuevoLibro").addEventListener('click', () => {
+    let txtNuevoTitulo = document.getElementById("txtNuevotitulo").value;
+    let txtNuevoAutor = document.getElementById("txtNuevoAutor").value;
+    let txtNuevaImagen = document.getElementById("txtNuevaImagen").value;
+    if (txtNuevoTitulo == "" || txtNuevoAutor == "" || txtNuevaImagen == "") {
+        let notification = document.querySelector("#notification");
+        notification.innerHTML = "Debe escribir algo";
+        notification.opened = true;
+    } else {
+        //Insertamos el libro
+        let libro = new Libro({
+            title: txtNuevoTitulo,
+            author: txtNuevoAutor,
+            img: txtNuevaImagen
+        });
+        libro.save().then(resultado => {
+            let notification = document.querySelector("#notification");
+            notification.innerHTML = "Libro Añadido";
+            notification.opened = true;
+            todos();
+        }).catch(error => {
+            let notification = document.querySelector("#notification");
+            notification.innerHTML = "NO se ha podido añadir el libro";
+            notification.opened = true;
+        });
+    }
+    
+});
+
+//Borrar libro
+document.getElementById("btnborrar").addEventListener('click',()=>{
+    let txtborrar = document.getElementById("txtborrar").value
+    Libro.remove({title:txtborrar}).then(resultado=>{
+        let notification = document.querySelector("#notification");
+        notification.innerHTML = "Libro Borrado";
+        notification.opened = true;
+    }).catch(error=>{
+        let notification = document.getElementById("#notification");
+        notification.innerHTML = "NO se ha podido borrar el libro";
+        notification.opened = true;
+    });
     todos();
 })
 

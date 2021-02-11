@@ -30,6 +30,8 @@
     <footer class="toolbar toolbar-footer">
 
       <x-box style="margin-left:200px;">
+
+        <!--BOTON DE BUSCAR LOS LIBROS-->
         <x-button>
           <x-icon name="camera"></x-icon>
           <dialog>
@@ -57,43 +59,65 @@
           </dialog>
         </x-button>
 
+        <!--BOTON DE MOSTRAR TODOS-->
         <x-button id="btnhome" toggled>
           <x-box>
             <x-icon name="home"></x-icon>
           </x-box>
         </x-button>
 
+        <!--INSERTAR NUEVO LIBRO-->
         <x-button>
           <x-icon name="save"></x-icon>
           <dialog>
             <x-label>Add book</x-label>
-            <x-input id="addtitulo">
+            <x-input id="txtNuevotitulo">
               <x-icon name="book"></x-icon>
               <x-label>Title</x-label>
             </x-input>
             
-            <x-input id="addautor">
+            <x-input id="txtNuevoAutor">
               <x-icon name="person"></x-icon>
               <x-label>Author</x-label>
             </x-input>
             
-            <x-input id="addimage">
+            <x-input id="txtNuevaImagen">
               <x-icon name="visibility"></x-icon>
               <x-label>Image</x-label>
             </x-input>
-            <x-button id="addbook">
+            <x-button id="btnNuevoLibro">
               <x-box vertical>
                 <x-icon name="add"></x-icon>
               </x-box>
             </x-button>
           </dialog>
         </x-button>
+
+        <!--BOTON DE BORRAR UN LIBRO-->
+        <x-button>
+          <x-icon name="delete"></x-icon>
+          <dialog>
+            <x-label>Delete Book</x-label>
+            <x-input id="txtborrar">
+              <x-icon name="error"></x-icon>
+              <x-label>Tittle</x-label>
+            </x-input>
+            <x-button id="btnborrar">
+              <x-icon name="delete"></x-icon>
+            </x-button>
+          </dialog>
+        </x-button>
       </x-box>
+      
+
+      
+
 
     </footer>
   </div>
 
   <script>require('./app.js')</script>
+  <x-notification id="notification" timeout="2000"></x-notification>
 </body>
 
 </html>
