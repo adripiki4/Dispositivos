@@ -27,7 +27,7 @@ public class GestionDevolucion {
     }
 
     //Alta de devolucion
-    public void altaDevolucion(Date FechaDevolucion, int Id_wallet, int Id_producto) {
+    public void altaDevolucion(java.sql.Date FechaDevolucion, int Id_wallet, int Id_producto) {
         Devolucion d = new Devolucion(FechaDevolucion, Id_wallet, Id_producto);
         EntityManager em = getEntityManager();
         //incluimos la operacion en una transaccion

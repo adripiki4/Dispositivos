@@ -35,13 +35,18 @@ public class Controller extends HttpServlet {
             case "doRecuperarDevoluciones":
                 url = "RecuperarDevoluciones";
                 break;
-//            case "toMenu":
-//                url = "index.html";
-//                break;
-//            case "doLogin":
-//                url = "LoginAction";
-//                break;
-
+            case "toNuevoEwallet":
+                url = "nuevoEwallet.html";
+                break;
+            case "doAltaEwallet":
+                url = "AltaEwallet";
+                break;
+            case "toNuevaCompra":
+                url = "nuevaCompra.html";
+                break;
+            case "doAltaCompra":
+                url="AltaCompra";
+                break;
         }
         request.getRequestDispatcher(url).forward(request, response);
     }

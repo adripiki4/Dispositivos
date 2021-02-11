@@ -27,7 +27,7 @@ public class GestionEwallet {
     }
 
     //Alta de Ewallet
-    public void altaEwallet(String Nombre, String Apellidos, String Dni, Date FechaNacimiento, String Email, int SaldoPuntos, int SaldoEuros) {
+    public void altaEwallet(String Nombre, String Apellidos, String Dni, java.sql.Date FechaNacimiento, String Email, int SaldoPuntos, int SaldoEuros) {
         Ewallet ewallet = new Ewallet(Nombre, Apellidos, Dni, FechaNacimiento, Email, SaldoPuntos, SaldoEuros);
         EntityManager em = getEntityManager();
         //Incluimos la operacion en una transaccion

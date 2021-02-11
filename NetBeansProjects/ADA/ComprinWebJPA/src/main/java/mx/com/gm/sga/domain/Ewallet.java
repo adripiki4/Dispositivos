@@ -28,7 +28,7 @@ public class Ewallet implements Serializable {
     private String nombre;
     private String apellidos;
     private String dni;
-    private Date fechanacimiento;
+    private java.sql.Date fechanacimiento;
     private String email;
     private int saldopuntos;
     private int saldoeuros;
@@ -36,7 +36,7 @@ public class Ewallet implements Serializable {
     public Ewallet() {
     }
 
-    public Ewallet(int idwallet, String nombre, String apellidos, String dni, Date fechanacimiento, String email, int saldopuntos, int saldoeuros) {
+    public Ewallet(int idwallet, String nombre, String apellidos, String dni, java.sql.Date fechanacimiento, String email, int saldopuntos, int saldoeuros) {
         this.idwallet = idwallet;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -47,7 +47,7 @@ public class Ewallet implements Serializable {
         this.saldoeuros = saldoeuros;
     }
 
-    public Ewallet(String nombre, String apellidos, String dni, Date fechanacimiento, String email, int saldopuntos, int saldoeuros) {
+    public Ewallet(String nombre, String apellidos, String dni, java.sql.Date fechanacimiento, String email, int saldopuntos, int saldoeuros) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -57,7 +57,7 @@ public class Ewallet implements Serializable {
         this.saldoeuros = saldoeuros;
     }
 
-    public Ewallet(String nombre, String apellidos, String dni, Date fechanacimiento, String email) {
+    public Ewallet(String nombre, String apellidos, String dni, java.sql.Date fechanacimiento, String email) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -101,7 +101,7 @@ public class Ewallet implements Serializable {
         return fechanacimiento;
     }
 
-    public void setFechanacimiento(Date fechanacimiento) {
+    public void setFechanacimiento(java.sql.Date fechanacimiento) {
         this.fechanacimiento = fechanacimiento;
     }
 

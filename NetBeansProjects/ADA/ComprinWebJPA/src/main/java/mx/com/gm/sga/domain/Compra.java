@@ -24,21 +24,21 @@ public class Compra implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idcompra;
-    private Date fechacompra;
+    private java.sql.Date fechacompra;
     private int idwallet;
     private int idproducto;
 
     public Compra() {
     }
 
-    public Compra(int idcompra, Date fechacompra, int idwallet, int idproducto) {
+    public Compra(int idcompra, java.sql.Date fechacompra, int idwallet, int idproducto) {
         this.idcompra = idcompra;
         this.fechacompra = fechacompra;
         this.idwallet = idwallet;
         this.idproducto = idproducto;
     }
 
-    public Compra(Date fechacompra, int idwallet, int idproducto) {
+    public Compra(java.sql.Date fechacompra, int idwallet, int idproducto) {
         this.fechacompra = fechacompra;
         this.idwallet = idwallet;
         this.idproducto = idproducto;
@@ -56,7 +56,7 @@ public class Compra implements Serializable {
         return fechacompra;
     }
 
-    public void setFechacompra(Date fechacompra) {
+    public void setFechacompra(java.sql.Date fechacompra) {
         this.fechacompra = fechacompra;
     }
 

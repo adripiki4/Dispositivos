@@ -27,7 +27,7 @@ public class GestionCompra {
     }
 
     //Alta de compra
-    public void altaCompra(Date FechaCompra, int Id_wallet, int Id_producto) {
+    public void altaCompra(java.sql.Date FechaCompra, int Id_wallet, int Id_producto) {
         Compra c = new Compra(FechaCompra, Id_wallet, Id_producto);
         EntityManager em = getEntityManager();
         //incluimos la operacion en una transaccion

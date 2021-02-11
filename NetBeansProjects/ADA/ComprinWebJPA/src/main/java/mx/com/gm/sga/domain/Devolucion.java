@@ -25,21 +25,21 @@ public class Devolucion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int iddevolucion;
-    private Date fechadevolucion;
+    private java.sql.Date fechadevolucion;
     private int idwallet;
     private int idproducto;
 
     public Devolucion() {
     }
 
-    public Devolucion(int iddevolucion, Date fechadevolucion, int idwallet, int idproducto) {
+    public Devolucion(int iddevolucion, java.sql.Date fechadevolucion, int idwallet, int idproducto) {
         this.iddevolucion = iddevolucion;
         this.fechadevolucion = fechadevolucion;
         this.idwallet = idwallet;
         this.idproducto = idproducto;
     }
 
-    public Devolucion(Date fechadevolucion, int idwallet, int idproducto) {
+    public Devolucion(java.sql.Date fechadevolucion, int idwallet, int idproducto) {
         this.fechadevolucion = fechadevolucion;
         this.idwallet = idwallet;
         this.idproducto = idproducto;
@@ -57,7 +57,7 @@ public class Devolucion implements Serializable {
         return fechadevolucion;
     }
 
-    public void setFechadevolucion(Date fechadevolucion) {
+    public void setFechadevolucion(java.sql.Date fechadevolucion) {
         this.fechadevolucion = fechadevolucion;
     }
 
