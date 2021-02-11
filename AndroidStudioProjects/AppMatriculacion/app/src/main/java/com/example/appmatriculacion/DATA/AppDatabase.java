@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Asignaturas.class, Alumnos.class}, version = 5, exportSchema = false)
+@Database(entities = {Asignaturas.class, Alumnos.class}, version = 1, exportSchema = false)
 public  abstract class AppDatabase  extends RoomDatabase {
 
     //Exposicion de DAOs
