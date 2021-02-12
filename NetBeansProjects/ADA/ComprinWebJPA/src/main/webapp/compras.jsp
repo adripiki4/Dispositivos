@@ -32,6 +32,7 @@
                             <td>${cont.fechacompra}</td>
                             <td>${cont.idwallet}</td>
                             <td>${cont.idproducto}</td>
+                            <td><a href="Controller?op=doHacerDevolucion&idcompra=${cont.idcompra}">Devolver Compra</a></td></tr>
                         </tr>
 
 

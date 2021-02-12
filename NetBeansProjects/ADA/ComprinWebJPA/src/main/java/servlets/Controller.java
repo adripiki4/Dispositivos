@@ -47,6 +47,9 @@ public class Controller extends HttpServlet {
             case "doAltaCompra":
                 url="AltaCompra";
                 break;
+            case "doHacerDevolucion":
+                url="AltaDevolucion";
+                break;
         }
         request.getRequestDispatcher(url).forward(request, response);
     }
