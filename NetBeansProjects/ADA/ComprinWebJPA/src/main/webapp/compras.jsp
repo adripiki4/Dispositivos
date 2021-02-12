@@ -6,9 +6,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Gestión de Productos</title>
+        <title>Gestión de Compras</title>
     </head>
-    <body>
+    <body align="center">
 
         <c:set var="compras" value="${requestScope.compras}"/>
 
@@ -18,7 +18,7 @@
 
             <c:when test="${!empty compras}">
 
-                <table border="1">
+                <table border="1" align="center">
                     <tr>
                         <th>Id compra</th>
                         <th>Fecha Compra</th>
@@ -30,7 +30,7 @@
                     <c:forEach var="cont" items="${compras}">
                         <tr><td>${cont.idcompra}</td>
                             <td>${cont.fechacompra}</td>
-                            <td>${cont.idwallet}</td>
+                            <td>${cont.ewallet}</td>
                             <td>${cont.idproducto}</td>
                             <td><a href="Controller?op=doHacerDevolucion&idcompra=${cont.idcompra}">Devolver Compra</a></td></tr>
                         </tr>

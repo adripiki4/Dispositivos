@@ -15,7 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.GestionCompra;
 import modelo.GestionDevolucion;
+import modelo.GestionEwallet;
+import modelo.GestionProducto;
 import mx.com.gm.sga.domain.Compra;
+import mx.com.gm.sga.domain.Ewallet;
+import mx.com.gm.sga.domain.Producto;
 
 /**
  *
@@ -36,9 +40,31 @@ public class AltaDevolucion extends HttpServlet {
         GestionCompra gcompra = new GestionCompra();
         //Recuperamos la compra
         Compra compra = gcompra.buscarCompra(idcompra);
-        int idwallet = compra.getIdwallet();
+        Ewallet ewallet = compra.getEwallet();
+        int idwallet = ewallet.getIdwallet();
         int idproducto = compra.getIdproducto();
         gcompra.eliminarCompra(idcompra);
+
+        //Devolvemos el dinero y restamos los puntos al ewallet
+        GestionProducto gproducto = new GestionProducto();
+        GestionEwallet gewallet = new GestionEwallet();
+
+        Producto producto = gproducto.buscaProducto(idproducto);
+        //Ewallet ewallet = gewallet.buscaEwallet(idwallet);
+
+        int saldoeuros = ewallet.getSaldoeuros();
+        int saldopuntos = ewallet.getSaldopuntos();
+        int precio = producto.getPrecioproducto();
+        int puntospro = producto.getPuntosproducto();
+
+        saldoeuros = saldoeuros + precio;
+        saldopuntos = saldopuntos - puntospro;
+        
+        ewallet.setSaldoeuros(saldoeuros);
+        ewallet.setSaldopuntos(saldopuntos);
+        
+        //Actulizamos el ewallet
+        gewallet.actulizarEwallet(ewallet);
 
         //creamos un objeto de la capa de lgica de negocio
         //y llamamos al método encargado de hacer el alta
@@ -48,6 +74,6 @@ public class AltaDevolucion extends HttpServlet {
         java.sql.Date fechapasa = new java.sql.Date(lo);
         gdevolucion.altaDevolucion(fechapasa, idwallet, idproducto);
 
-        request.getRequestDispatcher("index.html").forward(request, response);
+        request.getRequestDispatcher("RecuperarCompras").forward(request, response);
     }
 }

@@ -6,9 +6,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Gestión de Productos</title>
+        <title>Area Clientes</title>
     </head>
-    <body>
+    <body align="center">
 
         <c:set var="ewallets" value="${requestScope.ewallets}"/>
 
@@ -18,7 +18,7 @@
 
             <c:when test="${!empty ewallets}">
 
-                <table border="1">
+                <table border="1" align="center">
                     <tr>
                         <th>Id_ewallet</th>
                         <th>Nombre</th>
@@ -26,8 +26,9 @@
                         <th>DNI</th>
                         <th>Fecha Nacimiento</th>
                         <th>Email</th>
-                        <th>Saldo Euros</th>
                         <th>Saldo Puntos</th>
+                        <th>Saldo Euros</th>
+                        <th>Recargar 5 euros</th>
                         <th></th>
                     </tr>
 
@@ -40,7 +41,7 @@
                             <td>${cont.email}</td>
                             <td>${cont.saldopuntos}</td>
                             <td>${cont.saldoeuros}</td>
-                            <td>Eliminar</td></tr>
+                            <td><a href="Controller?op=doHacerRecarga&idwallet=${cont.idwallet}">Recargar</a></td></tr>
 
 
                     </c:forEach>

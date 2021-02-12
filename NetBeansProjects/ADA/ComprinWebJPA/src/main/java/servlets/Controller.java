@@ -45,10 +45,13 @@ public class Controller extends HttpServlet {
                 url = "nuevaCompra.html";
                 break;
             case "doAltaCompra":
-                url="AltaCompra";
+                url = "AltaCompra";
                 break;
             case "doHacerDevolucion":
-                url="AltaDevolucion";
+                url = "AltaDevolucion";
+                break;
+            case "doHacerRecarga":
+                url = "RecargarEwallet";
                 break;
         }
         request.getRequestDispatcher(url).forward(request, response);

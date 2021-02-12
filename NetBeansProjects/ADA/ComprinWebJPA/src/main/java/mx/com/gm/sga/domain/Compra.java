@@ -7,10 +7,13 @@ package mx.com.gm.sga.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -23,24 +26,29 @@ public class Compra implements Serializable {
      private static final long SerialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idcompra")
     private int idcompra;
     private java.sql.Date fechacompra;
-    private int idwallet;
+   // private int idwallet;
     private int idproducto;
+    
+    @JoinColumn(name = "idwallet")
+    @ManyToOne
+    private Ewallet ewallet;
 
     public Compra() {
     }
 
-    public Compra(int idcompra, java.sql.Date fechacompra, int idwallet, int idproducto) {
+    public Compra(int idcompra, java.sql.Date fechacompra, Ewallet ewallet, int idproducto) {
         this.idcompra = idcompra;
         this.fechacompra = fechacompra;
-        this.idwallet = idwallet;
+        this.ewallet = ewallet;
         this.idproducto = idproducto;
     }
 
-    public Compra(java.sql.Date fechacompra, int idwallet, int idproducto) {
+    public Compra(java.sql.Date fechacompra, Ewallet ewallet, int idproducto) {
         this.fechacompra = fechacompra;
-        this.idwallet = idwallet;
+        this.ewallet = ewallet;
         this.idproducto = idproducto;
     }
 
@@ -60,12 +68,12 @@ public class Compra implements Serializable {
         this.fechacompra = fechacompra;
     }
 
-    public int getIdwallet() {
-        return idwallet;
+    public Ewallet getEwallet() {
+        return ewallet;
     }
 
-    public void setIdwallet(int idwallet) {
-        this.idwallet = idwallet;
+    public void setEwallet(Ewallet ewallet) {
+        this.ewallet = ewallet;
     }
 
     public int getIdproducto() {
@@ -76,10 +84,10 @@ public class Compra implements Serializable {
         this.idproducto = idproducto;
     }
 
-    @Override
-    public String toString() {
-        return "Compra{" + "idcompra=" + idcompra + ", fechacompra=" + fechacompra + ", idwallet=" + idwallet + ", idproducto=" + idproducto + '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Compra{" + "idcompra=" + idcompra + ", fechacompra=" + fechacompra + ", idwallet=" + idwallet + ", idproducto=" + idproducto + '}';
+//    }
 
 
     

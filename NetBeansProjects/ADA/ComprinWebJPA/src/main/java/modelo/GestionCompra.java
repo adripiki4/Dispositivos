@@ -13,6 +13,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import mx.com.gm.sga.domain.Compra;
+import mx.com.gm.sga.domain.Ewallet;
 
 /**
  *
@@ -27,8 +28,9 @@ public class GestionCompra {
     }
 
     //Alta de compra
-    public void altaCompra(java.sql.Date FechaCompra, int Id_wallet, int Id_producto) {
-        Compra c = new Compra(FechaCompra, Id_wallet, Id_producto);
+    public void altaCompra(java.sql.Date FechaCompra, Ewallet ewallet, int Id_producto) {
+        
+        Compra c = new Compra(FechaCompra, ewallet, Id_producto);
         EntityManager em = getEntityManager();
         //incluimos la operacion en una transaccion
         EntityTransaction tx = em.getTransaction();

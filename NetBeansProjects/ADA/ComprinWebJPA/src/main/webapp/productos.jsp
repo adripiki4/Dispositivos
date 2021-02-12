@@ -6,9 +6,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Gestión de Productos</title>
+        <title>Catalogo de Productos</title>
     </head>
-    <body>
+    <body align="center">
 
         <c:set var="productos" value="${requestScope.productos}"/>
 
@@ -18,7 +18,7 @@
 
             <c:when test="${!empty productos}">
 
-                <table border="1">
+                <table border="1" align="center">
                     <tr>
                         <th>Id_producto</th>
                         <th>Nombre Producto</th>

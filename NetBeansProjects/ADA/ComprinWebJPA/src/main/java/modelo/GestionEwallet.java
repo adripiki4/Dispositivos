@@ -58,4 +58,13 @@ public class GestionEwallet {
         em.clear();
         return ewallet;
     }
+    
+    public void actulizarEwallet(Ewallet ewallet){
+        EntityManager em = getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        em.merge(ewallet);
+        tx.commit();
+        em.clear();
+    }
 }

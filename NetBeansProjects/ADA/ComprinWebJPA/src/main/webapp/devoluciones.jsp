@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Gestión de Devoluciones</title>
     </head>
-    <body>
+    <body align="center">
 
         <c:set var="devoluciones" value="${requestScope.devoluciones}"/>
 
@@ -18,7 +18,7 @@
 
             <c:when test="${!empty devoluciones}">
 
-                <table border="1">
+                <table border="1" align="center">
                     <tr>
                         <th>Id Devolucion</th>
                         <th>Fecha Devolucion</th>

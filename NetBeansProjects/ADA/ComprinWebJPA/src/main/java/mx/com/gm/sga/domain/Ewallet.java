@@ -6,11 +6,15 @@
 package mx.com.gm.sga.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,6 +28,7 @@ public class Ewallet implements Serializable {
     private static final long SerialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idwallet")
     private int idwallet;
     private String nombre;
     private String apellidos;
@@ -32,6 +37,10 @@ public class Ewallet implements Serializable {
     private String email;
     private int saldopuntos;
     private int saldoeuros;
+    
+    //Relacion onetomany hacia compra
+    @OneToMany(mappedBy = "ewallet")
+    private List<Compra> compras = new ArrayList<Compra>();
 
     public Ewallet() {
     }
@@ -131,7 +140,7 @@ public class Ewallet implements Serializable {
 
     @Override
     public String toString() {
-        return "Ewallet{" + "idwallet=" + idwallet + ", nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", fechanacimiento=" + fechanacimiento + ", email=" + email + ", saldopuntos=" + saldopuntos + ", saldoeuros=" + saldoeuros + '}';
+    return ""+idwallet;
     }
 
     

@@ -49,6 +49,9 @@ public class AltaCompra extends HttpServlet {
                 break;
             }
         }
+        if (encuentra == false) {
+            request.getRequestDispatcher("EwalletIncorrecta.html").forward(request, response);
+        }
 
         //Comprobacion de que existe el producto
         List<Producto> listaproductos = gproducto.listarProductos();
@@ -57,6 +60,8 @@ public class AltaCompra extends HttpServlet {
             if (busca == idproducto) {
                 encuentra = true;
                 break;
+            }else{
+                encuentra = false;
             }
         }
         if (encuentra == false) {
@@ -65,24 +70,39 @@ public class AltaCompra extends HttpServlet {
 
         Ewallet ewallet = gewallet.buscaEwallet(idwallet);
         int saldo = ewallet.getSaldoeuros();
+        System.out.println("Saldo" + saldo);
 
         //Comprobar el precio del producto y si tiene saldo
         Producto producto = gproducto.buscaProducto(idproducto);
         int preciopro = producto.getPrecioproducto();
+        System.out.println("Precio" + preciopro);
 
         if (preciopro > saldo) {
             request.getRequestDispatcher("NoSaldo.html").forward(request, response);
+            encuentra = false;
         }
 
+        //Realizaoms la compra y restamos saldo y sumamos puntos
         if (encuentra == true) {
+            int puntospro = producto.getPuntosproducto();
+            int puntoswallet = ewallet.getSaldopuntos();
+
+            saldo = saldo - preciopro;
+            puntoswallet = puntoswallet + puntospro;
+
+            //Actualizamos saldo y puntos
+            ewallet.setSaldoeuros(saldo);
+            ewallet.setSaldopuntos(puntoswallet);
+            gewallet.actulizarEwallet(ewallet);
+
             java.util.Date fecha = new java.util.Date();
             long lo = fecha.getTime();
             java.sql.Date fechapasa = new java.sql.Date(lo);
             //creamos un objeto de la capa de lgica de negocio
             //y llamamos al método encargado de hacer el alta
             GestionCompra gcompra = new GestionCompra();
-            gcompra.altaCompra(fechapasa, idwallet, idproducto);
-            request.getRequestDispatcher("index.html").forward(request, response);
+            gcompra.altaCompra(fechapasa, ewallet, idproducto);
+            request.getRequestDispatcher("RecuperarCompras").forward(request, response);
         }
     }
 }
