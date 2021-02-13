@@ -19,7 +19,7 @@ public  abstract class AppDatabase  extends RoomDatabase {
 
     public abstract AlumnoDAO alumnoDAO();
 
-    private static final String DATABASE_NAME = "app-matriculas-db";
+    private static final String DATABASE_NAME = "app-matriculas-db1";
 
     private static AppDatabase INSTANCE;
 

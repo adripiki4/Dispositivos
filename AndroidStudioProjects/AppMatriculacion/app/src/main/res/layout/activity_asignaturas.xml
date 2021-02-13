@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".AppMatricula.ActivityAsignaturas">
+<!--    <TextView-->
+<!--        android:id="@+id/db_text"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Mostrando Asignaturas"-->
+<!--        tools:ignore="MissingConstraints"/>-->
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/listasignatura"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppMatricula.ActivityAsignaturas">
-    <TextView
-        android:id="@+id/db_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mostrando Asignaturas"
-        tools:ignore="MissingConstraints"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listasignatura"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:listitem="@layout/asignatura_item"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_asignatura"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        app:srcCompat="@drawable/ic_add_24"/>
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/add_asignatura"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|end"
+    android:layout_margin="16dp"
+    app:srcCompat="@drawable/ic_add_24"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
