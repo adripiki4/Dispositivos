@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.example.appmatriculacion.DATA.AsignaturaAdapter;
 import com.example.appmatriculacion.DATA.Asignaturas;
 import com.example.appmatriculacion.DATA.AsignaturasViewModel;
+import com.example.appmatriculacion.DATA.NuevaAsignatura;
 import com.example.appmatriculacion.Fragments.AsignaturaFragment;
 import com.example.appmatriculacion.R;
 
@@ -34,6 +36,7 @@ public class ActivityAsignaturas extends AppCompatActivity {
         asignaturasViewModel = new ViewModelProvider(this, factory).get(AsignaturasViewModel.class);
 
         setupList();
+        setupFab();
 
 
     }
@@ -47,6 +50,16 @@ public class ActivityAsignaturas extends AppCompatActivity {
 
         asignaturasViewModel.getList_asignaturas().observe(this,adapter::setItems);
 
+    }
+
+    private void setupFab(){
+        findViewById(R.id.add_asignatura).setOnClickListener(view ->{
+            addNewAsignatura();
+        });
+    }
+
+    private void addNewAsignatura(){
+        startActivity(new Intent(this, NuevaAsignatura.class));
     }
 
 
