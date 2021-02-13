@@ -6,4 +6,6 @@
     <string name="cancel">Cancel</string>
     <string name="create_button">INSERTAR</string>
     <string name="nueva_asignatura">CREAR NUEVA ASIGNATURA</string>
+    <string name="nuevo_alumno">MATRICULAR NUEVO ALUMNO</string>
+    <string name="matricular">MATRICULAR</string>
 </resources>

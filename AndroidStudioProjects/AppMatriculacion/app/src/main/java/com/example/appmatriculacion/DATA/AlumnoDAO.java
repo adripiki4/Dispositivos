@@ -2,6 +2,7 @@ package com.example.appmatriculacion.DATA;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -16,6 +17,11 @@ public interface AlumnoDAO {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Alumnos alumno);
+
+    @Delete(entity = Alumnos.class)
+    void delete(Alumnos alumnos);
+
+
 
 
 }

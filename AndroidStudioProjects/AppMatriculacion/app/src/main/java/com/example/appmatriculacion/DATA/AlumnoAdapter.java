@@ -15,6 +15,7 @@ import java.util.List;
 
 public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoViewHolder> {
     private List<Alumnos> alumnosList;
+    private ItemListener itemListener;
 
     @NonNull
     @Override
@@ -42,23 +43,44 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
         alumnosList = items;
         notifyDataSetChanged();
     }
+    public void setItemListener(AlumnoAdapter.ItemListener listener) {
+        itemListener = listener;
+    }
+
+    public interface ItemListener{
+        void onClick(Alumnos alumnos);
+        void onDeleteIconClicked(Alumnos alumnos);
+    }
 
     public class AlumnoViewHolder extends RecyclerView.ViewHolder{
         private final TextView nameAlumno;
         private final ImageView btndelete;
         private final ImageView btnedit;
+        private final ImageView btndetalle;
 
         public AlumnoViewHolder(@NonNull View itemView){
             super(itemView);
             nameAlumno = itemView.findViewById(R.id.name_alumno);
             btndelete = itemView.findViewById(R.id.btndeletealu);
             btnedit = itemView.findViewById(R.id.btneditalu);
+            btndetalle = itemView.findViewById(R.id.btnaddalu);
+
+            //Setear eventos
+            btndelete.setOnClickListener(this::manageEvents);
         }
 
-        //Setear eventos
+         public void manageEvents(View view){
+             if (itemListener!=null){
+                 Alumnos clickeditem = alumnosList.get(getAdapterPosition());
 
-        public void manageEvents(View view){
+                 //Manejar eventos de click
+                 if (view.getId()== R.id.btndeletealu){
+                     itemListener.onDeleteIconClicked(clickeditem);
+                     return;
+                 }
+                 itemListener.onClick(clickeditem);
 
+             }
         }
 
         public void bind(Alumnos item){

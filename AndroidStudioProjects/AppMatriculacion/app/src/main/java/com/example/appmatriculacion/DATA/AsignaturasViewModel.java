@@ -23,7 +23,10 @@ public class AsignaturasViewModel extends AndroidViewModel {
      }
 
      public void insert_asignatura(Asignaturas asignatura){
-        appRepository.inser_asignatura(asignatura);
+        appRepository.insert_asignatura(asignatura);
      }
 
+     public void delete_asignatura(Asignaturas asignaturas){
+        appRepository.delete_asignatura(asignaturas);
+     }
 }

@@ -1,4 +1,4 @@
-package com.example.appmatriculacion.DATA;
+package com.example.appmatriculacion.AppMatricula;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.widget.EditText;
 
+import com.example.appmatriculacion.DATA.Asignaturas;
+import com.example.appmatriculacion.DATA.AsignaturasViewModel;
 import com.example.appmatriculacion.R;
 
 public class NuevaAsignatura extends AppCompatActivity {

@@ -32,6 +32,7 @@ public class ActivityAlumnos extends AppCompatActivity {
         alumnosViewModel = new ViewModelProvider(this,factory).get(AlumnosViewModel.class);
 
         setupList();
+        setupFab();
 
 
    }
@@ -42,8 +43,29 @@ public class ActivityAlumnos extends AppCompatActivity {
         alumnoslist.setAdapter(adapter);
 
         //Asignar escucha de items
+       adapter.setItemListener(new AlumnoAdapter.ItemListener() {
+           @Override
+           public void onClick(Alumnos alumnos) {
+
+           }
+
+           @Override
+           public void onDeleteIconClicked(Alumnos alumnos) {
+            alumnosViewModel.delete_alumno(alumnos);
+           }
+       });
 
 
        alumnosViewModel.getList_alumnos().observe(this,adapter::setItems);
    }
+
+    private void setupFab(){
+        findViewById(R.id.add_alumno).setOnClickListener(view ->{
+            addNewAlumno();
+        });
+    }
+
+    private void addNewAlumno(){
+        startActivity(new Intent(this, NuevoAlumno.class));
+    }
 }

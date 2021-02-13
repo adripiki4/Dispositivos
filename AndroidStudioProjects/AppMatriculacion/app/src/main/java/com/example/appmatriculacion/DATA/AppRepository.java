@@ -33,8 +33,14 @@ public class AppRepository {
     public void insert_alumno(final Alumnos alumno){
         AppDatabase.dbExecutor.execute(()->alumnoDAO.insert(alumno));
     }
-    public void inser_asignatura(final Asignaturas asignatura){
+    public void insert_asignatura(final Asignaturas asignatura){
         AppDatabase.dbExecutor.execute(()->asignaturasDAO.insert(asignatura));
+    }
+    public void delete_asignatura(Asignaturas asignaturas){
+        AppDatabase.dbExecutor.execute(()-> asignaturasDAO.delete(asignaturas));
+    }
+    public void delete_alumno(Alumnos alumnos){
+        AppDatabase.dbExecutor.execute(()-> alumnoDAO.delete(alumnos));
     }
 
 }

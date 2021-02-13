@@ -15,6 +15,7 @@ import java.util.List;
 
 public class AsignaturaAdapter extends RecyclerView.Adapter<AsignaturaAdapter.AsignaturaViewHolder> {
     private List<Asignaturas> asignaturasList;
+    private ItemListener itemListener;
 
     @NonNull
     @Override
@@ -41,6 +42,15 @@ public class AsignaturaAdapter extends RecyclerView.Adapter<AsignaturaAdapter.As
         notifyDataSetChanged();
     }
 
+    public void setItemListener(ItemListener listener) {
+        itemListener = listener;
+    }
+
+    public interface ItemListener{
+        void onClick(Asignaturas asignaturas);
+        void onDeleteIconClicked(Asignaturas asignaturas);
+    }
+
 
     public class AsignaturaViewHolder extends RecyclerView.ViewHolder{
         private final TextView nameAsignatura;
@@ -52,11 +62,26 @@ public class AsignaturaAdapter extends RecyclerView.Adapter<AsignaturaAdapter.As
             nameAsignatura = itemView.findViewById(R.id.name_asignatura);
             btndelete = itemView.findViewById(R.id.btndelete);
             btnedit = itemView.findViewById(R.id.btnedit);
+
+            //Setear eventos
+            btndelete.setOnClickListener(this::manageEvents);
         }
 
-        //Setear eventos
+
+
 
         public void manageEvents(View view){
+            if (itemListener!=null){
+                Asignaturas clickeditem = asignaturasList.get(getAdapterPosition());
+
+                //Manejar eventos de click
+                if (view.getId()== R.id.btndelete){
+                    itemListener.onDeleteIconClicked(clickeditem);
+                    return;
+                }
+                itemListener.onClick(clickeditem);
+
+            }
 
         }
 

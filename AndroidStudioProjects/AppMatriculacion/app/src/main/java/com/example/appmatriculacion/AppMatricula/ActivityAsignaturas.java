@@ -6,15 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+
 
 import com.example.appmatriculacion.DATA.AsignaturaAdapter;
 import com.example.appmatriculacion.DATA.Asignaturas;
 import com.example.appmatriculacion.DATA.AsignaturasViewModel;
-import com.example.appmatriculacion.DATA.NuevaAsignatura;
-import com.example.appmatriculacion.Fragments.AsignaturaFragment;
 import com.example.appmatriculacion.R;
 
 public class ActivityAsignaturas extends AppCompatActivity {
@@ -47,6 +43,17 @@ public class ActivityAsignaturas extends AppCompatActivity {
         listasignaturas.setAdapter(adapter);
 
         //Asignar escucha de items
+        adapter.setItemListener(new AsignaturaAdapter.ItemListener() {
+            @Override
+            public void onClick(Asignaturas asignaturas) {
+
+            }
+
+            @Override
+            public void onDeleteIconClicked(Asignaturas asignaturas) {
+                asignaturasViewModel.delete_asignatura(asignaturas);
+            }
+        });
 
         asignaturasViewModel.getList_asignaturas().observe(this,adapter::setItems);
 

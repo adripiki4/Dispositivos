@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".AppMatricula.NuevaAsignatura">
+    tools:context=".AppMatricula.NuevoAlumno">
 
     <Button
         android:id="@+id/create_button"
@@ -13,40 +13,49 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/create_button"
+        android:text="@string/matricular"
         android:textColor="@color/design_default_color_on_secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nuevo_nombre" />
+        app:layout_constraintTop_toBottomOf="@+id/nuevo_dni" />
 
     <TextView
         android:id="@+id/name_layout"
         android:textColor="@color/colorArriba"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/nueva_asignatura"
+        android:text="@string/nuevo_alumno"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/nuevo_id"
+        android:id="@+id/nuevonombre_alu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Introduzca el Id"
+        android:hint="Nombre Alumno"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_layout" />
     <EditText
-        android:id="@+id/nuevo_nombre"
+        android:id="@+id/nuevo_apellidos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Introduzca el nombre"
-        app:layout_constraintStart_toStartOf="@+id/nuevo_id"
-        app:layout_constraintTop_toBottomOf="@+id/nuevo_id"
-         />
+        android:hint="Apellidos Alumno"
+        app:layout_constraintStart_toStartOf="@+id/nuevonombre_alu"
+        app:layout_constraintTop_toBottomOf="@+id/nuevonombre_alu"
+        />
+    <EditText
+        android:id="@+id/nuevo_dni"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="DNI "
+        app:layout_constraintStart_toStartOf="@+id/nuevo_apellidos"
+        app:layout_constraintTop_toBottomOf="@+id/nuevo_apellidos"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
