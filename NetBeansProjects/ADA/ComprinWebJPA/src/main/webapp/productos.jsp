@@ -32,7 +32,7 @@
                             <td>${cont.nombreproducto}</td>
                             <td>${cont.precioproducto}</td>
                             <td>${cont.puntosproducto}</td>
-                            <td>Eliminar</td></tr>
+                            </tr>
 
 
                     </c:forEach>
