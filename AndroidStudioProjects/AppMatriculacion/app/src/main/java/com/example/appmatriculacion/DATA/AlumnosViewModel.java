@@ -30,4 +30,8 @@ public class AlumnosViewModel extends AndroidViewModel {
     public void delete_alumno(Alumnos alumnos){
         appRepository.delete_alumno(alumnos);
     }
+
+    public void update_alumno(Alumnos alumnos){
+        appRepository.update_alumno(alumnos);
+    }
 }

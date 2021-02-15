@@ -29,4 +29,8 @@ public class AsignaturasViewModel extends AndroidViewModel {
      public void delete_asignatura(Asignaturas asignaturas){
         appRepository.delete_asignatura(asignaturas);
      }
+
+     public void update_asignatura(Asignaturas asignaturas){
+        appRepository.update_asignatura(asignaturas);
+     }
 }

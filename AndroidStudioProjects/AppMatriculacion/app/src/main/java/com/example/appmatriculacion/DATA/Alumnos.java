@@ -46,4 +46,15 @@ public class Alumnos {
         return apellidos_alumno;
     }
 
+    public void setDni_alumno(@NonNull String dni_alumno) {
+        this.dni_alumno = dni_alumno;
+    }
+
+    public void setName_alumno(@NonNull String name_alumno) {
+        this.name_alumno = name_alumno;
+    }
+
+    public void setApellidos_alumno(@NonNull String apellidos_alumno) {
+        this.apellidos_alumno = apellidos_alumno;
+    }
 }

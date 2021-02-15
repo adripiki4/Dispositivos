@@ -50,6 +50,7 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
     public interface ItemListener{
         void onClick(Alumnos alumnos);
         void onDeleteIconClicked(Alumnos alumnos);
+        void onUpdateIconClicked(Alumnos alumnos);
     }
 
     public class AlumnoViewHolder extends RecyclerView.ViewHolder{
@@ -67,6 +68,7 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
 
             //Setear eventos
             btndelete.setOnClickListener(this::manageEvents);
+            btnedit.setOnClickListener(this::manageEvents);
         }
 
          public void manageEvents(View view){
@@ -77,6 +79,8 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
                  if (view.getId()== R.id.btndeletealu){
                      itemListener.onDeleteIconClicked(clickeditem);
                      return;
+                 }else if(view.getId()==R.id.btneditalu){
+                     itemListener.onUpdateIconClicked(clickeditem);
                  }
                  itemListener.onClick(clickeditem);
 

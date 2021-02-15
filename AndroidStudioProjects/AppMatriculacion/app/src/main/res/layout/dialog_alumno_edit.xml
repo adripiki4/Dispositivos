@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <EditText
-        android:id="@+id/id_edit"
+        android:id="@+id/nombre_edit"
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,10 +13,9 @@
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
-        android:enabled="false"
-        android:hint="Id Asignatura" />
+        />
     <EditText
-        android:id="@+id/name_edit"
+        android:id="@+id/apellidos_edit"
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,5 +24,17 @@
         android:layout_marginRight="4dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif"
-        android:hint="Nombre Asignatura"/>
+        />
+    <EditText
+        android:id="@+id/dni_edit"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="16dp"
+        android:enabled="false"
+        android:fontFamily="sans-serif"
+        />
 </LinearLayout>

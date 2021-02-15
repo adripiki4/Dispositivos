@@ -1,6 +1,7 @@
 package com.example.appmatriculacion.AppMatricula;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,9 +12,10 @@ import android.os.Bundle;
 import com.example.appmatriculacion.DATA.AsignaturaAdapter;
 import com.example.appmatriculacion.DATA.Asignaturas;
 import com.example.appmatriculacion.DATA.AsignaturasViewModel;
+import com.example.appmatriculacion.Fragments.AsignaturaFragment;
 import com.example.appmatriculacion.R;
 
-public class ActivityAsignaturas extends AppCompatActivity {
+public class ActivityAsignaturas extends AppCompatActivity implements AsignaturaFragment.DialogFragmentupdate {
 
     private AsignaturasViewModel asignaturasViewModel;
     private RecyclerView listasignaturas;
@@ -53,6 +55,12 @@ public class ActivityAsignaturas extends AppCompatActivity {
             public void onDeleteIconClicked(Asignaturas asignaturas) {
                 asignaturasViewModel.delete_asignatura(asignaturas);
             }
+
+            @Override
+            public void onEditIconClicked(Asignaturas asignaturas) {
+                DialogFragment dialogFragment = new AsignaturaFragment(asignaturas);
+                dialogFragment.show(getSupportFragmentManager(),"Asignatura");
+            }
         });
 
         asignaturasViewModel.getList_asignaturas().observe(this,adapter::setItems);
@@ -70,4 +78,8 @@ public class ActivityAsignaturas extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClickUpdate(Asignaturas asignaturas) {
+        asignaturasViewModel.update_asignatura(asignaturas);
+    }
 }

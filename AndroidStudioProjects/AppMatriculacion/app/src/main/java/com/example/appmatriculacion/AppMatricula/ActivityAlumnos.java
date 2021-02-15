@@ -1,6 +1,7 @@
 package com.example.appmatriculacion.AppMatricula;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,19 +12,24 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.appmatriculacion.DATA.AlumnoAdapter;
+import com.example.appmatriculacion.DATA.AlumnoAsignatura;
 import com.example.appmatriculacion.DATA.Alumnos;
 import com.example.appmatriculacion.DATA.AlumnosViewModel;
+import com.example.appmatriculacion.Fragments.AlumnoFragment;
 import com.example.appmatriculacion.R;
 
-public class ActivityAlumnos extends AppCompatActivity {
+public class ActivityAlumnos extends AppCompatActivity  implements AlumnoFragment.DialogFragmentupdate {
     private RecyclerView alumnoslist;
     private AlumnoAdapter adapter;
     private AlumnosViewModel alumnosViewModel;
+    private Button btnnuevo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alumnos);
+
+        btnnuevo = findViewById(R.id.btnnuevo);
 
 
 
@@ -33,6 +39,14 @@ public class ActivityAlumnos extends AppCompatActivity {
 
         setupList();
         setupFab();
+
+        btnnuevo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityAlumnos.this, AlumnoAsignatura.class);
+                startActivity(intent);
+            }
+        });
 
 
    }
@@ -53,6 +67,12 @@ public class ActivityAlumnos extends AppCompatActivity {
            public void onDeleteIconClicked(Alumnos alumnos) {
             alumnosViewModel.delete_alumno(alumnos);
            }
+
+           @Override
+           public void onUpdateIconClicked(Alumnos alumnos) {
+               DialogFragment dialog = new AlumnoFragment(alumnos);
+               dialog.show(getSupportFragmentManager(),"alumnos");
+           }
        });
 
 
@@ -68,4 +88,11 @@ public class ActivityAlumnos extends AppCompatActivity {
     private void addNewAlumno(){
         startActivity(new Intent(this, NuevoAlumno.class));
     }
+
+    @Override
+    public void onClickUpdate(Alumnos alumnos) {
+        alumnosViewModel.update_alumno(alumnos);
+    }
+
+
 }

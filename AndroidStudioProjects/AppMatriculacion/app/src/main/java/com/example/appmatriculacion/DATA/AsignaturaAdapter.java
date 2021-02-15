@@ -49,6 +49,7 @@ public class AsignaturaAdapter extends RecyclerView.Adapter<AsignaturaAdapter.As
     public interface ItemListener{
         void onClick(Asignaturas asignaturas);
         void onDeleteIconClicked(Asignaturas asignaturas);
+        void onEditIconClicked(Asignaturas asignaturas);
     }
 
 
@@ -65,6 +66,7 @@ public class AsignaturaAdapter extends RecyclerView.Adapter<AsignaturaAdapter.As
 
             //Setear eventos
             btndelete.setOnClickListener(this::manageEvents);
+            btnedit.setOnClickListener(this::manageEvents);
         }
 
 
@@ -78,6 +80,8 @@ public class AsignaturaAdapter extends RecyclerView.Adapter<AsignaturaAdapter.As
                 if (view.getId()== R.id.btndelete){
                     itemListener.onDeleteIconClicked(clickeditem);
                     return;
+                }else if(view.getId()==R.id.btnedit){
+                    itemListener.onEditIconClicked(clickeditem);
                 }
                 itemListener.onClick(clickeditem);
 

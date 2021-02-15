@@ -11,33 +11,31 @@ import android.widget.EditText;
 
 import androidx.fragment.app.DialogFragment;
 
-import com.example.appmatriculacion.AppMatricula.ActivityAsignaturas;
-import com.example.appmatriculacion.DATA.Asignaturas;
+import com.example.appmatriculacion.DATA.Alumnos;
 import com.example.appmatriculacion.R;
 
-public class AsignaturaFragment extends DialogFragment {
-    public Asignaturas asignaturas;
+public class AlumnoFragment extends DialogFragment {
 
-    public AsignaturaFragment(Asignaturas asignaturas){
-        this.asignaturas= asignaturas;
+    public Alumnos alumnos;
+
+    public AlumnoFragment(Alumnos alumnos){
+        this.alumnos=alumnos;
     }
-
     public DialogFragmentupdate listener;
 
-    @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         // Get the layout inflater
         LayoutInflater inflater = requireActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_signin, null);
+        View view = inflater.inflate(R.layout.dialog_alumno_edit, null);
 
-        EditText id = view.findViewById(R.id.id_edit);
-        EditText name = view.findViewById(R.id.name_edit);
+        EditText nombre = view.findViewById(R.id.nombre_edit);
+        EditText apellidos = view.findViewById(R.id.apellidos_edit);
+        EditText dni = view.findViewById(R.id.dni_edit);
 
-        id.setText(asignaturas.getId_asignatura()+"");
-        name.setText(asignaturas.getName_asignatura());
-
-
+        nombre.setText(alumnos.getName_alumno());
+        apellidos.setText(alumnos.getApellidos_alumno());
+        dni.setText(alumnos.getDni_alumno());
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
@@ -46,11 +44,14 @@ public class AsignaturaFragment extends DialogFragment {
                 .setPositiveButton("Update", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //String nuevoid = id.getText().toString();
-                        String nuevonombre = name.getText().toString();
-                        //asignaturas.setId_asignatura(nuevoid);
-                        asignaturas.setName_asignatura(nuevonombre);
-                        listener.onClickUpdate(asignaturas);
+                        String nuevonombre= nombre.getText().toString();
+                        String nuevoapellido = apellidos.getText().toString();
+                        //String nuevodni = dni.getText().toString();
+                        alumnos.setName_alumno(nuevonombre);
+                        alumnos.setApellidos_alumno(nuevoapellido);
+                       // alumnos.setDni_alumno(nuevodni);
+
+                        listener.onClickUpdate(alumnos);
                     }
                 });
 
@@ -64,8 +65,9 @@ public class AsignaturaFragment extends DialogFragment {
         return builder.create();
     }
 
+
     public interface DialogFragmentupdate{
-        void onClickUpdate(Asignaturas asignaturas);
+        void onClickUpdate(Alumnos alumnos);
     }
 
     @Override
@@ -73,7 +75,7 @@ public class AsignaturaFragment extends DialogFragment {
         super.onAttach(activity);
 
         try{
-            listener = (DialogFragmentupdate) activity;
+            listener = (AlumnoFragment.DialogFragmentupdate) activity;
         }catch (ClassCastException e){
             throw new ClassCastException(activity.toString()+"No implemento el listener update");
         }

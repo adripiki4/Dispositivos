@@ -35,4 +35,13 @@ public class Asignaturas {
     public String getName_asignatura(){
         return name_asignatura;
     }
+
+    public void setId_asignatura(String id_asignatura) {
+        int id = Integer.parseInt(id_asignatura);
+        this.id_asignatura = id;
+    }
+
+    public void setName_asignatura(@NonNull String name_asignatura) {
+        this.name_asignatura = name_asignatura;
+    }
 }

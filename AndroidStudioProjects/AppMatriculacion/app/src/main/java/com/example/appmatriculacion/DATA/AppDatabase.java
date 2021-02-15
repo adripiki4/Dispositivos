@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Asignaturas.class, Alumnos.class}, version = 1, exportSchema = false)
+@Database(entities = {Asignaturas.class, Alumnos.class, AlumnoAsignatura.class}, version = 1, exportSchema = false)
 public  abstract class AppDatabase  extends RoomDatabase {
 
     //Exposicion de DAOs
@@ -19,7 +19,9 @@ public  abstract class AppDatabase  extends RoomDatabase {
 
     public abstract AlumnoDAO alumnoDAO();
 
-    private static final String DATABASE_NAME = "app-matriculas-db1";
+    public abstract AlumnoAsignaturaDAO alumnoAsignaturaDAO();
+
+    private static final String DATABASE_NAME = "app-matriculas-db121";
 
     private static AppDatabase INSTANCE;
 
@@ -61,6 +63,14 @@ public  abstract class AppDatabase  extends RoomDatabase {
 
                 alumnoDAO.insert(alumno1);
                 alumnoDAO.insert(alumno2);
+
+                AlumnoAsignaturaDAO alumnoAsignaturaDAO = INSTANCE.alumnoAsignaturaDAO();
+
+                AlumnoAsignatura alumnoAsignatura1 = new AlumnoAsignatura("2525582D",01);
+                AlumnoAsignatura alumnoAsignatura2 = new AlumnoAsignatura("2525582D",02);
+
+                alumnoAsignaturaDAO.insert(alumnoAsignatura1);
+                alumnoAsignaturaDAO.insert(alumnoAsignatura2);
 
             });
 
