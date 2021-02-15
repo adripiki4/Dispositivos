@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DATA.ActivityAlumnoAsignatura"></activity>
+        <activity android:name=".AppMatricula.ActivityAlumnoAsignatura"/>
         <activity android:name=".AppMatricula.NuevoAlumno" />
         <activity android:name=".AppMatricula.NuevaAsignatura" />
         <activity android:name=".AppMatricula.AsigAlumno" />

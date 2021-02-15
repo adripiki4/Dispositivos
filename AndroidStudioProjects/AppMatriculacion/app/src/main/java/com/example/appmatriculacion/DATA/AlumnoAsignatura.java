@@ -14,9 +14,14 @@ public class AlumnoAsignatura {
     @ColumnInfo(name = "id_asignatura")
     int id_asignatura;
 
-    public AlumnoAsignatura(@NonNull String dni_alumno, int id_asignatura) {
+    @NonNull
+    @ColumnInfo(name = "name_asignatura")
+    String name_asignatura;
+
+    public AlumnoAsignatura(@NonNull String dni_alumno, int id_asignatura, String name_asignatura) {
         this.dni_alumno = dni_alumno;
         this.id_asignatura = id_asignatura;
+        this.name_asignatura = name_asignatura;
     }
 
     @NonNull
@@ -26,5 +31,10 @@ public class AlumnoAsignatura {
 
     public int getId_asignatura() {
         return id_asignatura;
+    }
+
+    @NonNull
+    public String getName_asignatura() {
+        return name_asignatura;
     }
 }

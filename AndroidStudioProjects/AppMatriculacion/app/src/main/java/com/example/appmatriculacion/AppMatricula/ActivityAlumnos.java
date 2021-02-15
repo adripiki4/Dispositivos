@@ -22,15 +22,13 @@ public class ActivityAlumnos extends AppCompatActivity  implements AlumnoFragmen
     private RecyclerView alumnoslist;
     private AlumnoAdapter adapter;
     private AlumnosViewModel alumnosViewModel;
-    private Button btnnuevo;
+    String titulo = "ALUMNOS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alumnos);
-
-        btnnuevo = findViewById(R.id.btnnuevo);
-
+        this.setTitle(titulo);
 
 
         ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
@@ -39,14 +37,6 @@ public class ActivityAlumnos extends AppCompatActivity  implements AlumnoFragmen
 
         setupList();
         setupFab();
-
-        btnnuevo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ActivityAlumnos.this, AlumnoAsignatura.class);
-                startActivity(intent);
-            }
-        });
 
 
    }
@@ -72,6 +62,13 @@ public class ActivityAlumnos extends AppCompatActivity  implements AlumnoFragmen
            public void onUpdateIconClicked(Alumnos alumnos) {
                DialogFragment dialog = new AlumnoFragment(alumnos);
                dialog.show(getSupportFragmentManager(),"alumnos");
+           }
+
+           @Override
+           public void onDetailIconClicked(Alumnos alumnos) {
+               Intent intent = new Intent(ActivityAlumnos.this, ActivityAlumnoAsignatura.class);
+               intent.putExtra("alumno",alumnos);
+               startActivity(intent);
            }
        });
 

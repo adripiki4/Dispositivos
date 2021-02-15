@@ -51,6 +51,7 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
         void onClick(Alumnos alumnos);
         void onDeleteIconClicked(Alumnos alumnos);
         void onUpdateIconClicked(Alumnos alumnos);
+        void onDetailIconClicked(Alumnos alumnos);
     }
 
     public class AlumnoViewHolder extends RecyclerView.ViewHolder{
@@ -64,11 +65,12 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
             nameAlumno = itemView.findViewById(R.id.name_alumno);
             btndelete = itemView.findViewById(R.id.btndeletealu);
             btnedit = itemView.findViewById(R.id.btneditalu);
-            btndetalle = itemView.findViewById(R.id.btnaddalu);
+            btndetalle = itemView.findViewById(R.id.btndetalle);
 
             //Setear eventos
             btndelete.setOnClickListener(this::manageEvents);
             btnedit.setOnClickListener(this::manageEvents);
+            btndetalle.setOnClickListener(this::manageEvents);
         }
 
          public void manageEvents(View view){
@@ -81,6 +83,8 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
                      return;
                  }else if(view.getId()==R.id.btneditalu){
                      itemListener.onUpdateIconClicked(clickeditem);
+                 }else if(view.getId()==R.id.btndetalle){
+                     itemListener.onDetailIconClicked(clickeditem);
                  }
                  itemListener.onClick(clickeditem);
 

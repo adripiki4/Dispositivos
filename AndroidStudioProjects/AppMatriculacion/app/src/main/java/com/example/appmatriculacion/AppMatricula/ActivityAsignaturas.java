@@ -20,12 +20,12 @@ public class ActivityAsignaturas extends AppCompatActivity implements Asignatura
     private AsignaturasViewModel asignaturasViewModel;
     private RecyclerView listasignaturas;
     private AsignaturaAdapter adapter;
-
+    String titulo = "ASIGNATURAS";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_asignaturas);
-
+        this.setTitle(titulo);
         //TextView dbText = findViewById(R.id.db_text);
 
 

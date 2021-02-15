@@ -38,11 +38,11 @@
         android:minWidth="0dp"
         android:minHeight="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnaddalu"
+        app:layout_constraintEnd_toStartOf="@+id/btndetalle"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/btnaddalu"
+        android:id="@+id/btndetalle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
