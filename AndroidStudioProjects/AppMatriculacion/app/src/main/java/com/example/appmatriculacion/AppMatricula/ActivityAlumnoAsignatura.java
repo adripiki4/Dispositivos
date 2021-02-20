@@ -1,6 +1,7 @@
 package com.example.appmatriculacion.AppMatricula;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +13,7 @@ import com.example.appmatriculacion.DATA.AlumnoAsignatura;
 import com.example.appmatriculacion.DATA.AlumnoAsignaturaAdapter;
 import com.example.appmatriculacion.DATA.AlumnoAsignaturaViewModel;
 import com.example.appmatriculacion.DATA.Alumnos;
+import com.example.appmatriculacion.Fragments.RelacionFragment;
 import com.example.appmatriculacion.R;
 
 import java.util.List;
@@ -20,7 +22,7 @@ public class ActivityAlumnoAsignatura extends AppCompatActivity {
     private RecyclerView alumnosasignaturaslist;
     private AlumnoAsignaturaAdapter adapter;
     private AlumnoAsignaturaViewModel alumnoAsignaturaViewModel;
-    private TextView txt;
+
 
 
     @Override
@@ -29,7 +31,7 @@ public class ActivityAlumnoAsignatura extends AppCompatActivity {
         setContentView(R.layout.activity_alumno_asignatura);
 
         LiveData<List<AlumnoAsignatura>>listLiveData;
-        txt = findViewById(R.id.info_alumno);
+
 
         Alumnos alumnos = (Alumnos) getIntent().getSerializableExtra("alumno");
         String titulo = "Asignaturas de "+ alumnos.getName_alumno();
@@ -39,11 +41,9 @@ public class ActivityAlumnoAsignatura extends AppCompatActivity {
         alumnoAsignaturaViewModel = new ViewModelProvider(this, factory).get(AlumnoAsignaturaViewModel.class);
 
 
-
-        txt.setText(alumnos.getName_alumno().toString());
-
         setupList();
         set_alumno(alumnos);
+        add_relacion();
 
 
     }
@@ -72,6 +72,13 @@ public class ActivityAlumnoAsignatura extends AppCompatActivity {
 
     public void set_alumno(Alumnos alumno){
         adapter.setAlumnos(alumno);
+    }
+
+    public void add_relacion(){
+        findViewById(R.id.add_relacion).setOnClickListener(v -> {
+            DialogFragment dialog = new RelacionFragment();
+            dialog.show(getSupportFragmentManager(),"relacion");
+        });
     }
 
 

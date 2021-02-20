@@ -5,27 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AppMatricula.ActivityAlumnoAsignatura">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/info_alumno"
-        android:layout_gravity="start"
-        android:paddingTop="15dp"
-        />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista_alumno_Asignatura"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="@id/info_alumno"
-        app:layout_constraintEnd_toEndOf="@id/info_alumno"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/info_alumno"
         tools:listitem="@layout/alumno_asignatura_item"
-
-
-        />
+        android:layout_marginTop="30dp"  />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_relacion"
