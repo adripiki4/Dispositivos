@@ -56,6 +56,11 @@ public class AlumnoAsignaturaAdapter  extends RecyclerView.Adapter<AlumnoAsignat
         notifyDataSetChanged();
     }
 
+
+    public List<AlumnoAsignatura>getAlumnoAsignaturaList(){
+        return alumnoAsignaturaList;
+    }
+
     public void setItemListener(ItemListener listener){
         itemListener = listener;
     }
@@ -97,7 +102,7 @@ public class AlumnoAsignaturaAdapter  extends RecyclerView.Adapter<AlumnoAsignat
         }
 
         public void bind(AlumnoAsignatura item){
-            nameAsignatura.setText(item.getId_asignatura()+""+item.getName_asignatura());
+            nameAsignatura.setText(item.getId_asignatura()+" "+item.getName_asignatura());
         }
     }
 }

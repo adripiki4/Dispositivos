@@ -12,6 +12,7 @@ import android.widget.RadioGroup;
 
 import androidx.fragment.app.DialogFragment;
 
+import com.example.appmatriculacion.DATA.AlumnoAsignatura;
 import com.example.appmatriculacion.DATA.Asignaturas;
 import com.example.appmatriculacion.R;
 
@@ -22,26 +23,27 @@ public class RelacionFragment extends DialogFragment {
     private List<Asignaturas>asignaturasList = new ArrayList<Asignaturas>();
     private View view;
     private String [] nombreasignaturas;
+    private List<Asignaturas>mostrar;
 
-//    public RelacionFragment(List<Asignaturas>asignaturasList){
-//        this.asignaturasList= asignaturasList;
-//    }
-
-    public RelacionFragment(){
-
+    public RelacionFragment(List<Asignaturas>asignaturasList){
+        mostrar= asignaturasList;
     }
+
     public Dialog onCreateDialog(Bundle savedInstanceState){
 
-        Asignaturas asignatura = new Asignaturas(01,"Programacion2");
-        Asignaturas asignaturas1 = new Asignaturas(02,"Sistemas");
-        Asignaturas asignaturas2 = new Asignaturas(03,"Entornos");
-        asignaturasList.add(asignatura);
-        asignaturasList.add(asignaturas1);
-        asignaturasList.add(asignaturas2);
+//        Asignaturas asignatura = new Asignaturas(01,"Programacion2");
+//        Asignaturas asignaturas1 = new Asignaturas(02,"Sistemas");
+//        Asignaturas asignaturas2 = new Asignaturas(03,"Entornos");
+//        asignaturasList.add(asignatura);
+//        asignaturasList.add(asignaturas1);
+//        asignaturasList.add(asignaturas2);
 
-        nombreasignaturas = new String[asignaturasList.size()];
-        for (int i = 0; i< asignaturasList.size(); i++){
-            nombreasignaturas[i] = asignaturasList.get(i).getName_asignatura();
+        nombreasignaturas = new String[mostrar.size()];
+        for (int i = 0; i< mostrar.size(); i++){
+            nombreasignaturas[i] = mostrar.get(i).getName_asignatura();
+        }
+        for (Asignaturas a : mostrar){
+            System.out.println("Fragment"+a.getName_asignatura());
         }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -57,10 +59,6 @@ public class RelacionFragment extends DialogFragment {
             radioGroup.addView(radioButton);
             System.out.println("Nombre puesto"+ nombre);
         }
-
-        RadioButton primerradio = (RadioButton) radioGroup.getChildAt(0);
-        primerradio.setChecked(true);
-
 
         builder.setView(view);
 

@@ -21,7 +21,7 @@ public  abstract class AppDatabase  extends RoomDatabase {
 
     public abstract AlumnoAsignaturaDAO alumnoAsignaturaDAO();
 
-    private static final String DATABASE_NAME = "app-matriculas-db12221";
+    private static final String DATABASE_NAME = "app-matriculas-db122321";
 
     private static AppDatabase INSTANCE;
 
@@ -52,9 +52,11 @@ public  abstract class AppDatabase  extends RoomDatabase {
 
                 Asignaturas asignatura1 = new Asignaturas(01, "Programacion");
                 Asignaturas asignatura2 = new Asignaturas(02, "Sistemas Informaticos");
+                Asignaturas asignatura3 = new Asignaturas(03,"Entornos");
 
                 asignaturasDAO.insert(asignatura1);
                 asignaturasDAO.insert(asignatura2);
+                asignaturasDAO.insert(asignatura3);
 
                 AlumnoDAO alumnoDAO = INSTANCE.alumnoDAO();
 
