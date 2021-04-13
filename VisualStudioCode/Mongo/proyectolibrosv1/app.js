@@ -2,7 +2,10 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 //conexión
-mongoose.connect('mongodb://localhost:27017/libros', {
+const url1 = 'mongodb://localhost:27017/libros';
+//MongoAtlas
+const url2 = 'mongodb+srv://adriba:piqui4@cluster0.chpgt.mongodb.net/libros?retryWrites=true&w=majority';
+mongoose.connect(url2, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

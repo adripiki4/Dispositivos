@@ -6,9 +6,10 @@ mongoose.Promise = global.Promise;
 //MongoLocal
 const url1 = 'mongodb://localhost:27017/contacts';
 //MongoAtlas
-const url2 = 'mongodb+srv://adriba:piqui4@cluster0.chpgt.mongodb.net/<dbname>?retryWrites=true&w=majority';
+const url2 = 'mongodb+srv://adriba:piqui4@cluster0.chpgt.mongodb.net/contacts?retryWrites=true&w=majority';
+const url3 = 'mongodb+srv://adriba:piqui4@cluster0.chpgt.mongodb.net/contacts?retryWrites=true&w=majority';
 // connect with the contacts DB
-mongoose.connect(url1, {
+mongoose.connect(url2, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => { console.log('conected') }).catch((err) => { console.log('error') });
@@ -43,7 +44,7 @@ let Contact = mongoose.model('contacts', contactSchema);
 // first we create the contact
 let contact1 = new Contact({
     name: "Boris",
-    telephone: "946112230",
+    telephone: "946113230",
     age: 49
 });
 // we will use a save promise to save it to the database

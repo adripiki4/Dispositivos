@@ -1,0 +1,45 @@
+.wrapper {
+    border: 2px solid #555758;
+    border-radius: 5px;
+    background-color: #30302f;
+}
+body{
+  background-color: #30302f;
+  color:  #30302f;
+}
+
+.wrapper > div {
+    border: 2px solid #0a0a0a;
+    border-radius: 5px;
+    background-color: #292929;
+    padding: 1em;
+    color: #ffffff;
+    
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: #30302f;
+}
+dialog {
+  width: 100%;
+  height: 100%;
+  right: 0;
+  left: auto;
+  background-color: #575757;
+}
+
+header{
+  background-color: black;
+  color: deeppink;
+}
+
+.window{
+  background-color: dimgray;
+}
+.window-content{
+  background-color: #30302f;
+}
+.pane-group{
+  background-color: #30302f;
+}

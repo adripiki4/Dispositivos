@@ -13,7 +13,9 @@ const mongoose=require('mongoose');
 // this is necessary because mongo supports different types of promises
 mongoose.Promise=global.Promise;
 // connect with the contacts DB
-mongoose.connect('mongodb://localhost:27017/libros', {
+const url1 ='mongodb://localhost:27017/libros';
+const url2 = 'mongodb+srv://adriba:piqui4@cluster0.chpgt.mongodb.net/libros?retryWrites=true&w=majority';
+mongoose.connect(url2, {
 useNewUrlParser:true,
 useUnifiedTopology:true
 });

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>PlayList</title>
+  <link rel="stylesheet" href="./css/estilos.css">
+  <link rel="stylesheet" href="./css/photon.css">
+  <link rel="stylesheet" href="node_modules/xel/themes/material.css">
+  <script src="./node_modules/xel/xel.min.js"></script>
+</head>
+
+<body>
+
+
+
+  <div class="window">
+    <header>
+      <!--MenuBAR-->
+      <x-menubar style="background-color:  dimgray;">
+
+
+        <!--Buscar por name-->
+        <x-button skin="flat" style="margin-left:28%;">
+          <x-label style="color:lawngreen;">Song</x-label>
+          <dialog style="background-color: dimgray;">
+            <x-box>
+              <x-input id="txtname" style="background-color: rgb(39, 38, 38); color: white; ">
+                <x-label style="color: grey">Tittle</x-label>
+              </x-input>
+
+              <x-button skin="flat" id="btnbuscar1" style="color:lawngreen;">
+                <x-icon name="search"></x-icon>
+              </x-button>
+            </x-box>
+          </dialog>
+        </x-button>
+
+        <!--Buscar por artista-->
+        <x-button skin="flat">
+          <x-label style="color:lawngreen;">Artist</x-label>
+          <dialog style="background-color: dimgray;">
+            <x-box>
+              <x-input id="txtartist" style="background-color: rgb(39, 38, 38); color: white; ">
+                <x-label style="color: grey">Artist</x-label>
+              </x-input>
+
+              <x-button skin="flat" id="btnbuscar2" style="color:lawngreen;">
+                <x-icon name="search"></x-icon>
+              </x-button>
+            </x-box>
+          </dialog>
+        </x-button>
+
+        <!--Home-->
+        <x-button skin="flat" id="btnhome">
+          <x-icon name="home" style="color: lawngreen;"></x-icon>
+        </x-button>
+
+        <!--Registro nuevo-->
+        <x-button skin="flat">
+          <x-label style="color:lawngreen;">New</x-label>
+          <dialog style="background-color: dimgray;">
+            <x-box vertical>
+
+              <x-input id="newname" style="background-color: rgb(39, 38, 38); color: white; ">
+                <x-label style="color: grey">Name</x-label>
+              </x-input>
+
+              <x-input id="newartist" style="background-color: rgb(39, 38, 38); color: white; ">
+                <x-label style="color: grey">Artist</x-label>
+              </x-input>
+
+              <x-input id="newalbum" style="background-color: rgb(39, 38, 38); color: white; ">
+                <x-label style="color: grey">Album</x-label>
+              </x-input>
+
+              <x-input id="newimg" style="background-color: rgb(39, 38, 38); color: white; ">
+                <x-label style="color: grey">img</x-label>
+              </x-input>
+
+              <!--RadioButton-->
+
+              <x-box>
+                <input class="radioadri" type="radio" id="popnew" name="radios">
+                <label style="color:lawngreen; margin: 10px; font-size: 14px;">POP</label>
+              </x-box>
+
+              <x-box>
+                <input class="radioadri" type="radio" id="rocknew" name="radios">
+                <label style="color:lawngreen; margin: 10px; font-size: 14px;">ROCK</label>
+              </x-box>
+
+              <x-box>
+                <input class="radioadri" type="radio" id="housenew" name="radios">
+                <label style="color:lawngreen; margin: 10px; font-size: 14px;">HOUSE</label>
+              </x-box>
+
+              <x-box>
+                <input class="radioadri" type="radio" id="latinonew" name="radios">
+                <label style="color:lawngreen; margin: 10px; font-size: 14px;">LATINO</label>
+              </x-box>
+              <!--<x-radios style="color:lawngreen;">
+                <x-box>
+                  <x-radio id="popnew" style="color:lawngreen;"></x-radio>
+                  <x-label>POP</x-label>
+                </x-box>
+                <x-box>
+                  <x-radio id="rocknew"  style="color:lawngreen;"></x-radio>
+                  <x-label>ROCK</x-label>
+                </x-box>
+                <x-box>
+                  <x-radio id="housenew"  style="color:lawngreen;"></x-radio>
+                  <x-label>HOUSE</x-label>
+                </x-box>
+                <x-box>
+                  <x-radio id="latinonew"  style="color:lawngreen;"></x-radio>
+                  <x-label>LATINO</x-label>
+                </x-box>
+              </x-radios> -->
+
+              <x-button skin="flat" id="btnnew" style="color:lawngreen;">
+                <x-icon name="add"></x-icon>
+              </x-button>
+
+
+            </x-box>
+          </dialog>
+        </x-button>
+
+        <!--Eliminar-->
+        <x-button skin="flat">
+          <x-label style="color:lawngreen;">Delete</x-label>
+          <dialog style="background-color: dimgray;">
+            <x-box>
+              <x-input id="txtdelete" style="background-color: rgb(39, 38, 38); color: white; ">
+                <x-label style="color: grey">Name to delete</x-label>
+              </x-input>
+
+              <x-button skin="flat" id="btndelete" style="color:lawngreen;">
+                <x-icon name="delete"></x-icon>
+              </x-button>
+            </x-box>
+          </dialog>
+        </x-button>
+
+        <!--SELECTION-->
+        <x-select skin="flat" style="color:lawngreen;">
+          <x-menu style="background-color:  dimgray;">
+            <x-menuitem value="ALL" id="ALL" toggled>
+              <x-label style="color:lawngreen;">ALL</x-label>
+            </x-menuitem>
+
+            <x-menuitem value="POP" id="POP">
+              <x-label style="color:lawngreen;">POP</x-label>
+            </x-menuitem>
+
+            <x-menuitem value="ROCK" id="ROCK">
+              <x-label style="color:lawngreen;">ROCK</x-label>
+            </x-menuitem>
+
+            <x-menuitem value="HOUSE" id="HOUSE">
+              <x-label style="color:lawngreen;">HOUSE</x-label>
+            </x-menuitem>
+
+            <x-menuitem value="LATINO" id="LATINO">
+              <x-label style="color:lawngreen;">LATINO</x-label>
+            </x-menuitem>
+
+          </x-menu>
+        </x-select>
+
+
+
+
+      </x-menubar>
+    </header>
+    <div class="window-content">
+      <div class="pane-group">
+        <!--panel imágenes-->
+        <div class="pane">
+          <div class="wrapper" id="wrapper">
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Foot bar -->
+
+
+  </div>
+
+  <script>require('./app.js')</script>
+  <x-notification id="notification" timeout="2000" style="color: dimgray; background-color:white">
+  </x-notification>
+</body>
+
+</html>

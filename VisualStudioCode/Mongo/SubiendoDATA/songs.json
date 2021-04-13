@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Versace on the Floor",
+        "artist": "Bruno Mars",
+        "album": "24k Magic",
+        "type": "POP",
+        "img": "1.jpg"
+    },
+    {
+        "name": "When I Was Your Man",
+        "artist": "Bruno Mars",
+        "album": "Unorthodox Jukebox",
+        "type": "POP",
+        "img": "2.jpg"
+    },
+    {
+        "name": "In the End",
+        "artist": "Linkin Park",
+        "album": "Hybrid Theory",
+        "type": "ROCK",
+        "img": "3.jpg"
+    },
+    {
+        "name": "Waiting for the End",
+        "artist": "Linkin Park",
+        "album": "A Thousand Suns",
+        "type": "ROCK",
+        "img": "4.jpg"
+    },
+    {
+        "name": "You Little Beauty",
+        "artist": "Fisher",
+        "album": "Freaks",
+        "type": "HOUSE",
+        "img": "5.jpg"
+    },
+    {
+        "name": "Pump It Up",
+        "artist": "Endor",
+        "album": "Pump it up",
+        "type": "HOUSE",
+        "img": "6.jpg"
+    },
+    {
+        "name": "Reloj",
+        "artist": "Rauw Alejandro",
+        "album": "Afrodisiaco",
+        "type": "LATINO",
+        "img": "7.jpg"
+    },
+    {
+        "name": "Un Peso",
+        "artist": "J Balvin & Bad Bunny",
+        "album": "Oasis",
+        "type": "LATINO",
+        "img": "8.jpg"
+    }
+]
