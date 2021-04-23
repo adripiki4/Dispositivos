@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Polideportivo-Inicio</title>
+        <title>Polideportivo-Inscripciones</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="newcss.css">
@@ -20,24 +20,37 @@
             <a href="">Usuarios</a>
 
         </div>
-        
+
         <!-- CABECERA -->
         <header id="main-header">
 
-            <a id="logo-header" href="#">
+            <a id="logo-header" href="index.html">
                 <span class="site-name">Polideportivo Adrián</span>
-                <span class="site-desc">Inicio</span>
+                <span class="site-desc">Inscripciones-Nuevo</span>
             </a> <!-- / #logo-header -->
 
         </header>
 
         <!-- MAIN  -->
         <div class="main">
+            <br>
+            <fieldset>
+                <legend>Nueva Inscripcion</legend>
+                <form action="" method="post" onsubmit="return comprobar();">
 
-            <h3>Noticias</h3>
+                    <p>Nombre Actividad: <input type="text" id="nombre" size="30"></p>
+                    <p>DNI Cliente: <input type="text" id="apellidos" size="30"></p>
+                    <input type="submit" value="Guardar"/>
+                </form>
+                <form method=GET  action="inscriptions.html">
+                    <input type="submit" value="Atrás">
+                </form>
+            </fieldset>
+
+
+
 
         </div>
 
     </body>
-</html> 
-
+</html>

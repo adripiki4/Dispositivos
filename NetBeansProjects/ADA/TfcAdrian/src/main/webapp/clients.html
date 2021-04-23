@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Polideportivo-Actividades</title>
+        <title>Polideportivo-Clientes</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="newcss.css">
@@ -26,7 +26,7 @@
 
             <a id="logo-header" href="index.html">
                 <span class="site-name">Polideportivo Adrián</span>
-                <span class="site-desc">Actividades</span>
+                <span class="site-desc">Clientes</span>
             </a> <!-- / #logo-header -->
 
         </header>
@@ -38,30 +38,35 @@
             <fieldset>
                 <legend>Filtrar</legend>
                 <form>
-                    <input type="text" id="deporte"  placeholder="Deporte">
-                    <input type="text" id="dia"  placeholder="Dia de la semana">
+                    <input type="text" id="deporte"  placeholder="Nombre">
+                    <input type="text" id="dia"  placeholder="DNI">
                     <input type="submit" value="Buscar">
-                    <input type="submit" value="Limpiar">
+                    <input type="reset" value="Limpiar">
                 </form>
-            </fieldset><br>
+            </fieldset>
+            <form method=GET  action="newcliente.html">
+                <input type="submit" value="Nuevo Cliente">
+            </form>
+
+
+
+            <br>
             <table>
                 <tr>
-                    <th>Actividad</th>
-                    <th>Instalación</th>
-                    <th>Día</th>
-                    <th>Hora</th>
-                    <th>Inscritos</th>
-                    <th>Capacidad</th>
-                    <th>Precio</th>
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Cuota</th>
                 </tr>
                 <tr>
-                    <td><a href=""> Natacion 2</a></td>
-                    <td>Piscina Calle 4</td>
-                    <td>Lunes</td>
-                    <td>18:00</td>
-                    <td>3</td>
-                    <td>6</td>
-                    <td>24,50</td>
+                    <td><a href=""> 45698221H</a></td>
+                    <td>Adrián</td>
+                    <td>Piquero Ibáñez</td>
+                    <td>654698632</td>
+                    <td>adri@dominio.com</td>
+                    <td>25</td>
                 </tr>
 
             </table>
@@ -70,4 +75,4 @@
         </div>
 
     </body>
-</html> 
+</html>
