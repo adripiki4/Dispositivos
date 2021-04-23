@@ -1,16 +1,65 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Polideportivo-Instalacion</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="newcss.css">
+
     </head>
     <body>
-        <div>TODO write content</div>
+
+        <!-- MENU LATERAL -->
+        <div class="sidenav">
+
+            <a href="clients.html">Clientes</a>
+            <a href="actividades.html">Actividades</a>
+            <a href="inscriptions.html">Inscripciones</a>
+            <a href="instalations.html">Instalaciones</a>
+            <a href="monitors.html">Monitores</a>
+            <a href="users.html">Usuarios</a>
+
+        </div>
+
+        <!-- CABECERA -->
+        <header id="main-header">
+
+            <a id="logo-header" href="index.html">
+                <span class="site-name">Polideportivo Adrián</span>
+                <span class="site-desc">Instalaciones</span>
+            </a> <!-- / #logo-header -->
+
+        </header>
+
+        <!-- MAIN  -->
+        <div class="main">
+
+            <br>
+            <fieldset>
+                <legend>Filtrar</legend>
+                <form>
+                    <input type="text" id=""  placeholder="Deporte">
+                    <input type="submit" value="Buscar">
+                    <input type="reset" value="Limpiar">
+                </form>
+            </fieldset>
+            <br>
+            <table>
+                <tr>
+                    <th>Instalacion</th>
+                    <th>Precio Alquiler</th>
+                    <th>Deporte</th>
+                </tr>
+                <tr>
+                    <td>Piscina calle 2</td>
+                    <td>4,5</td>
+                    <td>Natación</td>
+                </tr>
+
+            </table>
+
+
+        </div>
+
     </body>
 </html>

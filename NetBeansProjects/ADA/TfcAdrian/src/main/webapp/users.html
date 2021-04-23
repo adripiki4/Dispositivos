@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Polideportivo-Clientes</title>
+        <title>Polideportivo-Usuarios</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="newcss.css">
@@ -26,31 +26,38 @@
 
             <a id="logo-header" href="index.html">
                 <span class="site-name">Polideportivo Adrián</span>
-                <span class="site-desc">Clientes-Nuevo</span>
+                <span class="site-desc">Usuarios</span>
             </a> <!-- / #logo-header -->
 
         </header>
 
         <!-- MAIN  -->
         <div class="main">
+
             <br>
             <fieldset>
-                <legend>Nuevo Cliente</legend>
-                <form action="" method="post" onsubmit="return comprobar();">
-
-                    <p>Nombre: <input type="text" id="nombre" size="30"></p>
-                    <p>Apellidos: <input type="text" id="apellidos" size="30"></p>
-                    <p>DNI: <input type="text" id="dni" size="30"></p>
-                    <p>Telefono: <input type="text" id="telefono" size="30"></p>
-                    <p>Email: <input type="text" id="email" size="30"></p>
-                    <input type="submit" value="Guardar"/>
-                </form>
-                <form method=GET  action="clients.html">
-                    <input type="submit" value="Atrás">
+                <legend>Filtrar</legend>
+                <form>
+                    <input type="text" id=""  placeholder="Usuario">
+                    <input type="text" id=""  placeholder="Nombre">
+                    <input type="submit" value="Buscar">
+                    <input type="reset" value="Limpiar">
                 </form>
             </fieldset>
+            <br>
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Usuario</th>
+                </tr>
+                <tr>
+                    <td>Adrián</td>
+                    <td>Piquero</td>
+                    <td>adriba</td>
+                </tr>
 
-
+            </table>
 
 
         </div>
