@@ -40,6 +40,6 @@ public class AltaCliente extends HttpServlet {
         //Llamamos al metodo para hacer el alta
         GestionCliente gcliente = new GestionCliente();
         gcliente.altaCliente(dni, nombre, apellidos, telefono,email,cuota);
-        request.getRequestDispatcher("index.html").forward(request, response);
+        request.getRequestDispatcher("Controller?op=doRecuperarClientes").forward(request, response);
     }
 }

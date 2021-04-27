@@ -15,7 +15,7 @@
         <!-- MENU LATERAL -->
         <div class="sidenav">
 
-            <a href="clients.html">Clientes</a>
+            <a href="Controller?op=doRecuperarClientes">Clientes</a>
             <a href="actividades.html">Actividades</a>
             <a href="inscriptions.html">Inscripciones</a>
             <a href="instalations.html">Instalaciones</a>
