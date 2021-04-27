@@ -11,6 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import mx.com.gm.sga.domain.Cliente;
 
 /**
@@ -26,8 +27,8 @@ public class GestionCliente {
     }
     
     //Alta de Cliente
-    public void altaCliente(String dni,String nombre, String apellidos, int telefono, String email){
-        Cliente cliente = new Cliente(dni, nombre, apellidos, telefono, email);
+    public void altaCliente(String dni,String nombre, String apellidos, int telefono, String email,double cuota){
+        Cliente cliente = new Cliente(dni, nombre, apellidos, telefono, email, cuota);
         EntityManager em = getEntityManager();
         //Incluimos la operacion en una transaccion
         EntityTransaction tx = em.getTransaction();
@@ -40,8 +41,11 @@ public class GestionCliente {
     //Listar Clientes
     public List<Cliente> recuperarClientes(){
         EntityManager em = getEntityManager();
-        String select = "SELECT c from Clientes c";
-        Query qr = em.createQuery(select);
+//        String select = "SELECT c from clientes c";
+//        System.out.println("Antes");
+//        Query qr = em.createQuery(select);
+//        System.out.println("Despues");
+        TypedQuery<Cliente> qr = em.createQuery("SELECT c from Cliente c",Cliente.class);
         List<Cliente> listClientes = qr.getResultList();
         em.clear();
         return listClientes;

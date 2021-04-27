@@ -4,6 +4,7 @@
         <title>Polideportivo-Clientes</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <link rel="stylesheet" href="newcss.css">
 
     </head>
@@ -36,16 +37,17 @@
             <br>
             <fieldset>
                 <legend>Nuevo Cliente</legend>
-                <form action="" method="post" onsubmit="return comprobar();">
+                <form action="Controller?op=doAltaCliente" method="post">
 
-                    <p>Nombre: <input type="text" id="nombre" size="30"></p>
-                    <p>Apellidos: <input type="text" id="apellidos" size="30"></p>
-                    <p>DNI: <input type="text" id="dni" size="30"></p>
-                    <p>Telefono: <input type="text" id="telefono" size="30"></p>
-                    <p>Email: <input type="text" id="email" size="30"></p>
+                    <p>Nombre: <input type="text" id="nombre" size="30" name="nombre"></p>
+                    <p>Apellidos: <input type="text" id="apellidos" size="30" name="apellidos"></p>
+                    <p>DNI: <input type="text" id="dni" size="30" name="dni"></p>
+                    <p>Telefono: <input type="text" id="telefono" size="30" name="telefono"></p>
+                    <p>Email: <input type="text" id="email" size="30" name="email"></p>
                     <input type="submit" value="Guardar"/>
                 </form>
-                <form method=GET  action="clients.html">
+                
+                <form method=GET  action="clientes.jsp">
                     <input type="submit" value="Atrás">
                 </form>
             </fieldset>
