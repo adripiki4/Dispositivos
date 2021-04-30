@@ -66,6 +66,15 @@ public class Cliente implements Serializable{
         this.email = email;
     }
 
+    public int getIdcliente() {
+        return idcliente;
+    }
+
+    public void setIdcliente(int idcliente) {
+        this.idcliente = idcliente;
+    }
+    
+
     public String getDni() {
         return dni;
     }

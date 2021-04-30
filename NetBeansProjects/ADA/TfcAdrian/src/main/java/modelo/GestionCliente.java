@@ -52,10 +52,10 @@ public class GestionCliente {
     }
     
     //Buscar un cliente por dni
-    public Cliente buscaCliente(String dni){
+    public Cliente buscaCliente(int idcliente){
         Cliente cliente = new Cliente();
         EntityManager em = getEntityManager();
-        cliente = em.find(Cliente.class, dni);
+        cliente = em.find(Cliente.class, idcliente);
         em.clear();
         return cliente;
     }
@@ -71,12 +71,12 @@ public class GestionCliente {
     }
     
     //Borrar un cliente
-    public void eliminarCliente(String dni){
+    public void eliminarCliente(int idcliente){
         Cliente cliente = new Cliente();
         EntityManager em = getEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        cliente = em.find(Cliente.class, dni);
+        cliente = em.find(Cliente.class, idcliente);
         em.remove(cliente);
         tx.commit();
         em.clear();
