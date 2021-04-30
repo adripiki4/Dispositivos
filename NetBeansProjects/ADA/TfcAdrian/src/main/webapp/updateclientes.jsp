@@ -48,13 +48,13 @@
             <legend>Editar Cliente</legend>
             <form action="UpdateCliente" method="get">
 
-                <p>ID: <input type="text" id="idcliente" size="30" name="idcliente" value="${cliente.idcliente}"> </p>
+                <p>ID: <input type="text" id="idcliente" size="30" name="idcliente" value="${cliente.idcliente}" readonly> </p>
                 <p>Nombre: <input type="text" id="nombre" size="30" name="nombre" value="${cliente.nombre}"></p>
                 <p>Apellidos: <input type="text" id="apellidos" size="30" name="apellidos" value="${cliente.apellidos}"></p>
                 <p>DNI: <input type="text" id="dni" size="30" name="dni" value="${cliente.dni}"></p>
                 <p>Telefono: <input type="text" id="telefono" size="30" name="telefono" value="${cliente.telefono}"></p>
                 <p>Email: <input type="text" id="email" size="30" name="email" value="${cliente.email}"></p>
-                <p>Cuota: <input type="text" id="cuota" size="30" name="cuota" value="${cliente.cuota}" ></p>
+                <p>Cuota: <input type="text" id="cuota" size="30" name="cuota" value="${cliente.cuota}"readonly ></p>
                 <input type="submit" value="Actualizar"/>
             </form>
 
