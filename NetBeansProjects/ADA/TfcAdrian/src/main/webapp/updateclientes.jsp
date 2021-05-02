@@ -20,7 +20,7 @@
             <a href="actividades.html">Actividades</a>
             <a href="inscriptions.html">Inscripciones</a>
             <a href="instalations.html">Instalaciones</a>
-            <a href="monitors.html">Monitores</a>
+            <a href="Controller?op=doRecuperarMonitores">Monitores</a>
             <a href="users.html">Usuarios</a>
 
         </div>

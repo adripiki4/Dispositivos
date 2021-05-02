@@ -6,8 +6,11 @@
 
     <persistence-unit name="TFCadrianPU" transaction-type="RESOURCE_LOCAL">
         <class>mx.com.gm.sga.domain.Cliente</class>
+        <class>mx.com.gm.sga.domain.Monitores</class>
+        <class>mx.com.gm.sga.domain.Deportes</class>
+        <class>mx.com.gm.sga.domain.Instalacion</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/tfc_adrian?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"/> />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/tfc_poli?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"/> />
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="piqui4" />
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />

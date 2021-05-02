@@ -1,12 +1,12 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" import="modelo.GestionCliente, java.util.ArrayList,mx.com.gm.sga.domain.Cliente"%>
+         pageEncoding="ISO-8859-1" import="modelo.GestionInstalacion, java.util.ArrayList,mx.com.gm.sga.domain.InstalacionName"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Polideportivo-Clientes</title>
+        <title>Polideportivo-Instalaciones</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="newcss.css">
@@ -29,73 +29,55 @@
 
         <a id="logo-header" href="index.html">
             <span class="site-name">Polideportivo Adrián</span>
-            <span class="site-desc">Clientes</span>
+            <span class="site-desc">Instalaciones</span>
         </a> <!-- / #logo-header -->
 
     </header>
-
     <!-- MAIN  -->
     <div class="main">
-        <br>
 
+        <br>
         <fieldset>
             <legend>Filtrar</legend>
             <form>
-                <input type="text" id="deporte"  placeholder="Nombre">
-                <input type="text" id="dia"  placeholder="DNI">
+                <input type="text" id=""  placeholder="Deporte">
                 <input type="submit" value="Buscar">
                 <input type="reset" value="Limpiar">
             </form>
         </fieldset>
         <br>
-        <form method=GET  action="newcliente.html">
-            <input type="submit" value="Nuevo Cliente">
-        </form>
 
-
-
-        <br>
-
-        <c:set var="clientes" value="${requestScope.clientes}"/>
-
-        
+        <c:set var="instalaciones" value="${requestScope.instalaciones}"/>
 
         <c:choose>
 
-            <c:when test="${!empty clientes}">
+            <c:when test="${!empty instalaciones}">
 
                 <table>
+
                     <tr>
-                        <th>DNI</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Teléfono</th>
-                        <th>Email</th>
-                        <th>Cuota</th>
+                        <th>Instalacion</th>
+                        <th>Precio Alquiler</th>
+                        <th>Deporte</th>
                     </tr>
-
-                    <c:forEach var="cli" items="${clientes}">
-
+                    
+                    <c:forEach var="ins" items="${instalaciones}">
+                        
                         <tr>
-                            <td>${cli.dni}</td>
-                            <td>${cli.nombre}</td>
-                            <td>${cli.apellidos}</td>
-                            <td>${cli.telefono}</td>
-                            <td>${cli.email}</td>
-                            <td>${cli.cuota}</td>
-                            <td><a href="Controller?op=doMostrarUpdate&idcliente=${cli.idcliente}">Editar</a> </td>
+                            <td>${ins.name}</td>
+                            <td>${ins.precio}</td>
+                            <td>${ins.deporte}</td>
                         </tr>
-
+                        
                     </c:forEach>
 
                 </table>
 
             </c:when>
             <c:otherwise>
-                <h1>No hay clientes</h1>
+                <h1>No hay instalaciones</h1>
             </c:otherwise>
         </c:choose>
 
-    </div>
-</body>
+    </body>
 </html>
