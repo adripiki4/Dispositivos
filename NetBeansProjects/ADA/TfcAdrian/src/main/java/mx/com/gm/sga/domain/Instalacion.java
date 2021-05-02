@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -27,27 +29,33 @@ public class Instalacion implements Serializable {
     private int idinstalacion;
     private String name;
     private double precio;
-    private int deportes_id;
+    //private int deportes_id;
+    
+    
+    //Relacion con deporte
+    @JoinColumn(name = "iddeporte")
+    @ManyToOne
+    private Deportes deportes;
 
     public Instalacion() {
     }
 
-    public Instalacion(int idinstalacion, String name, double precio, int deportes_id) {
+    public Instalacion(int idinstalacion, String name, double precio, Deportes deporte) {
         this.idinstalacion = idinstalacion;
         this.name = name;
         this.precio = precio;
-        this.deportes_id = deportes_id;
+        this.deportes = deporte;
     }
 
-    public Instalacion(String name, double precio, int deportes_id) {
+    public Instalacion(String name, double precio, Deportes deporte) {
         this.name = name;
         this.precio = precio;
-        this.deportes_id = deportes_id;
+        this.deportes = deporte;
     }
 
-    public Instalacion(String name, int deportes_id) {
+    public Instalacion(String name, Deportes deporte) {
         this.name = name;
-        this.deportes_id = deportes_id;
+        this.deportes = deporte;
     }
 
     public int getIdinstalacion() {
@@ -74,18 +82,22 @@ public class Instalacion implements Serializable {
         this.precio = precio;
     }
 
-    public int getDeportes_id() {
-        return deportes_id;
+    public Deportes getDeporte() {
+        return deportes;
     }
 
-    public void setDeportes_id(int deportes_id) {
-        this.deportes_id = deportes_id;
+    public void setDeporte(Deportes deporte) {
+        this.deportes = deporte;
     }
 
     @Override
     public String toString() {
-        return "Instalacion{" + "idinstalacion=" + idinstalacion + ", name=" + name + ", precio=" + precio + ", deportes_id=" + deportes_id + '}';
+        return "Instalacion{" + "idinstalacion=" + idinstalacion + ", name=" + name + ", precio=" + precio + ", deporte=" + deportes + '}';
     }
+    
+    
+
+    
     
     
     

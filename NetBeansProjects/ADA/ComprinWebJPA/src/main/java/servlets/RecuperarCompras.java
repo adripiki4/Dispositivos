@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.GestionCompra;
 import mx.com.gm.sga.domain.Compra;
+import mx.com.gm.sga.domain.Ewallet;
 
 
 /**

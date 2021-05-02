@@ -6,11 +6,14 @@
 package mx.com.gm.sga.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,10 +26,18 @@ public class Deportes implements Serializable {
     private static final long SerialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "iddeporte")
     private int id;
     private String name;
+    
+    
+    
+    //Relacion hacia instalacion
+    @OneToMany(mappedBy = "deportes")
+    private List<Instalacion> instalaciones = new ArrayList<Instalacion>();
 
+    
+    
     public Deportes() {
     }
 

@@ -33,17 +33,23 @@ public class RecuperarInstalaciones extends HttpServlet {
          GestionInstalacion ginstalacion = new GestionInstalacion();
          GestionDeportes gdeportes = new GestionDeportes();
          List<Instalacion> listinsta = ginstalacion.recuperarInstalaciones();
-         List<Deportes> listdepor = gdeportes.recuperarDeportes();
+//         List<Deportes> listdepor = gdeportes.recuperarDeportes();
          List<InstalacionName> listinstalaciones = new ArrayList<InstalacionName>();
          
-         for(Instalacion ins:listinsta){
-             for(Deportes d : listdepor){
-                 if(ins.getDeportes_id()== d.getId()){
-                     InstalacionName nueva = new InstalacionName(ins.getIdinstalacion(), ins.getName(), ins.getPrecio(),d.getName());
-                     listinstalaciones.add(nueva);
-                 }
-             }
-         }
+//         for(Instalacion ins:listinsta){
+//             for(Deportes d : listdepor){
+//                 if(ins.getDeportes_id()== d.getId()){
+//                     InstalacionName nueva = new InstalacionName(ins.getIdinstalacion(), ins.getName(), ins.getPrecio(),d.getName());
+//                     listinstalaciones.add(nueva);
+//                 }
+//             }
+//         }
+
+        for(Instalacion ins : listinsta){
+            Deportes depor = ins.getDeporte();
+            InstalacionName nueva = new InstalacionName(ins.getIdinstalacion(),ins.getName(),ins.getPrecio(),depor.getName());
+            listinstalaciones.add(nueva);
+        }
          
          for(InstalacionName i : listinstalaciones){
              System.out.println(i);
