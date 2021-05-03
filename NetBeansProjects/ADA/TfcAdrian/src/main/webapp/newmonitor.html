@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Polideportivo-Actividades</title>
+        <title>Polideportivo-Monitores</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <link rel="stylesheet" href="newcss.css">
 
     </head>
@@ -12,11 +13,11 @@
         <!-- MENU LATERAL -->
         <div class="sidenav">
 
-            <a href="clients.html">Clientes</a>
+            <a href="Controller?op=doRecuperarClientes">Clientes</a>
             <a href="actividades.html">Actividades</a>
             <a href="inscriptions.html">Inscripciones</a>
             <a href="instalations.html">Instalaciones</a>
-            <a href="monitors.html">Monitores</a>
+            <a href="Controller?op=doRecuperarMonitores">Monitores</a>
             <a href="users.html">Usuarios</a>
 
         </div>
@@ -26,7 +27,7 @@
 
             <a id="logo-header" href="index.html">
                 <span class="site-name">Polideportivo Adrián</span>
-                <span class="site-desc">Actividades-Nueva</span>
+                <span class="site-desc">Monitores-Nuevo</span>
             </a> <!-- / #logo-header -->
 
         </header>
@@ -35,20 +36,17 @@
         <div class="main">
             <br>
             <fieldset>
-                <legend>Nueva Actividad</legend>
-                <form action="" method="post" onsubmit="return comprobar();">
+                <legend>Nuevo Cliente</legend>
+                <form action="Controller?op=doAltaMonitor" method="post">
 
-                    <p>Nombre: <input type="text" id="nombre" size="30"></p>
-                    <p>Instalación: <input type="text" id="apellidos" size="30"></p>
-                    <p>Monitor: <input type="text" id="dni" size="30"></p>
-                    <p>Aforo MAX: <input type="text" id="telefono" size="30"></p>
-                    <p>Deporte: <input type="text" id="email" size="30"></p>
-                    <p>Día de semana: <input type="text" id="email" size="30"></p>
-                    <p>Hora: <input type="text" id="email" size="30"></p>
-                    <p>Cuota: <input type="text" id="email" size="30"></p>
+                    <p>Nombre: <input type="text" id="nombre" size="30" name="nombre"></p>
+                    <p>Apellidos: <input type="text" id="apellidos" size="30" name="apellidos"></p>
+                    <p>Telefono: <input type="text" id="telefono" size="30" name="telefono"></p>
+                    <p>Email: <input type="text" id="email" size="30" name="email"></p>
                     <input type="submit" value="Guardar"/>
                 </form>
-                <form method=GET  action="actividades.html">
+                
+                <form action="RecuperarMonitores">
                     <input type="submit" value="Atrás">
                 </form>
             </fieldset>

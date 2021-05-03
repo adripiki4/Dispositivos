@@ -17,9 +17,9 @@
         <div class="sidenav">
 
             <a href="Controller?op=doRecuperarClientes">Clientes</a>
-            <a href="actividades.html">Actividades</a>
+            <a href="Controller?op=doRecuperarActividades">Actividades</a>
             <a href="inscriptions.html">Inscripciones</a>
-            <a href="instalations.html">Instalaciones</a>
+            <a href="Controller?op=doRecuperarInstalaciones">Instalaciones</a>
             <a href="Controller?op=doRecuperarMonitores">Monitores</a>
             <a href="users.html">Usuarios</a>
 
@@ -46,9 +46,9 @@
         <c:set var="cliente" value="${requestScope.cliente}"/>
         <fieldset>
             <legend>Editar Cliente</legend>
-            <form action="UpdateCliente" method="get">
+            <form action="Controller?op=doUpdateCliente&idcliente=${cliente.idcliente}" method="post">
 
-                <p>ID: <input type="text" id="idcliente" size="30" name="idcliente" value="${cliente.idcliente}" readonly> </p>
+<!--                <p>ID: <input type="text" id="idcliente" size="30" name="idcliente" value="${cliente.idcliente}" readonly> </p>-->
                 <p>Nombre: <input type="text" id="nombre" size="30" name="nombre" value="${cliente.nombre}"></p>
                 <p>Apellidos: <input type="text" id="apellidos" size="30" name="apellidos" value="${cliente.apellidos}"></p>
                 <p>DNI: <input type="text" id="dni" size="30" name="dni" value="${cliente.dni}"></p>

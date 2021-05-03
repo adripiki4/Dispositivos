@@ -16,9 +16,9 @@
         <div class="sidenav">
 
             <a href="Controller?op=doRecuperarClientes">Clientes</a>
-            <a href="actividades.html">Actividades</a>
+            <a href="Controller?op=doRecuperarActividades">Actividades</a>
             <a href="inscriptions.html">Inscripciones</a>
-            <a href="instalations.html">Instalaciones</a>
+            <a href="Controller?op=doRecuperarInstalaciones">Instalaciones</a>
             <a href="Controller?op=doRecuperarMonitores">Monitores</a>
             <a href="users.html">Usuarios</a>
 
@@ -48,6 +48,10 @@
             </form>
         </fieldset>
         <br>
+        <form method=GET  action="newmonitor.html">
+            <input type="submit" value="Nuevo Monitor">
+        </form>
+        <br>
 
         <c:set var="monitores" value="${requestScope.monitores}"/>
 
@@ -62,23 +66,24 @@
                         <th>Teléfono</th>
                         <th>Email</th>
                     </tr>
-                    
+
                     <c:forEach var="moni" items="${monitores}">
-                        
+
                         <tr>
                             <td>${moni.nombre}</td>
                             <td>${moni.apellidos}</td>
                             <td>${moni.telefono}</td>
                             <td>${moni.email}</td>
-                            
+                            <td><a href="Controller?op=doMonitorUpdate&idmonitores=${moni.idmonitores}">Editar</a></td>
+
                         </tr>
-                        
+
                     </c:forEach>
 
                 </table>
 
             </c:when>
-            
+
             <c:otherwise>
                 <h1>No hay monitores</h1>
             </c:otherwise>

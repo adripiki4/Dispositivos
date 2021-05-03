@@ -41,8 +41,20 @@ public class Controller extends HttpServlet {
             case "doRecuperarMonitores":
                 url = "RecuperarMonitores";
                 break;
+            case "doAltaMonitor":
+                url = "AltaMonitor";
+                break;
+            case "doMonitorUpdate":
+                url = "MonitorUpdMuestra";
+                break;
+            case "doUpdateMonitor":
+                url = "UpdateMonitor";
+                break;
             case "doRecuperarInstalaciones":
                 url = "RecuperarInstalaciones";
+                break;
+            case "doRecuperarActividades":
+                url = "RecuperarActividades";
                 break;
 
         }

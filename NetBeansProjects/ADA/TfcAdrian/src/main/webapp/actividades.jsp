@@ -1,12 +1,13 @@
 
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" import="modelo.GestionCliente, java.util.ArrayList,mx.com.gm.sga.domain.Cliente"%>
+         pageEncoding="ISO-8859-1" import="modelo.GestionActividad, java.util.ArrayList,mx.com.gm.sga.domain.ActividadName"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Polideportivo-Clientes</title>
+        <title>Polideportivo-Actividades</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="newcss.css">
@@ -29,11 +30,10 @@
 
         <a id="logo-header" href="index.html">
             <span class="site-name">Polideportivo Adrián</span>
-            <span class="site-desc">Clientes</span>
+            <span class="site-desc">Actividades</span>
         </a> <!-- / #logo-header -->
 
     </header>
-
     <!-- MAIN  -->
     <div class="main">
         <br>
@@ -41,59 +41,58 @@
         <fieldset>
             <legend>Filtrar</legend>
             <form>
-                <input type="text" id="deporte"  placeholder="Nombre">
-                <input type="text" id="dia"  placeholder="DNI">
+                <input type="text" id="deporte"  placeholder="Deporte">
+                <input type="text" id="dia"  placeholder="Dia de la semana">
                 <input type="submit" value="Buscar">
-                <input type="reset" value="Limpiar">
+                <input type="submit" value="Limpiar">
             </form>
         </fieldset>
-        <br>
-        <form method=GET  action="newcliente.html">
-            <input type="submit" value="Nuevo Cliente">
-        </form>
+        <form method=GET  action="newactivity.html">
+            <input type="submit" value="Nueva Actividad">
+        </form><br>
 
-
-
-        <br>
-
-        <c:set var="clientes" value="${requestScope.clientes}"/>
-
-        
+        <c:set var="actividades" value="${requestScope.actividades}"/>
 
         <c:choose>
 
-            <c:when test="${!empty clientes}">
+            <c:when test="${!empty actividades}">
 
                 <table>
                     <tr>
-                        <th>DNI</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Teléfono</th>
-                        <th>Email</th>
-                        <th>Cuota</th>
+                        <th>Actividad</th>
+                        <th>Dia de la semana</th>
+                        <th>Hora</th>
+                        <th>Inscritos</th>
+                        <th>Capacidad</th>
+                        <th>Precio</th>
+                        <th>Instalacion</th>
+                        <th>Deporte</th>
+                        <th>Monitor</th>
                     </tr>
-
-                    <c:forEach var="cli" items="${clientes}">
-
+                    
+                    <c:forEach var="act" items="${actividades}">
+                        
                         <tr>
-                            <td>${cli.dni}</td>
-                            <td>${cli.nombre}</td>
-                            <td>${cli.apellidos}</td>
-                            <td>${cli.telefono}</td>
-                            <td>${cli.email}</td>
-                            <td>${cli.cuota}</td>
-                            <td><a href="Controller?op=doMostrarUpdate&idcliente=${cli.idcliente}">Editar</a> </td>
+                            <td>${act.nombre}</td>
+                            <td>${act.dia}</td>
+                            <td>${act.hora}</td>
+                            <td>${act.inscritos}</td>
+                            <td>${act.maxpersonas}</td>
+                            <td>${act.precio}</td>
+                            <td>${act.instalacion}</td>
+                            <td>${act.deporte}</td>
+                            <td>${act.monitores}</td>
                         </tr>
-
+                        
                     </c:forEach>
 
                 </table>
-
             </c:when>
+            
             <c:otherwise>
-                <h1>No hay clientes</h1>
+                <h1>No hay actividades</h1>
             </c:otherwise>
+
         </c:choose>
 
     </div>

@@ -6,6 +6,7 @@
 package mx.com.gm.sga.domain;
 
 import java.io.Serializable;
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -35,6 +36,10 @@ public class Deportes implements Serializable {
     //Relacion hacia instalacion
     @OneToMany(mappedBy = "deportes")
     private List<Instalacion> instalaciones = new ArrayList<Instalacion>();
+    
+    //Relacion hacia actividad
+    @OneToMany(mappedBy = "deportes")
+    private List<Actividad> actividades = new ArrayList<Actividad>();
 
     
     

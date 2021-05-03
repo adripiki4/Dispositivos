@@ -11,68 +11,67 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import mx.com.gm.sga.domain.Monitores;
+import mx.com.gm.sga.domain.Actividad;
 
 /**
  *
  * @author adrip
  */
-public class GestionMonitores {
-    //metodo para obtener el objeto EntityManager
+public class GestionActividad {
+     //metodo para obtener el objeto EntityManager
 
     private EntityManager getEntityManager() {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("TFCadrianPU");
         return factory.createEntityManager();
     }
     
-    //Alta de Monitor
-    public void altaMonitor(Monitores monitor){
+    //Alta de Actividad
+    public void altaActividad(Actividad actividad){
         EntityManager em = getEntityManager();
-        //Incluimos la operacion en una transaccion
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        em.persist(monitor);
+        em.persist(actividad);
         tx.commit();
         em.clear();
     }
     
-    //Listar monitores
-    public List<Monitores> recuperarMonitores(){
+    //Listar Actividades
+    public List<Actividad> recuperarActividades(){
         EntityManager em = getEntityManager();
-        TypedQuery<Monitores> qr = em.createQuery("SELECT m from Monitores m", Monitores.class);
-        List<Monitores> listmonitores = qr.getResultList();
+        TypedQuery<Actividad> qr = em.createQuery("SELECT a from Actividad a", Actividad.class);
+        List<Actividad> listactividades = qr.getResultList();
         em.clear();
-        return listmonitores;
+        return listactividades;
     }
     
-    //Actualizar monitores
-    public void actualizarMonitores(Monitores monitor){
+    //Buscar una Actividad por id
+    public Actividad buscaActividad(int idactividad){
+        Actividad actividad = new Actividad();
+        EntityManager em = getEntityManager();
+        actividad = em.find(Actividad.class, idactividad);
+        em.clear();
+        return actividad;
+    }
+    
+    //Actualizar actividad
+    public void actualizarActividad(Actividad actividad){
         EntityManager em = getEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        em.merge(monitor);
+        em.merge(actividad);
         tx.commit();
         em.clear();
     }
     
-    //Borrar un monitor
-    public void eliminarMonitor(int idmonitores){
-        Monitores monitor = new Monitores();
+    //Eliminar actividad
+    public void eliminarActividad(int idactividad){
         EntityManager em = getEntityManager();
+        Actividad actividad = new Actividad();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        monitor = em.find(Monitores.class, idmonitores);
-        em.remove(monitor);
+        actividad = em.find(Actividad.class,idactividad);
+        em.remove(actividad);
         tx.commit();
         em.clear();
-    }
-    
-    //Buscar un monitor
-    public Monitores buscaMonitor(int idmonitores){
-        Monitores monitor = new Monitores();
-        EntityManager em = getEntityManager();
-        monitor = em.find(Monitores.class, idmonitores);
-        em.clear();
-        return monitor;
     }
 }
