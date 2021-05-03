@@ -57,9 +57,17 @@
                 <p>Cuota: <input type="text" id="cuota" size="30" name="cuota" value="${cliente.cuota}"readonly ></p>
                 <input type="submit" value="Actualizar"/>
             </form>
+            <br>
 
+
+
+
+            <form action="Controller?op=doEliminarCliente&idcliente=${cliente.idcliente}" method="post">
+                <input type="submit" value="Eliminar"/>
+            </form>
+            <br>
             <form action="RecuperarClientes">
-                <input type="submit" value="Atrás">
+                <input type="submit" value="Atrás"/>
             </form>
         </fieldset>
 
