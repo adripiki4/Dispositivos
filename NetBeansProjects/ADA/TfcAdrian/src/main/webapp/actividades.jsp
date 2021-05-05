@@ -47,7 +47,8 @@
                 <input type="submit" value="Limpiar">
             </form>
         </fieldset>
-        <form method=GET  action="newactivity.html">
+        <br>
+        <form action="Controller?op=doPrenewActivity" method="post">
             <input type="submit" value="Nueva Actividad">
         </form><br>
 

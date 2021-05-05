@@ -36,17 +36,27 @@
             <br>
             <fieldset>
                 <legend>Nueva Actividad</legend>
-                <form action="" method="post" onsubmit="return comprobar();">
+                <form action="Controller?op=doAltaActividad" method="post">
 
-                    <p>Nombre: <input type="text" id="nombre" size="30"></p>
-                    <p>Instalación: <input type="text" id="apellidos" size="30"></p>
-                    <p>Monitor: <input type="text" id="dni" size="30"></p>
-                    <p>Aforo MAX: <input type="text" id="telefono" size="30"></p>
-                    <p>Deporte: <input type="text" id="email" size="30"></p>
-                    <p>Día de semana: <input type="text" id="email" size="30"></p>
-                    <p>Hora: <input type="text" id="email" size="30"></p>
-                    <p>Cuota: <input type="text" id="email" size="30"></p>
+                    <p>Nombre: <input type="text" id="nombre" size="30" name="nombre"></p>
+                    <p>Instalación: <input type="text" id="instalacion" size="30" name="instalacion"></p>
+                    <p>Monitor: <input type="text" id="monitor" size="30"name="monitor"></p>
+                    <p>Aforo MAX: <input type="text" id="aforo" size="30" name="aforo"></p>
+                    <p>Día de semana: <input type="text" id="dia" size="30" name="dia"></p>
+                    <p>Hora: <input type="text" id="hora" size="30" name="hora"></p>
+                    <p>Cuota: <input type="text" id="cuota" size="30" name="cuota"></p>
+
+                    <p>
+                        <select name="deporte" id="deporte">
+                            <option value="padel">Padel</option>
+                            <option value="natacion">Natacion</option>
+                            <option value="futbol">Futbol</option>
+                            <option value="baile">Baile</option>
+                        </select>
+                    </p>
+
                     <input type="submit" value="Guardar"/>
+
                 </form>
                 <form method=GET  action="actividades.html">
                     <input type="submit" value="Atrás">

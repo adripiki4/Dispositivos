@@ -56,6 +56,12 @@ public class Controller extends HttpServlet {
             case "doRecuperarActividades":
                 url = "RecuperarActividades";
                 break;
+            case "doPrenewActivity":
+                url = "PrenewActivity";
+                break;
+            case "doAltaActividad":
+                url = "AltaActividad";
+                break;
 
         }
         request.getRequestDispatcher(url).forward(request, response);
