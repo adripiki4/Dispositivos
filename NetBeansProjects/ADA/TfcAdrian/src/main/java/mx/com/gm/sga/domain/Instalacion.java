@@ -90,11 +90,11 @@ public class Instalacion implements Serializable {
         this.precio = precio;
     }
 
-    public Deportes getDeporte() {
+    public Deportes getDeportes() {
         return deportes;
     }
 
-    public void setDeporte(Deportes deporte) {
+    public void setDeportes(Deportes deporte) {
         this.deportes = deporte;
     }
 

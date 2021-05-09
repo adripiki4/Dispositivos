@@ -40,13 +40,16 @@
 
         <fieldset>
             <legend>Filtrar</legend>
-            <form>
-                <input type="text" id="deporte"  placeholder="Nombre">
-                <input type="text" id="dia"  placeholder="DNI">
+            <form action="Controller?op=doFiltrarCliente" method="post">
+                <input type="text" id="dni" name="dni" placeholder="DNI">
                 <input type="submit" value="Buscar">
-                <input type="reset" value="Limpiar">
+            </form>
+            <br>
+            <form action="RecuperarClientes" method="post">
+                <input type="submit" value="Limpiar">
             </form>
         </fieldset>
+        
         <br>
         <form method=GET  action="newcliente.html">
             <input type="submit" value="Nuevo Cliente">

@@ -38,11 +38,14 @@
         <br>
         <fieldset>
             <legend>Filtrar</legend>
-            <form>
-                <input type="text" id=""  placeholder="Nombre Actividad">
-                <input type="text" id=""  placeholder="DNI">
+            <form action="Controller?op=doFiltrarInscripiones" method="post">
+                <input type="text" id="nombre" name="nombre"  placeholder="Nombre Actividad">
+                <input type="text" id="dni" name="dni"  placeholder="DNI cliente">
                 <input type="submit" value="Buscar">
-                <input type="reset" value="Limpiar">
+            </form>
+            <br>
+            <form action="RecuperarInscripciones" method="post">
+                <input type="submit" value="Limpiar">
             </form>
         </fieldset>
         <br>

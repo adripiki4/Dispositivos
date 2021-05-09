@@ -40,10 +40,13 @@
 
         <fieldset>
             <legend>Filtrar</legend>
-            <form>
-                <input type="text" id="deporte"  placeholder="Deporte">
-                <input type="text" id="dia"  placeholder="Dia de la semana">
+            <form action="Controller?op=doFiltrarActividad" method="post">
+                <input type="text" id="deporte" name="deporte"  placeholder="Deporte">
+                <input type="text" id="dia" name="dia"  placeholder="Dia de la semana">
                 <input type="submit" value="Buscar">
+            </form>
+            <br>
+            <form action="RecuperarActividades" method="post">
                 <input type="submit" value="Limpiar">
             </form>
         </fieldset>

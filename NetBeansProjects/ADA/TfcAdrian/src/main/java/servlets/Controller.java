@@ -83,6 +83,21 @@ public class Controller extends HttpServlet {
             case "doAltaInscripcion":
                 url = "AltaInscripcion";
                 break;
+            case "doFiltrarInstalaciones":
+                url = "FiltrarInstalaciones";
+                break;
+            case "doFiltrarCliente":
+                url = "FiltrarCliente";
+                break;
+            case "doFiltrarMonitor":
+                url = "FiltrarMonitor";
+                break;
+            case "doFiltrarActividad":
+                url = "FiltrarActividad";
+                break;
+            case "doFiltrarInscripiones":
+                url ="FiltrarInscripiones";
+                break;
 
         }
         request.getRequestDispatcher(url).forward(request, response);

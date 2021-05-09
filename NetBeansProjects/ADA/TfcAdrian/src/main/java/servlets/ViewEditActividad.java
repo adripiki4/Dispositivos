@@ -46,7 +46,7 @@ public class ViewEditActividad extends HttpServlet {
          List<Instalacion> instalaciones = new ArrayList<Instalacion>();
          
          for(Instalacion i : list){
-             Deportes d = i.getDeporte();
+             Deportes d = i.getDeportes();
              if(d.getId()== deporte.getId()){
                  instalaciones.add(i);
              }

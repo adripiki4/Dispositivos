@@ -46,7 +46,7 @@ public class RecuperarInstalaciones extends HttpServlet {
 //         }
 
         for(Instalacion ins : listinsta){
-            Deportes depor = ins.getDeporte();
+            Deportes depor = ins.getDeportes();
             InstalacionName nueva = new InstalacionName(ins.getIdinstalacion(),ins.getName(),ins.getPrecio(),depor.getName());
             listinstalaciones.add(nueva);
         }
@@ -56,7 +56,7 @@ public class RecuperarInstalaciones extends HttpServlet {
          }
          
          //Guardamos las instalaciones en un atributo de peticion
-         request.setAttribute("instalaciones", listinstalaciones);
+         request.setAttribute("instalaciones", listinsta);
          //Transferencia de la peticion
          request.getRequestDispatcher("instalaciones.jsp").forward(request, response);
      } 

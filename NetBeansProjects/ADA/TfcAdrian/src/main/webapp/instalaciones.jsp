@@ -1,6 +1,6 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" import="modelo.GestionInstalacion, java.util.ArrayList,mx.com.gm.sga.domain.InstalacionName"%>
+         pageEncoding="ISO-8859-1" import="modelo.GestionInstalacion, java.util.ArrayList, mx.com.gm.sga.domain.Instalacion"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,10 +39,13 @@
         <br>
         <fieldset>
             <legend>Filtrar</legend>
-            <form>
-                <input type="text" id=""  placeholder="Deporte">
+            <form action="Controller?op=doFiltrarInstalaciones" method="post">
+                <input type="text" id="deporte" name="deporte"  placeholder="Deporte">
                 <input type="submit" value="Buscar">
-                <input type="reset" value="Limpiar">
+            </form>
+            <br>
+            <form action="RecuperarInstalaciones" method="post">
+                <input type="submit" value="Limpiar">
             </form>
         </fieldset>
         <br>
@@ -60,15 +63,15 @@
                         <th>Precio Alquiler</th>
                         <th>Deporte</th>
                     </tr>
-                    
+
                     <c:forEach var="ins" items="${instalaciones}">
-                        
+
                         <tr>
                             <td>${ins.name}</td>
                             <td>${ins.precio}</td>
-                            <td>${ins.deporte}</td>
+                            <td>${ins.deportes}</td>
                         </tr>
-                        
+
                     </c:forEach>
 
                 </table>

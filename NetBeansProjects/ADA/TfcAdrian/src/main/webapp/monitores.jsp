@@ -40,11 +40,13 @@
         <br>
         <fieldset>
             <legend>Filtrar</legend>
-            <form>
-                <input type="text" id=""  placeholder="Deporte">
-                <input type="text" id=""  placeholder="Nombre">
+            <form action="Controller?op=doFiltrarMonitor" method="post">
+                <input type="text" id="nombre" name="nombre"  placeholder="Nombre">
                 <input type="submit" value="Buscar">
-                <input type="reset" value="Limpiar">
+            </form>
+            <br>
+            <form action="RecuperarMonitores" method="post">
+                <input type="submit" value="Limpiar">
             </form>
         </fieldset>
         <br>
@@ -85,7 +87,7 @@
             </c:when>
 
             <c:otherwise>
-                <h1>No hay monitores</h1>
+                <h3>No se encontraron monitores</h3>
             </c:otherwise>
 
         </c:choose>
