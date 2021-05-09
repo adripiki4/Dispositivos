@@ -1,12 +1,13 @@
 
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" import="modelo.GestionInstalacion, java.util.ArrayList,mx.com.gm.sga.domain.InstalacionName"%>
+         pageEncoding="ISO-8859-1" import="modelo.GestionActividad, java.util.ArrayList,mx.com.gm.sga.domain.Actividad"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Polideportivo-Instalaciones</title>
+        <title>Polideportivo-Inscripciones</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="newcss.css">
@@ -29,55 +30,77 @@
 
         <a id="logo-header" href="index.html">
             <span class="site-name">Polideportivo Adrián</span>
-            <span class="site-desc">Instalaciones</span>
+            <span class="site-desc">Nueva Inscripcion</span>
         </a> <!-- / #logo-header -->
 
     </header>
     <!-- MAIN  -->
     <div class="main">
+       
+        
+        <h3>Selecciona una actividad para continuar</h3>
 
-        <br>
         <fieldset>
             <legend>Filtrar</legend>
             <form>
-                <input type="text" id=""  placeholder="Deporte">
+                <input type="text" id="deporte"  placeholder="Deporte">
+                <input type="text" id="dia"  placeholder="Dia de la semana">
                 <input type="submit" value="Buscar">
-                <input type="reset" value="Limpiar">
+                <input type="submit" value="Limpiar">
             </form>
         </fieldset>
         <br>
+        <form action="RecuperarInscripciones" method="post">
+            <input type="submit" value="Salir">
+        </form><br>
+       
+        
 
-        <c:set var="instalaciones" value="${requestScope.instalaciones}"/>
+        <c:set var="actividades" value="${requestScope.actividades}"/>
 
         <c:choose>
 
-            <c:when test="${!empty instalaciones}">
+            <c:when test="${!empty actividades}">
 
                 <table>
-
                     <tr>
+                        <th>Actividad</th>
+                        <th>Dia de la semana</th>
+                        <th>Hora</th>
+                        <th>Inscritos</th>
+                        <th>Capacidad</th>
+                        <th>Precio (Euros)</th>
                         <th>Instalacion</th>
-                        <th>Precio Alquiler</th>
                         <th>Deporte</th>
+                        <th>Monitor</th>
                     </tr>
-                    
-                    <c:forEach var="ins" items="${instalaciones}">
-                        
+
+                    <c:forEach var="act" items="${actividades}">
+
                         <tr>
-                            <td>${ins.name}</td>
-                            <td>${ins.precio}</td>
-                            <td>${ins.deporte}</td>
+                            <td>${act.nombre}</td>
+                            <td>${act.dia}</td>
+                            <td>${act.hora}</td>
+                            <td>${act.inscritos}</td>
+                            <td>${act.maxpersonas}</td>
+                            <td>${act.precio}</td>
+                            <td>${act.instalacion}</td>
+                            <td>${act.deportes}</td>
+                            <td>${act.monitores}</td>
+                            <td><a href="Controller?op=doSeleccionarCliente&idactividad=${act.idactividad}">Seleccionar</a></td>
                         </tr>
-                        
+
                     </c:forEach>
 
                 </table>
-
             </c:when>
+
             <c:otherwise>
-                <h1>No hay instalaciones</h1>
+                <h1>No hay actividades</h1>
             </c:otherwise>
+
         </c:choose>
 
-    </body>
+    </div>
+</body>
 </html>

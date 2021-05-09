@@ -68,6 +68,21 @@ public class Controller extends HttpServlet {
             case "doUpdateActividad":
                 url = "UpdateActividad";
                 break;
+            case "doRecuperarInscripciones":
+                url = "RecuperarInscripciones";
+                break;
+            case "doNewInscripcion1":
+                url = "NewInscripcion1";
+                break;
+            case "doSeleccionarCliente":
+                url = "NewInscripcion2";
+                break;
+            case "doConfirmaInscripcion":
+                url = "ConfirmaInscripcion";
+                break;
+            case "doAltaInscripcion":
+                url = "AltaInscripcion";
+                break;
 
         }
         request.getRequestDispatcher(url).forward(request, response);

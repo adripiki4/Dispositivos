@@ -18,7 +18,7 @@
 
             <a href="Controller?op=doRecuperarClientes">Clientes</a>
             <a href="Controller?op=doRecuperarActividades">Actividades</a>
-            <a href="inscriptions.html">Inscripciones</a>
+            <a href="Controller?op=doRecuperarInscripciones">Inscripciones</a>
             <a href="Controller?op=doRecuperarInstalaciones">Instalaciones</a>
             <a href="Controller?op=doRecuperarMonitores">Monitores</a>
             <a href="users.html">Usuarios</a>
@@ -70,9 +70,9 @@
                         <th>Deporte</th>
                         <th>Monitor</th>
                     </tr>
-                    
+
                     <c:forEach var="act" items="${actividades}">
-                        
+
                         <tr>
                             <td>${act.nombre}</td>
                             <td>${act.dia}</td>
@@ -85,12 +85,12 @@
                             <td>${act.monitores}</td>
                             <td><a href="Controller?op=doActividadUpdate&idactividad=${act.idactividad}">Editar</a></td>
                         </tr>
-                        
+
                     </c:forEach>
 
                 </table>
             </c:when>
-            
+
             <c:otherwise>
                 <h1>No hay actividades</h1>
             </c:otherwise>

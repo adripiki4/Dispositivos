@@ -182,7 +182,7 @@ public class Actividad implements Serializable {
 
     @Override
     public String toString() {
-        return "Actividad{" + "idactividad=" + idactividad + ", nombre=" + nombre + ", dia=" + dia + ", hora=" + hora + ", maxpersonas=" + maxpersonas + ", inscritos=" + inscritos + ", precio=" + precio + ", deportes=" + deportes + ", instalacion=" + instalacion + ", monitores=" + monitores + '}';
+    return nombre;
     }
 
     
