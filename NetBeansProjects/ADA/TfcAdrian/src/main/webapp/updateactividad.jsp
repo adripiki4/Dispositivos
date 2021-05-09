@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" import="modelo.GestionMonitores, java.util.ArrayList,mx.com.gm.sga.domain.Monitores, modelo.GestionInstalacion, modelo.GestionDeportes,
-         mx.com.gm.sga.domain.Instalacion, mx.com.gm.sga.domain.Deportes"%>
+         pageEncoding="ISO-8859-1" import="modelo.GestionActividad, java.util.ArrayList,mx.com.gm.sga.domain.ActividadName"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -29,7 +28,7 @@
 
         <a id="logo-header" href="index.html">
             <span class="site-name">Polideportivo Adrián</span>
-            <span class="site-desc">Actividades-Nueva</span>
+            <span class="site-desc">Actividades-Editar</span>
         </a> <!-- / #logo-header -->
 
     </header>
@@ -40,16 +39,18 @@
 
 
         <fieldset>
-            <legend>Nueva Actividad</legend>
-            <form action="Controller?op=doAltaActividad" method="post">
+            <legend>Editar Actividad</legend>
+            <c:set var="actividad" value="${requestScope.actividad}"/>
+            <form action="Controller?op=doUpdateActividad&idactividad=${actividad.idactividad}" method="post">
 
-                <p>Nombre de la Actividad: <input type="text" id="nombre" size="30" name="nombre"></p>
+
+                <p>Nombre de la Actividad: <input type="text" id="nombre" size="30" name="nombre" value="${actividad.nombre}"></p>
 
                 <!--                Seleccionar instalaciones-->
                 <c:set var="instalaciones" value="${requestScope.instalaciones}"/>
                 <c:choose>
                     <c:when test="${!empty instalaciones}">
-                        <label for="instalacion">Seleccione instalación: </label>
+                        <label for="instalacion">Instalacion: (Actual ${actividad.instalacion}) </label>
                         <select name="instalacion" id="instalacion">
 
                             <c:forEach var="ins" items="${instalaciones}">
@@ -70,7 +71,7 @@
                 <c:set var="monitores" value="${requestScope.monitores}"/>
                 <c:choose>
                     <c:when test="${!empty monitores}">
-                        <label for="monitor">Seleccione Monitor: </label>
+                        <label for="monitor">Monitores: (Actual ${actividad.monitores}) </label>
                         <select name="monitor" id="monitor">
 
                             <c:forEach var="moni" items="${monitores}">
@@ -88,34 +89,20 @@
 
 
 
-                <p>Aforo MAX: <input type="text" id="aforo" size="30" name="aforo"></p>
-                <p>Día de semana: <input type="text" id="dia" size="30" name="dia"></p>
-                <p>Hora (HH:mm): <input type="text" id="hora" size="30" name="hora"></p>
-                <p>Cuota: <input type="text" id="cuota" size="30" name="cuota"></p>
+                <p>Aforo MAX: <input type="text" id="aforo" size="30" name="aforo" value="${actividad.maxpersonas}"></p>
+                <p>Día de semana: <input type="text" id="dia" size="30" name="dia" value="${actividad.dia}"></p>
+                <p>Hora (HH:mm): <input type="text" id="hora" size="30" name="hora" value="${actividad.hora}"></p>
+                <p>Cuota: <input type="text" id="cuota" size="30" name="cuota" value="${actividad.precio}"></p>
+                <p>Deporte <input type="text" id="deporte" size="30" name="deporte" value="${actividad.deportes}" readonly></p>
 
-                <!--               Seleccionar deporte-->
-                <c:set var="deportes" value="${requestScope.deportes}"/>
-                <c:choose>
-                    <c:when test="${!empty deportes}">
-                        <label for="deporte">Seleccione Deporte: </label>
-                        <select name="deporte" id="deporte">
 
-                            <c:forEach var="dep" items="${deportes}">
-
-                                <option value="${dep.id}"> ${dep.name}</option>
-                            </c:forEach>
-                        </select>
-                    </c:when>
-                    <c:otherwise>
-                        <p>No hay deportes</p>
-                    </c:otherwise>
-                </c:choose>
-                <br><br>
+                <br>
 
                 <input type="submit" value="Guardar"/>
             </form>
-                <br>
-                <form action="RecuperarActividades" method="post">
+
+            <br>
+           <form action="RecuperarActividades" method="post">
                 <input type="submit" value="Atrás">
             </form>
         </fieldset>

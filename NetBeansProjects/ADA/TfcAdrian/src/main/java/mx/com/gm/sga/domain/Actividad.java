@@ -6,6 +6,8 @@
 package mx.com.gm.sga.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -52,6 +55,10 @@ public class Actividad implements Serializable {
     @JoinColumn(name = "idmonitores")
     @ManyToOne
     private Monitores monitores;
+    
+    //Relacion hacia inscripcion
+    @OneToMany(mappedBy = "actividad")
+    private List<Inscripcion> inscripciones = new ArrayList<Inscripcion>();
 
     public Actividad() {
     }
@@ -80,6 +87,18 @@ public class Actividad implements Serializable {
         this.instalacion = instalacion;
         this.monitores = monitores;
     }
+
+    public Actividad(String nombre, String dia, String hora, int maxpersonas, double precio, Deportes deportes, Instalacion instalacion, Monitores monitores) {
+        this.nombre = nombre;
+        this.dia = dia;
+        this.hora = hora;
+        this.maxpersonas = maxpersonas;
+        this.precio = precio;
+        this.deportes = deportes;
+        this.instalacion = instalacion;
+        this.monitores = monitores;
+    }
+    
 
     public int getIdactividad() {
         return idactividad;

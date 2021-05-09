@@ -24,8 +24,9 @@ import mx.com.gm.sga.domain.Monitores;
  *
  * @author adrip
  */
-@WebServlet("/AltaActividad")
-public class AltaActividad extends HttpServlet {
+@WebServlet("/UpdateActividad")
+public class UpdateActividad extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -33,6 +34,7 @@ public class AltaActividad extends HttpServlet {
      * response)
      */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int idactividad = Integer.parseInt(request.getParameter("idactividad"));
         String nombre = request.getParameter("nombre");
         String instalacion = request.getParameter("instalacion");
         String monitor = request.getParameter("monitor");
@@ -42,7 +44,14 @@ public class AltaActividad extends HttpServlet {
         String hora = request.getParameter("hora");
         String cuota = request.getParameter("cuota");
         double precio = Double.parseDouble(cuota);
-        String deporte = request.getParameter("deporte");
+       
+        
+        //Recuperamos la actividad para sacar los inscritos
+        GestionActividad gactividad = new GestionActividad();
+        Actividad busca = gactividad.buscaActividad(idactividad);
+        int inscritos = busca.getInscritos();
+       
+        
         
         //Recuperamos la instalacion
         int idinstalacion = Integer.parseInt(instalacion);
@@ -55,19 +64,15 @@ public class AltaActividad extends HttpServlet {
         Monitores moni = gmonitores.buscaMonitor(idmonitores);
         
         //Recuperamos el deporte
-        int iddeporte = Integer.parseInt(deporte);
-        GestionDeportes gdeporte = new GestionDeportes();
-        Deportes depor = gdeporte.buscaDeporte(iddeporte);
         
-        Actividad nueva = new Actividad(nombre, dia, hora, maxpersonas, precio, depor, ins, moni);
+        Deportes depor =busca.getDeportes();
         
-        GestionActividad gactividad = new GestionActividad();
-        gactividad.altaActividad(nueva);
+        
+        //Creamos la actividady y actualizamos
+        Actividad actividad = new Actividad(idactividad, nombre, dia, hora, maxpersonas, inscritos, precio, depor, ins, moni);
+        gactividad.actualizarActividad(actividad);
         
         request.getRequestDispatcher("RecuperarActividades").forward(request, response);
-        
-        
-        
     }
-    
+
 }

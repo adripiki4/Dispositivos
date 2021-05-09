@@ -103,7 +103,7 @@ public class Monitores implements Serializable {
 
     @Override
     public String toString() {
-        return "Monitores{" + "idmonitores=" + idmonitores + ", nombre=" + nombre + ", apellidos=" + apellidos + ", telefono=" + telefono + ", email=" + email + '}';
+        return nombre;
     }
     
     

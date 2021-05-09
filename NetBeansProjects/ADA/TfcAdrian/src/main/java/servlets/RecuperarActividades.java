@@ -51,7 +51,7 @@ public class RecuperarActividades extends HttpServlet {
          }
          
          //Guardamos los registros en un atributo de peticion
-         request.setAttribute("actividades", list);
+         request.setAttribute("actividades", actividades);
          //Transferencia de la peticion
          request.getRequestDispatcher("actividades.jsp").forward(request, response);
      }

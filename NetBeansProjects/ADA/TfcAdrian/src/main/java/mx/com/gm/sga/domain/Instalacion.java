@@ -100,7 +100,7 @@ public class Instalacion implements Serializable {
 
     @Override
     public String toString() {
-        return "Instalacion{" + "idinstalacion=" + idinstalacion + ", name=" + name + ", precio=" + precio + ", deporte=" + deportes + '}';
+        return name;
     }
     
     

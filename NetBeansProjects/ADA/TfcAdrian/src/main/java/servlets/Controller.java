@@ -62,6 +62,12 @@ public class Controller extends HttpServlet {
             case "doAltaActividad":
                 url = "AltaActividad";
                 break;
+            case "doActividadUpdate":
+                url = "ViewEditActividad";
+                break;
+            case "doUpdateActividad":
+                url = "UpdateActividad";
+                break;
 
         }
         request.getRequestDispatcher(url).forward(request, response);

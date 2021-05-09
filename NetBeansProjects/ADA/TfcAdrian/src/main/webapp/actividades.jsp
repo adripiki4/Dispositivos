@@ -1,7 +1,7 @@
 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" import="modelo.GestionActividad, java.util.ArrayList,mx.com.gm.sga.domain.ActividadName"%>
+         pageEncoding="ISO-8859-1" import="modelo.GestionActividad, java.util.ArrayList,mx.com.gm.sga.domain.Actividad"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -65,7 +65,7 @@
                         <th>Hora</th>
                         <th>Inscritos</th>
                         <th>Capacidad</th>
-                        <th>Precio</th>
+                        <th>Precio (Euros)</th>
                         <th>Instalacion</th>
                         <th>Deporte</th>
                         <th>Monitor</th>
@@ -81,8 +81,9 @@
                             <td>${act.maxpersonas}</td>
                             <td>${act.precio}</td>
                             <td>${act.instalacion}</td>
-                            <td>${act.deporte}</td>
+                            <td>${act.deportes}</td>
                             <td>${act.monitores}</td>
+                            <td><a href="Controller?op=doActividadUpdate&idactividad=${act.idactividad}">Editar</a></td>
                         </tr>
                         
                     </c:forEach>
