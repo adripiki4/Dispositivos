@@ -83,6 +83,12 @@ public class Controller extends HttpServlet {
             case "doAltaInscripcion":
                 url = "AltaInscripcion";
                 break;
+            case "doSeleccionarInscripcion":
+                url = "SeleccionarInscripcion";
+                break;
+            case "doEliminarInscripcion":
+                url = "EliminarInscripcion";
+                break;
             case "doFiltrarInstalaciones":
                 url = "FiltrarInstalaciones";
                 break;
@@ -96,7 +102,7 @@ public class Controller extends HttpServlet {
                 url = "FiltrarActividad";
                 break;
             case "doFiltrarInscripiones":
-                url ="FiltrarInscripiones";
+                url = "FiltrarInscripiones";
                 break;
 
         }

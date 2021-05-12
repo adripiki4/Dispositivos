@@ -58,18 +58,20 @@
                 <input type="submit" value="Actualizar"/>
             </form>
             <br>
-
-
-
-
-            <form action="Controller?op=doEliminarCliente&idcliente=${cliente.idcliente}" method="post">
-                <input type="submit" value="Eliminar"/>
-            </form>
-            <br>
             <form action="RecuperarClientes">
                 <input type="submit" value="Atrás"/>
             </form>
+
+<!--            <form action="Controller?op=doEliminarCliente&idcliente=${cliente.idcliente}" method="post">
+                <input type="submit" value="Eliminar"/>
+            </form>-->
+
         </fieldset>
+
+                <br>
+        <a class="boton_personalizado" href="Controller?op=doEliminarCliente&idcliente=${cliente.idcliente}">Eliminar</a>
+        <br>
+        <hr>
 
 
 

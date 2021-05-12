@@ -86,7 +86,7 @@
                             <td>${cli.telefono}</td>
                             <td>${cli.email}</td>
                             <td>${cli.cuota}</td>
-                            <td><a href="Controller?op=doMostrarUpdate&idcliente=${cli.idcliente}">Editar</a> </td>
+                            <td><a href="Controller?op=doMostrarUpdate&idcliente=${cli.idcliente}">Seleccionar</a> </td>
                         </tr>
 
                     </c:forEach>

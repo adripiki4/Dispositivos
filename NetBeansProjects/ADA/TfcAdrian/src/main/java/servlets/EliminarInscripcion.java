@@ -22,8 +22,8 @@ import mx.com.gm.sga.domain.Inscripcion;
  *
  * @author adrip
  */
-@WebServlet("/AltaInscripcion")
-public class AltaInscripcion extends HttpServlet {
+@WebServlet("/EliminarInscripcion")
+public class EliminarInscripcion extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,40 +32,33 @@ public class AltaInscripcion extends HttpServlet {
      * response)
      */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int idactividad = Integer.parseInt(request.getParameter("idactividad"));
-        int idcliente = Integer.parseInt(request.getParameter("idcliente"));
-        double precio = Double.parseDouble(request.getParameter("precio"));
-
-        System.out.println(precio);
-
-        //Recuperamos objetos
-        GestionCliente gcliente = new GestionCliente();
-        GestionActividad gactividad = new GestionActividad();
-
-        Cliente cliente = gcliente.buscaCliente(idcliente);
-        Actividad actividad = gactividad.buscaActividad(idactividad);
-
-//         Actualizamos valores
-        double cuota = cliente.getCuota();
-        cuota = (cuota) + (precio);
-
-        cliente.setCuota(cuota);
-        gcliente.actualizarCliente(cliente);
-
-        int inscritos = actividad.getInscritos();
-        inscritos = (inscritos) + (1);
-
-        actividad.setInscritos(inscritos);
-        gactividad.actualizarActividad(actividad);
-
-        //Realizamos la nueva inscripcion
+        int idinscripcion = Integer.parseInt(request.getParameter("idinscripcion"));
         GestionInscripcion ginscripcion = new GestionInscripcion();
-        Inscripcion nueva = new Inscripcion(cliente, actividad);
-        ginscripcion.altaInscripcion(nueva);
-
-        //Volvemos
+        GestionActividad ga = new GestionActividad();
+        GestionCliente gc = new GestionCliente();
+        
+        
+        Inscripcion inscripcion = ginscripcion.buscaInscripcion(idinscripcion);
+        Actividad actividad = inscripcion.getActividad();
+        Cliente cliente = inscripcion.getCliente();
+        
+        ginscripcion.eliminarInscripcion(idinscripcion);
+        
+        //Descontamos la cuota y bajamos los inscritos
+        double precio = actividad.getPrecio();
+        double cuota = cliente.getCuota();
+        
+        cuota = (cuota) - (precio);
+        cliente.setCuota(cuota);
+        gc.actualizarCliente(cliente);
+        
+        int inscritos = actividad.getInscritos();
+        inscritos = (inscritos) -(1);
+        actividad.setInscritos(inscritos);
+        ga.actualizarActividad(actividad);
+        
         request.getRequestDispatcher("RecuperarInscripciones").forward(request, response);
-
+        
     }
 
 }
