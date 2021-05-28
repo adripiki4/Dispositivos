@@ -45,7 +45,7 @@
             </form>
             <br>
             <form action="RecuperarInstalaciones" method="post">
-                <input type="submit" value="Limpiar">
+                <input type="submit" value="Mostrar todas">
             </form>
         </fieldset>
         <br>
@@ -68,7 +68,7 @@
 
                         <tr>
                             <td>${ins.name}</td>
-                            <td>${ins.precio}</td>
+                            <td>${ins.precio}&#8364</td>
                             <td>${ins.deportes}</td>
                         </tr>
 

@@ -46,7 +46,7 @@
             </form>
             <br>
             <form action="RecuperarClientes" method="post">
-                <input type="submit" value="Limpiar">
+                <input type="submit" value="Mostrar todos">
             </form>
         </fieldset>
         
@@ -85,8 +85,8 @@
                             <td>${cli.apellidos}</td>
                             <td>${cli.telefono}</td>
                             <td>${cli.email}</td>
-                            <td>${cli.cuota}</td>
-                            <td><a href="Controller?op=doMostrarUpdate&idcliente=${cli.idcliente}">Seleccionar</a> </td>
+                            <td>${cli.cuota} &#8364</td>
+                            <td><a  class="seleccionar" href="Controller?op=doMostrarUpdate&idcliente=${cli.idcliente}">Seleccionar</a> </td>
                         </tr>
 
                     </c:forEach>

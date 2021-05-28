@@ -46,7 +46,7 @@
             </form>
             <br>
             <form action="RecuperarMonitores" method="post">
-                <input type="submit" value="Limpiar">
+                <input type="submit" value="Mostrar todos">
             </form>
         </fieldset>
         <br>

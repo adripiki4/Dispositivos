@@ -45,7 +45,7 @@
             </form>
             <br>
             <form action="RecuperarInscripciones" method="post">
-                <input type="submit" value="Limpiar">
+                <input type="submit" value="Mostrar todas">
             </form>
         </fieldset>
         <br>

@@ -106,3 +106,8 @@ tr:nth-child(even) {
     color: #1883ba;
     background-color: #ffffff;
   }
+  a.seleccionar{
+      text-decoration:none!important;
+      color: #0016b0;
+      
+  }

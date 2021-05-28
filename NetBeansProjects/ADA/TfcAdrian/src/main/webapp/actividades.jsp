@@ -47,7 +47,7 @@
             </form>
             <br>
             <form action="RecuperarActividades" method="post">
-                <input type="submit" value="Limpiar">
+                <input type="submit" value="Mostrar todas">
             </form>
         </fieldset>
         <br>
@@ -68,7 +68,7 @@
                         <th>Hora</th>
                         <th>Inscritos</th>
                         <th>Capacidad</th>
-                        <th>Precio (Euros)</th>
+                        <th>Precio</th>
                         <th>Instalacion</th>
                         <th>Deporte</th>
                         <th>Monitor</th>
@@ -82,7 +82,7 @@
                             <td>${act.hora}</td>
                             <td>${act.inscritos}</td>
                             <td>${act.maxpersonas}</td>
-                            <td>${act.precio}</td>
+                            <td>${act.precio}&#8364</td>
                             <td>${act.instalacion}</td>
                             <td>${act.deportes}</td>
                             <td>${act.monitores}</td>

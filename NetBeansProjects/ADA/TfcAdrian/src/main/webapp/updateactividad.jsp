@@ -55,7 +55,7 @@
 
                             <c:forEach var="ins" items="${instalaciones}">
 
-                                <option value="${ins.idinstalacion}">${ins.name}</option>
+                            <option value="${ins.idinstalacion}">${ins.name}</option>
 
                             </c:forEach>
                         </select>
@@ -102,7 +102,7 @@
             </form>
 
             <br>
-           <form action="RecuperarActividades" method="post">
+            <form action="RecuperarActividades" method="post">
                 <input type="submit" value="Atrás">
             </form>
         </fieldset>
