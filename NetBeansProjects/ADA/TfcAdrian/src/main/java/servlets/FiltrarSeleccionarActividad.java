@@ -47,6 +47,7 @@ public class FiltrarSeleccionarActividad extends HttpServlet {
             opcion = 3;
         }
 
+        
         switch (opcion) {
 
             //busca por dia
