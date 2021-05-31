@@ -89,7 +89,15 @@
 
 
                 <p>Aforo MAX: <input type="text" id="aforo" size="30" name="aforo"></p>
-                <p>Día de semana: <input type="text" id="dia" size="30" name="dia"></p>
+                <label for="dia">Seleccione día de la semana: </label>
+                <select name="dia" id="dia">
+                    <option value="lunes">Lunes</option>
+                    <option value="martes">Martes</option>
+                    <option value="miercoles">Miercoles</option>
+                    <option value="jueves">Jueves</option>
+                    <option value="viernes">Viernes</option>
+                </select>
+
                 <p>Hora (HH:mm): <input type="text" id="hora" size="30" name="hora"></p>
                 <p>Cuota: <input type="text" id="cuota" size="30" name="cuota"></p>
 
@@ -114,8 +122,8 @@
 
                 <input type="submit" value="Guardar"/>
             </form>
-                <br>
-                <form action="RecuperarActividades" method="post">
+            <br>
+            <form action="RecuperarActividades" method="post">
                 <input type="submit" value="Atrás">
             </form>
         </fieldset>

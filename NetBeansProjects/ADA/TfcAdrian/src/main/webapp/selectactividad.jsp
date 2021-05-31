@@ -42,17 +42,38 @@
 
         <fieldset>
             <legend>Filtrar</legend>
-            <form>
-                <input type="text" id="deporte"  placeholder="Deporte">
-                <input type="text" id="dia"  placeholder="Dia de la semana">
+            <form action="Controller?op=doFiltrarSeleccionarActividad" method="post">
+                <!--<label for="deporte">Deporte:</label>-->
+                <select name="deporte" id="deporte">
+                    <option value="">Deporte</option>
+                    <option value="padel">Padel</option>
+                    <option value="natacion">Natación</option>
+                    <option value="futbol">Fútbol</option>
+                    <option value="baloncesto">Baloncesto</option>
+                    <option value="baile">Baile</option>
+                </select>
+                <!--<label for="dia">Día de la semana:</label>-->
+                <select name="dia" id="dia">
+                    <option value="">Día</option>
+                    <option value="lunes">Lunes</option>
+                    <option value="martes">Martes</option>
+                    <option value="miercoles">Miercoles</option>
+                    <option value="jueves">Jueves</option>
+                    <option value="viernes">Viernes</option>
+                </select>
+                <!--<input type="text" id="dia" name="dia"  placeholder="Dia de la semana">-->
                 <input type="submit" value="Buscar">
-                <input type="submit" value="Limpiar">
+            </form>
+            <br>
+            <form action="RecuperarActividades" method="post">
+                <input type="submit" value="Mostrar todas">
             </form>
         </fieldset>
         <br>
         <form action="RecuperarInscripciones" method="post">
             <input type="submit" value="Salir">
-        </form><br>
+        </form>
+        <br>
        
         
 
@@ -87,7 +108,7 @@
                             <td>${act.instalacion}</td>
                             <td>${act.deportes}</td>
                             <td>${act.monitores}</td>
-                            <td><a href="Controller?op=doSeleccionarCliente&idactividad=${act.idactividad}">Seleccionar</a></td>
+                            <td><a class="seleccionar" href="Controller?op=doSeleccionarCliente&idactividad=${act.idactividad}">Seleccionar</a></td>
                         </tr>
 
                     </c:forEach>

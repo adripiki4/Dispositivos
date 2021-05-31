@@ -43,6 +43,7 @@
             <form action="Controller?op=doFiltrarActividad" method="post">
                 <!--<label for="deporte">Deporte:</label>-->
                 <select name="deporte" id="deporte">
+                    <option value="">Deporte</option>
                     <option value="padel">Padel</option>
                     <option value="natacion">Natación</option>
                     <option value="futbol">Fútbol</option>
@@ -51,6 +52,7 @@
                 </select>
                 <!--<label for="dia">Día de la semana:</label>-->
                 <select name="dia" id="dia">
+                    <option value="">Día</option>
                     <option value="lunes">Lunes</option>
                     <option value="martes">Martes</option>
                     <option value="miercoles">Miercoles</option>

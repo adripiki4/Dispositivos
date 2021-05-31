@@ -104,6 +104,9 @@ public class Controller extends HttpServlet {
             case "doFiltrarInscripiones":
                 url = "FiltrarInscripiones";
                 break;
+            case "doFiltrarSeleccionarActividad":
+                url = "FiltrarSeleccionarActividad";
+                break;
 
         }
         request.getRequestDispatcher(url).forward(request, response);
