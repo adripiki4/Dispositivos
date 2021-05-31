@@ -76,7 +76,7 @@
                             <td>${moni.apellidos}</td>
                             <td>${moni.telefono}</td>
                             <td>${moni.email}</td>
-                            <td><a href="Controller?op=doMonitorUpdate&idmonitores=${moni.idmonitores}">Editar</a></td>
+                            <td><a class="seleccionar" href="Controller?op=doMonitorUpdate&idmonitores=${moni.idmonitores}">Editar</a></td>
 
                         </tr>
 

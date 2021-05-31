@@ -41,8 +41,23 @@
         <fieldset>
             <legend>Filtrar</legend>
             <form action="Controller?op=doFiltrarActividad" method="post">
-                <input type="text" id="deporte" name="deporte"  placeholder="Deporte">
-                <input type="text" id="dia" name="dia"  placeholder="Dia de la semana">
+                <!--<label for="deporte">Deporte:</label>-->
+                <select name="deporte" id="deporte">
+                    <option value="padel">Padel</option>
+                    <option value="natacion">Natación</option>
+                    <option value="futbol">Fútbol</option>
+                    <option value="baloncesto">Baloncesto</option>
+                    <option value="baile">Baile</option>
+                </select>
+                <!--<label for="dia">Día de la semana:</label>-->
+                <select name="dia" id="dia">
+                    <option value="lunes">Lunes</option>
+                    <option value="martes">Martes</option>
+                    <option value="miercoles">Miercoles</option>
+                    <option value="jueves">Jueves</option>
+                    <option value="viernes">Viernes</option>
+                </select>
+                <!--<input type="text" id="dia" name="dia"  placeholder="Dia de la semana">-->
                 <input type="submit" value="Buscar">
             </form>
             <br>
@@ -86,7 +101,7 @@
                             <td>${act.instalacion}</td>
                             <td>${act.deportes}</td>
                             <td>${act.monitores}</td>
-                            <td><a href="Controller?op=doActividadUpdate&idactividad=${act.idactividad}">Editar</a></td>
+                            <td><a class="seleccionar" href="Controller?op=doActividadUpdate&idactividad=${act.idactividad}">Editar</a></td>
                         </tr>
 
                     </c:forEach>

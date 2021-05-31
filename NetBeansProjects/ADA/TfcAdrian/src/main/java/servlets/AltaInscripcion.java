@@ -6,6 +6,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +36,7 @@ public class AltaInscripcion extends HttpServlet {
         int idactividad = Integer.parseInt(request.getParameter("idactividad"));
         int idcliente = Integer.parseInt(request.getParameter("idcliente"));
         double precio = Double.parseDouble(request.getParameter("precio"));
-
+        boolean repetido = false;
         System.out.println(precio);
 
         //Recuperamos objetos
@@ -45,26 +46,43 @@ public class AltaInscripcion extends HttpServlet {
         Cliente cliente = gcliente.buscaCliente(idcliente);
         Actividad actividad = gactividad.buscaActividad(idactividad);
 
-//         Actualizamos valores
-        double cuota = cliente.getCuota();
-        cuota = (cuota) + (precio);
-
-        cliente.setCuota(cuota);
-        gcliente.actualizarCliente(cliente);
-
-        int inscritos = actividad.getInscritos();
-        inscritos = (inscritos) + (1);
-
-        actividad.setInscritos(inscritos);
-        gactividad.actualizarActividad(actividad);
-
-        //Realizamos la nueva inscripcion
+        //Comprobamos que no se repita la inscripcion
         GestionInscripcion ginscripcion = new GestionInscripcion();
-        Inscripcion nueva = new Inscripcion(cliente, actividad);
-        ginscripcion.altaInscripcion(nueva);
+        List<Inscripcion> inscripciones = ginscripcion.recuperarInscripciones();
 
-        //Volvemos
-        request.getRequestDispatcher("RecuperarInscripciones").forward(request, response);
+        for (Inscripcion i : inscripciones) {
+            if (i.getActividad() == actividad) {
+                if (i.getCliente() == cliente) {
+                    repetido = true;
+                    break;
+                }
+            }
+        }
+
+        if (repetido == true) {
+            //meter condicion de fallo
+
+        } else {
+            //         Actualizamos valores
+            double cuota = cliente.getCuota();
+            cuota = (cuota) + (precio);
+
+            cliente.setCuota(cuota);
+            gcliente.actualizarCliente(cliente);
+
+            int inscritos = actividad.getInscritos();
+            inscritos = (inscritos) + (1);
+
+            actividad.setInscritos(inscritos);
+            gactividad.actualizarActividad(actividad);
+
+            //Realizamos la nueva inscripcion
+            Inscripcion nueva = new Inscripcion(cliente, actividad);
+            ginscripcion.altaInscripcion(nueva);
+
+            //Volvemos
+            request.getRequestDispatcher("RecuperarInscripciones").forward(request, response);
+        }
 
     }
 

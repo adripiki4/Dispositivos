@@ -48,7 +48,7 @@
 
 
             <p><b>Actividad:</b> ${actividad.nombre}</p>
-            <p><b>Precio: </b> ${actividad.precio}</p>
+            <p><b>Precio: </b> ${actividad.precio}&#8364</p>
             <p><b>Dia de la semana: </b> ${actividad.dia}</p>
             <p><b>Hora: </b>  ${actividad.hora}</p>
             <p><b>Instalacion: </b> ${actividad.instalacion}</p>

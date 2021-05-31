@@ -71,7 +71,7 @@
                             <td>${ins.idinscripcion}</td>
                             <td>${ins.actividad}</td>
                             <td>${ins.cliente}</td>
-                            <td><a href="Controller?op=doSeleccionarInscripcion&idinscripcion=${ins.idinscripcion}">Seleccionar</a></td>
+                            <td><a class="seleccionar" href="Controller?op=doSeleccionarInscripcion&idinscripcion=${ins.idinscripcion}">Seleccionar</a></td>
                         </tr>
                     </c:forEach>
                 </table>

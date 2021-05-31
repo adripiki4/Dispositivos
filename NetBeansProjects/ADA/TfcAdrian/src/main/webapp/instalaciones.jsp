@@ -40,7 +40,14 @@
         <fieldset>
             <legend>Filtrar</legend>
             <form action="Controller?op=doFiltrarInstalaciones" method="post">
-                <input type="text" id="deporte" name="deporte"  placeholder="Deporte">
+                <select name="deporte" id="deporte">
+                    <option value="padel">Padel</option>
+                    <option value="natacion">Natación</option>
+                    <option value="futbol">Fútbol</option>
+                    <option value="baloncesto">Baloncesto</option>
+                    <option value="baile">Baile</option>
+                </select>
+                <!--                <input type="text" id="deporte" name="deporte"  placeholder="Deporte">-->
                 <input type="submit" value="Buscar">
             </form>
             <br>
