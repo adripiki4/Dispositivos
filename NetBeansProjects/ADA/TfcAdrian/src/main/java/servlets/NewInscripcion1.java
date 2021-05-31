@@ -37,10 +37,13 @@ public class NewInscripcion1 extends HttpServlet {
         GestionActividad gactividad = new GestionActividad();
         List<Actividad> actividades = gactividad.recuperarActividades();
         List<ActividadName> list = new ArrayList<ActividadName>();
+        List<Actividad> pasa = new ArrayList<Actividad>();
 
         for (Actividad a : actividades) {
             if (a.getInscritos() >= a.getMaxpersonas()) {
-                actividades.remove(a);
+                
+            }else{
+                pasa.add(a);
             }
 
         }
@@ -61,7 +64,7 @@ public class NewInscripcion1 extends HttpServlet {
         }
 
         //Guardamos los registros en un atributo de peticion
-        request.setAttribute("actividades", actividades);
+        request.setAttribute("actividades", pasa);
         //Transferencia de la peticion
         request.getRequestDispatcher("selectactividad.jsp").forward(request, response);
     }

@@ -50,9 +50,13 @@ public class AltaCliente extends HttpServlet {
                 break;
             }
         }
+        Cliente cliente = new Cliente(dni, nombre, apellidos, telefono, email);
 
         if (dnirepetido == true) {
-           
+           //Creamos un objeto de la capa logica de negocio
+            //Llamamos al metodo para hacer el alta
+            request.setAttribute("cliente", cliente);
+            request.getRequestDispatcher("dnirepetido.jsp").forward(request, response);
         } else {
             //Creamos un objeto de la capa logica de negocio
             //Llamamos al metodo para hacer el alta

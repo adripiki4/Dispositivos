@@ -111,3 +111,6 @@ tr:nth-child(even) {
       color: #0016b0;
       
   }
+  p.incorrecto{
+      color: crimson;
+  }

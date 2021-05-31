@@ -16,12 +16,12 @@
         <!-- MENU LATERAL -->
         <div class="sidenav">
 
-            <a href="Controller?op=doRecuperarClientes">Clientes</a>
+             <a href="Controller?op=doRecuperarClientes">Clientes</a>
             <a href="Controller?op=doRecuperarActividades">Actividades</a>
             <a href="Controller?op=doRecuperarInscripciones">Inscripciones</a>
             <a href="Controller?op=doRecuperarInstalaciones">Instalaciones</a>
             <a href="Controller?op=doRecuperarMonitores">Monitores</a>
-            <a href="users.html">Usuarios</a>
+            <a href="">Usuarios</a>
 
         </div>
 

@@ -20,7 +20,7 @@
             <a href="Controller?op=doRecuperarInscripciones">Inscripciones</a>
             <a href="Controller?op=doRecuperarInstalaciones">Instalaciones</a>
             <a href="Controller?op=doRecuperarMonitores">Monitores</a>
-            <a href="users.html">Usuarios</a>
+            <a href="">Usuarios</a>
 
         </div>
         <!-- CABECERA -->

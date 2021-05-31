@@ -57,7 +57,8 @@ public class ConfirmaInscripcion extends HttpServlet {
             request.getRequestDispatcher("confirmainscripcion.jsp").forward(request, response);
         }
         else{
-            request.getRequestDispatcher("dniincorrecto.jsp").forward(request, response);
+            request.setAttribute("actividad", actividad);
+            request.getRequestDispatcher("dninoexiste.jsp").forward(request, response);
         }
     }
 }

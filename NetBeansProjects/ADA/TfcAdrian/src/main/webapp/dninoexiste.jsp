@@ -1,12 +1,12 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" import="modelo.GestionMonitores, java.util.ArrayList,mx.com.gm.sga.domain.Monitores"%>
+         pageEncoding="ISO-8859-1" import="modelo.GestionActividad, java.util.ArrayList,mx.com.gm.sga.domain.Actividad"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Polideportivo-Monitores</title>
+        <title>Polideportivo-Inscripciones</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="newcss.css">
@@ -23,42 +23,50 @@
             <a href="">Usuarios</a>
 
         </div>
-
         <!-- CABECERA -->
     <header id="main-header">
 
         <a id="logo-header" href="index.html">
             <span class="site-name">Polideportivo Adrián</span>
-            <span class="site-desc">Monitores-Editar</span>
+            <span class="site-desc">Nueva Inscripcion</span>
         </a> <!-- / #logo-header -->
 
     </header>
-
     <!-- MAIN  -->
     <div class="main">
-
-
-        <br>
         <br>
 
-        <c:set var="monitor" value="${requestScope.monitor}"/>
+        <c:set var="actividad" value="${requestScope.actividad}"/>
 
         <fieldset>
-            <legend>Editar Cliente</legend>
-            <form action="Controller?op=doUpdateMonitor&idmonitores=${monitor.idmonitores}" method="post">
+            <legend>Actividad Seleccionada</legend>
+            <form action="Controller?op=doConfirmaInscripcion&idactividad=${actividad.idactividad}" method="post">
 
-<!--                    <p>ID: <input type="text" id="idmonitores" size="30" name="idmonitores" value="${monitor.idmonitores}" readonly> </p>-->
-                <p>Nombre: <input type="text" id="nombre" size="30" name="nombre" value="${monitor.nombre}"></p>
-                <p>Apellidos: <input type="text" id="apellidos" size="30" name="apellidos" value="${monitor.apellidos}"></p>
-                <p>Telefono: <input type="text" id="telefono" size="30" name="telefono" value="${monitor.telefono}"></p>
-                <p>Email: <input type="text" id="email" size="30" name="email" value="${monitor.email}"></p>
-                <input type="submit" value="Actualizar"/>
+                <p><b>Actividad:</b> ${actividad.nombre}</p>
+                <p><b>Precio: </b> ${actividad.precio}</p>
+                <p><b>Dia de la semana: </b> ${actividad.dia}</p>
+                <p><b>Hora: </b>  ${actividad.hora}</p>
+                <p><b>Instalacion: </b> ${actividad.instalacion}</p>
+                <hr>
+                <p class="incorrecto">El DNI introducido no existe</p>
+                <p><b>Introduzca el DNI del cliente: </b><input type="text" id="dni" name="dni" size="30"></p>
+
+                <input type="submit" value="Siguiente"/>
+                <br>
             </form>
             <br>
-            <form action="RecuperarMonitores">
+            <form action="NewInscripcion1" method="post">
                 <input type="submit" value="Atrás">
             </form>
         </fieldset>
 
-    </body>
+
+        <p>Si el cliente no está registrado realizar un alta nueva</p>
+        <form action="newcliente.html" method="post">
+            <input type="submit" value="Nuevo Cliente">
+        </form>
+
+    </div>
+
+</body>
 </html>

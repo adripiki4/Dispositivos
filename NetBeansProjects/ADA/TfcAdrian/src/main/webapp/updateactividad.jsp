@@ -19,7 +19,7 @@
             <a href="inscriptions.html">Inscripciones</a>
             <a href="Controller?op=doRecuperarInstalaciones">Instalaciones</a>
             <a href="Controller?op=doRecuperarMonitores">Monitores</a>
-            <a href="users.html">Usuarios</a>
+            <a href="">Usuarios</a>
 
         </div>
 
@@ -90,7 +90,15 @@
 
 
                 <p>Aforo MAX: <input type="text" id="aforo" size="30" name="aforo" value="${actividad.maxpersonas}"></p>
-                <p>Día de semana: <input type="text" id="dia" size="30" name="dia" value="${actividad.dia}"></p>
+<!--                <p>Día de semana: <input type="text" id="dia" size="30" name="dia" value="${actividad.dia}"></p>-->
+                <label for="dia">Día de la semana:(Actual ${actividad.dia}) </label>
+                <select name="dia" id="dia">
+                    <option value="Lunes">Lunes</option>
+                    <option value="Martes">Martes</option>
+                    <option value="Miercoles">Miercoles</option>
+                    <option value="Jueves">Jueves</option>
+                    <option value="Viernes">Viernes</option>
+                </select>
                 <p>Hora (HH:mm): <input type="text" id="hora" size="30" name="hora" value="${actividad.hora}"></p>
                 <p>Cuota: <input type="text" id="cuota" size="30" name="cuota" value="${actividad.precio}"></p>
                 <p>Deporte <input type="text" id="deporte" size="30" name="deporte" value="${actividad.deportes}" readonly></p>

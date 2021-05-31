@@ -20,7 +20,7 @@
             <a href="Controller?op=doRecuperarInscripciones">Inscripciones</a>
             <a href="Controller?op=doRecuperarInstalaciones">Instalaciones</a>
             <a href="Controller?op=doRecuperarMonitores">Monitores</a>
-            <a href="users.html">Usuarios</a>
+            <a href="">Usuarios</a>
 
         </div>
 
@@ -91,11 +91,11 @@
                 <p>Aforo MAX: <input type="text" id="aforo" size="30" name="aforo"></p>
                 <label for="dia">Seleccione día de la semana: </label>
                 <select name="dia" id="dia">
-                    <option value="lunes">Lunes</option>
-                    <option value="martes">Martes</option>
-                    <option value="miercoles">Miercoles</option>
-                    <option value="jueves">Jueves</option>
-                    <option value="viernes">Viernes</option>
+                    <option value="Lunes">Lunes</option>
+                    <option value="Martes">Martes</option>
+                    <option value="Miercoles">Miercoles</option>
+                    <option value="Jueves">Jueves</option>
+                    <option value="Viernes">Viernes</option>
                 </select>
 
                 <p>Hora (HH:mm): <input type="text" id="hora" size="30" name="hora"></p>

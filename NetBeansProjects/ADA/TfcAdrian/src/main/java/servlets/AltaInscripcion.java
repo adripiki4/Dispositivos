@@ -51,8 +51,8 @@ public class AltaInscripcion extends HttpServlet {
         List<Inscripcion> inscripciones = ginscripcion.recuperarInscripciones();
 
         for (Inscripcion i : inscripciones) {
-            if (i.getActividad() == actividad) {
-                if (i.getCliente() == cliente) {
+            if ((i.getActividad().getIdactividad()) == actividad.getIdactividad()) {
+                if ((i.getCliente().getIdcliente()) == cliente.getIdcliente()) {
                     repetido = true;
                     break;
                 }
@@ -61,7 +61,8 @@ public class AltaInscripcion extends HttpServlet {
 
         if (repetido == true) {
             //meter condicion de fallo
-
+            request.setAttribute("actividad", actividad);
+            request.getRequestDispatcher("inscripcionrepetida.jsp").forward(request, response);
         } else {
             //         Actualizamos valores
             double cuota = cliente.getCuota();
