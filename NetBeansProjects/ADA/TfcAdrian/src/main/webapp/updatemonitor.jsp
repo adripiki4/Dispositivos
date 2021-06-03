@@ -44,7 +44,7 @@
         <c:set var="monitor" value="${requestScope.monitor}"/>
 
         <fieldset>
-            <legend>Editar Cliente</legend>
+            <legend>Editar Monitor</legend>
             <form action="Controller?op=doUpdateMonitor&idmonitores=${monitor.idmonitores}" method="post">
 
 <!--                    <p>ID: <input type="text" id="idmonitores" size="30" name="idmonitores" value="${monitor.idmonitores}" readonly> </p>-->

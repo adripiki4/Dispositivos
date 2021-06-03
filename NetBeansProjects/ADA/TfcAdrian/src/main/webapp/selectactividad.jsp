@@ -65,7 +65,7 @@
                 <input type="submit" value="Buscar">
             </form>
             <br>
-            <form action="RecuperarActividades" method="post">
+            <form action="NewInscripcion1" method="post">
                 <input type="submit" value="Mostrar todas">
             </form>
         </fieldset>

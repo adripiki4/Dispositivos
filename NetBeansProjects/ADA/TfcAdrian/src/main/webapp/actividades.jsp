@@ -103,7 +103,7 @@
                             <td>${act.instalacion}</td>
                             <td>${act.deportes}</td>
                             <td>${act.monitores}</td>
-                            <td><a class="seleccionar" href="Controller?op=doActividadUpdate&idactividad=${act.idactividad}">Editar</a></td>
+                            <td><a class="seleccionar" href="Controller?op=doActividadUpdate&idactividad=${act.idactividad}">Seleccionar</a></td>
                         </tr>
 
                     </c:forEach>

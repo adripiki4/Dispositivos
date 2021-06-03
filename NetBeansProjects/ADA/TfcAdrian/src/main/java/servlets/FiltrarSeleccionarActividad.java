@@ -35,6 +35,7 @@ public class FiltrarSeleccionarActividad extends HttpServlet {
         GestionActividad gactividad = new GestionActividad();
         List<Actividad> list = gactividad.recuperarActividades();
         List<Actividad> pasa = new ArrayList<Actividad>();
+        List<Actividad> buena = new ArrayList<Actividad>();
         int opcion;
 
         if (deporte.equalsIgnoreCase("") == true) {
@@ -83,7 +84,16 @@ public class FiltrarSeleccionarActividad extends HttpServlet {
 
         }
         
-        request.setAttribute("actividades", pasa);
+                for (Actividad a : pasa) {
+            if (a.getInscritos() >= a.getMaxpersonas()) {
+                
+            }else{
+                buena.add(a);
+            }
+
+        }
+        
+        request.setAttribute("actividades", buena);
         
         request.getRequestDispatcher("selectactividad.jsp").forward(request, response);
     }
